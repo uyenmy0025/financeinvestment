@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bản đồ chu kỳ tài sản · Việt Nam 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141C26; --ink2:#2A3542; --paper:#EDEFEA; --card:#FFFFFF; --wash:#F6F7F3;
+  --line:#D8DBD4; --line2:#C2C7BD; --slate:#5F6B72; --mute:#8A9299;
+  --brass:#A6752B; --brass-w:#F5EAD6; --jade:#186B4F; --jade-w:#E2EFE8;
+  --rust:#9C3A2C; --rust-w:#F7E5E1; --steel:#3A6079; --steel-w:#E3ECF2;
+  --ff:Calibri,Carlito,"Segoe UI",sans-serif; --r:4px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--ff); font-weight:400;
+  font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--ff);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+.num{font-family:var(--ff);font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ---------- masthead ---------- */
+.mast{background:var(--ink);color:#EDEFEA;border-bottom:3px solid var(--brass)}
+.mast-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;flex-wrap:wrap}
+.mark{display:flex;align-items:baseline;gap:12px}
+.mark b{font-family:var(--ff);font-weight:800;font-size:19px;letter-spacing:-0.03em}
+.mark span{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8FA0AC}
+.stamp{font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8FA0AC;display:flex;align-items:center;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--brass);display:inline-block}
+
+/* currency switch */
+.fxbox{display:flex;align-items:center;gap:10px}
+.fxrate{font-size:11px;color:#8FA0AC;letter-spacing:0.04em}
+.switch{display:inline-flex;background:#22303E;border:1px solid #3A4A5A;border-radius:999px;padding:3px}
+.switch button{
+  font-family:var(--ff);font-size:12px;font-weight:600;letter-spacing:0.06em;
+  background:none;border:0;color:#8FA0AC;padding:5px 14px;border-radius:999px;cursor:pointer;transition:.18s
+}
+.switch button[aria-pressed="true"]{background:var(--brass);color:#1B1508}
+.switch button:focus-visible{outline:2px solid #EDEFEA;outline-offset:2px}
+
+/* nav */
+nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.tab{
+  font-family:var(--ff);font-weight:600;font-size:13.5px;letter-spacing:0.01em;white-space:nowrap;
+  background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-3px;
+  color:#93A3AF;padding:14px 18px;cursor:pointer;transition:.18s
+}
+.tab:hover{color:#EDEFEA}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--brass)}
+.tab:focus-visible{outline:2px solid var(--brass);outline-offset:-4px}
+.tab i{font-style:normal;font-family:var(--ff);font-size:11px;color:var(--brass);margin-right:7px}
+
+/* ---------- ticker strip ---------- */
+.strip{background:var(--ink2);color:#DDE3E7;border-bottom:1px solid #3A4A5A}
+.strip-in{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.strip-in::-webkit-scrollbar{display:none}
+.tick{padding:11px 22px 11px 0;margin-right:22px;border-right:1px solid #3A4A5A;white-space:nowrap;display:flex;align-items:baseline;gap:9px}
+.tick:last-child{border-right:0}
+.tick em{font-style:normal;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8FA0AC}
+.tick b{font-family:var(--ff);font-weight:600;font-size:13.5px}
+.up{color:#6BC79E}.dn{color:#E8897B}
+
+/* ---------- panels ---------- */
+main{padding:40px 0 90px}
+.panel{display:none}
+.panel.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel.on{animation:none}*{transition:none!important}}
+
+.eyebrow{font-family:var(--ff);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.lede{font-size:17px;color:var(--slate);max-width:62ch;line-height:1.7}
+h2.big{font-size:clamp(26px,3.4vw,38px);margin-bottom:12px}
+h3.sec{font-size:19px;margin-bottom:6px}
+
+.rank{background:#fff;border:1px solid var(--line);border-left:5px solid var(--jade);padding:22px 26px;margin-bottom:14px;display:grid;grid-template-columns:52px 1fr 118px;gap:20px;align-items:start}
+@media(max-width:760px){.rank{grid-template-columns:44px 1fr;}.rank .w{grid-column:2}}
+.rank .no{font-size:30px;font-weight:700;color:var(--jade);letter-spacing:-0.04em;line-height:1}
+.rank h4{font-size:17px;margin-bottom:6px}
+.rank p{font-size:14px;color:var(--ink2);max-width:70ch}
+.rank .w{text-align:right;font-size:22px;font-weight:700;color:var(--jade);letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
+.rank .w small{display:block;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mute);font-weight:400}
+.avoid{background:#fff;border:1px solid var(--line);border-left:5px solid var(--rust);padding:20px 26px;margin-bottom:12px}
+.avoid h4{font-size:16px;margin-bottom:6px;color:var(--rust)}
+.avoid p{font-size:14px;color:var(--ink2);max-width:76ch}
+.avoid .maths{font-size:13px;background:var(--rust-w);color:#5A1F16;padding:8px 12px;margin-top:10px;display:inline-block;font-variant-numeric:tabular-nums}
+.warn{background:var(--ink);color:#E7EBE6;padding:26px 30px;border-left:5px solid var(--rust);margin:30px 0}
+.warn h3{color:#fff;font-size:18px;margin-bottom:12px}
+.warn p{color:#C9D2D8;font-size:15px;max-width:78ch;line-height:1.75}
+.warn p+p{margin-top:12px}
+.warn strong{color:#F2A99B}
+.build{background:var(--ink);color:#E7EBE6;padding:26px 30px;margin:0 0 30px;border-left:5px solid var(--brass)}
+.build h3{color:#fff;font-size:19px;margin-bottom:4px}
+.build>p{color:#9FADB8;font-size:13.5px;margin-bottom:18px;max-width:76ch}
+.build .f label{color:#9FADB8}
+.build .f input{background:#22303E;border-color:#3A4A5A;color:#fff}
+.build .f input:focus{background:#2A3B4C;outline-color:var(--brass)}
+.build .unit{font-size:11px;color:#8FA0AC}
+.tier{background:#22303E;border-left:3px solid var(--brass);padding:14px 18px;margin-bottom:18px}
+.tier b{color:#F2C878;display:block;font-size:15px;margin-bottom:4px}
+.tier span{color:#C9D2D8;font-size:13.5px;line-height:1.6}
+.plan{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;color:var(--ink)}
+.plan th{background:var(--wash);border-bottom:1.5px solid var(--ink);color:var(--slate)}
+.plan td{border-bottom:1px solid var(--line);padding:11px 12px;vertical-align:top}
+.plan td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.plan tr.sat td{background:#FBF7EE}
+.plan tr.sat td:first-child{color:var(--brass)}
+.plan tfoot td{background:var(--wash);font-weight:700;border-bottom:0}
+.flags{margin-top:16px}
+.flag{background:#3A2A22;border-left:3px solid #E8897B;color:#F0D4CD;font-size:13px;padding:10px 14px;margin-bottom:8px;line-height:1.6}
+.flag.ok{background:#1E3A30;border-left-color:#6BC79E;color:#CDE8DC}
+.yield-box{display:flex;gap:34px;flex-wrap:wrap;background:#22303E;padding:16px 20px;margin-top:16px}
+.yield-box div{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8FA0AC}
+.yield-box b{display:block;font-size:21px;color:#6BC79E;letter-spacing:-0.03em;margin-top:4px;font-variant-numeric:tabular-nums;text-transform:none;letter-spacing:-0.03em}
+.gate{background:var(--brass-w);border:1px solid #E4CDA2;padding:22px 26px;margin-bottom:26px}
+.gate h4{font-size:16px;margin-bottom:10px;color:#6E4C12}
+.gate ol{margin-left:20px;font-size:14.5px;color:#5A3F0F}
+.gate li{margin-bottom:7px}
+/* --- history chart --- */
+.chart-head{padding:20px 24px 0}
+.chart-head h3{font-size:19px;margin-bottom:4px}
+.chart-head p{font-size:13px;color:var(--mute);margin-bottom:16px}
+/* thesis block — the page's opening argument */
+.thesis{background:var(--ink);color:#E7EBE6;padding:32px 34px;border-left:5px solid var(--brass);margin:28px 0 36px}
+.thesis p{max-width:74ch;font-size:16.5px;line-height:1.75;color:#C9D2D8}
+.thesis p+p{margin-top:14px}
+.thesis strong{color:#F2C878;font-weight:600}
+.thesis h3{color:#fff;font-size:20px;margin-bottom:12px}
+
+/* sub tabs */
+.subs{display:flex;gap:8px;margin:0 0 26px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0}
+.sub{
+  font-family:var(--ff);font-weight:600;font-size:13px;background:none;border:0;
+  border-bottom:2px solid transparent;padding:10px 4px;margin-right:20px;color:var(--mute);cursor:pointer
+}
+.sub[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.sub:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.group{display:none}.group.on{display:block}
+
+/* ---------- asset card ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:20px;overflow:hidden}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:22px 26px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.card-head h3{font-size:21px;margin-bottom:3px}
+.card-head p{font-size:13px;color:var(--mute)}
+.phase-tag{font-family:var(--ff);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.p-acc{background:var(--steel-w);color:var(--steel)}
+.p-gro{background:var(--jade-w);color:var(--jade)}
+.p-pk{background:var(--brass-w);color:var(--brass)}
+.p-cor{background:var(--rust-w);color:var(--rust)}
+
+/* the signature element: cycle dial */
+.dial{padding:24px 26px 20px;background:var(--wash);border-bottom:1px solid var(--line)}
+.dial-meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:32px;flex-wrap:wrap}
+.dial-meta .yr{font-family:var(--ff);font-size:13px;font-weight:600;color:var(--ink)}
+.dial-meta .yr b{font-size:22px;color:var(--brass)}
+.dial-meta .len{font-size:12px;color:var(--mute);font-family:var(--ff)}
+.track{position:relative;display:flex;height:34px;border:1px solid var(--line2);border-radius:2px;overflow:visible;background:#fff}
+.seg{flex:1;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:0.05em;color:var(--mute);border-right:1px solid var(--line);text-transform:uppercase;font-family:var(--ff)}
+.seg:last-child{border-right:0}
+.seg.hot{color:#fff;font-weight:600}
+.s1.hot{background:var(--steel)}.s2.hot{background:var(--jade)}.s3.hot{background:var(--brass)}.s4.hot{background:var(--rust)}
+.pin{position:absolute;top:-8px;bottom:-8px;width:2px;background:var(--ink);transform:translateX(-1px)}
+.pin::before{content:"";position:absolute;bottom:-4px;left:-4px;width:10px;height:10px;background:var(--ink);border-radius:50%}
+.pin::after{content:attr(data-lab);position:absolute;top:-25px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);background:var(--wash);padding:0 7px;white-space:nowrap}
+/* year axis under the cycle bar */
+.years{display:flex;margin-top:9px}
+.years span{flex:1;text-align:center;font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;position:relative}
+.years span::before{content:"";position:absolute;top:-9px;left:50%;width:1px;height:5px;background:var(--line2)}
+.years span.now{color:var(--ink);font-weight:700}
+.years span.fut{font-style:italic;color:#A8B0B5}
+.axis-note{font-size:11px;color:var(--mute);margin-top:8px;font-style:italic}
+.dial-foot{height:6px}
+
+/* card body grid */
+.body{padding:24px 26px 8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}
+.stat{background:#fff;padding:14px 16px}
+.stat em{display:block;font-style:normal;font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+.stat b{font-family:var(--ff);font-weight:600;font-size:17px;display:block;letter-spacing:-0.03em}
+.stat small{font-size:11.5px;color:var(--slate);display:block;margin-top:2px}
+
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+@media(max-width:820px){.rows{grid-template-columns:1fr;gap:0}}
+.blk{padding-bottom:22px}
+.blk h4{font-size:12px;letter-spacing:0.13em;text-transform:uppercase;color:var(--slate);font-family:var(--ff);font-weight:600;padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.blk p{font-size:14.5px;color:var(--ink2);margin-bottom:10px}
+.blk ul{list-style:none;font-size:14.5px;color:var(--ink2)}
+.blk li{padding-left:18px;position:relative;margin-bottom:9px}
+.blk li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:1.5px;background:var(--line2)}
+
+/* action box */
+.act{background:var(--wash);border-top:1px solid var(--line);padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:820px){.act{grid-template-columns:1fr;gap:20px}}
+.act h4{font-family:var(--ff);font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.act .do h4{color:var(--jade)}
+.act .dont h4{color:var(--rust)}
+.act ul{list-style:none;font-size:14px}
+.act li{padding-left:20px;position:relative;margin-bottom:8px;color:var(--ink2)}
+.act .do li::before{content:"+";position:absolute;left:0;color:var(--jade);font-family:var(--ff);font-weight:600}
+.act .dont li::before{content:"−";position:absolute;left:0;color:var(--rust);font-family:var(--ff);font-weight:600}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:22px}
+th{font-family:var(--ff);font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--slate);text-align:left;padding:9px 12px;border-bottom:1.5px solid var(--ink);font-weight:600}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+tbody tr:hover{background:var(--wash)}
+td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
+.deep{background:#fff;border:1px solid var(--line);border-left:4px solid var(--steel);padding:22px 26px;margin-bottom:20px}
+.deep h4{font-size:15px;font-family:var(--ff);margin-bottom:4px}
+.deep>p{font-size:13.5px;color:var(--mute);margin-bottom:16px}
+
+/* news */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{font-family:var(--ff);font-size:11.5px;letter-spacing:0.05em;background:#fff;border:1px solid var(--line2);color:var(--slate);padding:7px 14px;border-radius:999px;cursor:pointer;transition:.16s}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.news{background:#fff;border:1px solid var(--line);border-left:4px solid var(--line2);padding:20px 24px;margin-bottom:14px}
+.news.hide{display:none}
+.news.neg{border-left-color:var(--rust)}
+.news.pos{border-left-color:var(--jade)}
+.news.mix{border-left-color:var(--brass)}
+.news-top{display:flex;gap:14px;align-items:baseline;margin-bottom:7px;flex-wrap:wrap}
+.date{font-family:var(--ff);font-size:11px;letter-spacing:0.09em;color:var(--mute);white-space:nowrap}
+.src{font-size:11px;color:var(--mute);letter-spacing:0.05em}
+.news h4{font-size:16.5px;font-family:var(--ff);margin-bottom:8px;line-height:1.3}
+.news p{font-size:14px;color:var(--ink2);margin-bottom:14px;max-width:80ch}
+.tags{display:flex;gap:7px;flex-wrap:wrap;padding-top:12px;border-top:1px dashed var(--line)}
+.tag{font-family:var(--ff);font-size:11px;letter-spacing:0.03em;padding:4px 9px;border-radius:2px;display:inline-flex;align-items:center;gap:5px}
+.t-dn{background:var(--rust-w);color:var(--rust)}
+.t-up{background:var(--jade-w);color:var(--jade)}
+.t-nu{background:#EDEFEA;color:var(--slate)}
+.news h4 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
+.news h4 a:hover,.ev h4 a:hover{color:var(--brass);border-bottom-color:var(--brass)}
+.news h4 a::after,.ev h4 a::after{content:" \2197";font-size:12px;color:var(--mute)}
+.ev h4 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
+.kind{font-size:10px;letter-spacing:0.11em;text-transform:uppercase;padding:3px 8px;border-radius:2px;font-weight:700}
+.kind.pol{background:#EEEDFE;color:#534AB7}
+.kind.eco{background:var(--steel-w);color:var(--steel)}
+.kind.mkt{background:var(--brass-w);color:var(--brass)}
+.who{font-size:13px;color:var(--slate);background:var(--wash);border:1px solid var(--line);padding:10px 13px;margin-bottom:13px;line-height:1.6}
+.who b{color:var(--ink)}
+.who-lab{display:block;font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.ev .who{margin:10px 0 0;max-width:74ch}
+.tag-lab{font-family:var(--ff);font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--mute);margin-right:4px;align-self:center}
+
+/* timeline */
+.tl{border-left:2px solid var(--line2);margin-left:10px;padding-left:0}
+.ev{position:relative;padding:0 0 30px 32px}
+.ev::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--line2)}
+.ev.key::before{background:var(--brass);border-color:var(--brass)}
+.ev .when{font-family:var(--ff);font-size:11.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--brass);margin-bottom:4px}
+.ev h4{font-size:16px;font-family:var(--ff);margin-bottom:5px}
+.ev p{font-size:14px;color:var(--slate);max-width:74ch}
+
+/* scenarios */
+.scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px}
+.sc{background:#fff;border:1px solid var(--line);border-top:4px solid var(--line2);padding:22px}
+.sc.hawk{border-top-color:var(--rust)}
+.sc.base{border-top-color:var(--brass)}
+.sc.dove{border-top-color:var(--jade)}
+.sc .prob{font-family:var(--ff);font-size:28px;font-weight:600;letter-spacing:-0.04em;display:block;margin-bottom:2px}
+.sc.hawk .prob{color:var(--rust)}.sc.base .prob{color:var(--brass)}.sc.dove .prob{color:var(--jade)}
+.sc h4{font-size:16px;margin-bottom:10px;font-family:var(--ff)}
+.sc p{font-size:13.5px;color:var(--slate);margin-bottom:14px}
+.sc ul{list-style:none;font-size:13px}
+.sc li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.sc li span:last-child{font-family:var(--ff);font-weight:600;white-space:nowrap}
+
+/* tools */
+.tool{background:#fff;border:1px solid var(--line);padding:26px;margin-bottom:20px}
+.tool h3{font-size:18px;margin-bottom:5px}
+.tool>p{font-size:13.5px;color:var(--mute);margin-bottom:20px}
+.field{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:22px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label{font-family:var(--ff);font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--slate)}
+.f input,.f select{
+  font-family:var(--ff);font-size:15px;padding:10px 12px;border:1px solid var(--line2);
+  border-radius:2px;background:var(--wash);color:var(--ink);min-width:170px
+}
+.f input:focus,.f select:focus{outline:2px solid var(--brass);outline-offset:1px;background:#fff}
+.out{background:var(--wash);border:1px solid var(--line);padding:18px 20px;margin-top:4px}
+.out .head{font-family:var(--ff);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.bar{display:flex;height:10px;margin-bottom:16px;border:1px solid var(--line2)}
+.bar span{display:block;height:100%}
+.legend li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;list-style:none}
+.legend li:last-child{border-bottom:0}
+.swatch{width:10px;height:10px;display:inline-block;margin-right:9px;vertical-align:-1px}
+.legend .v{font-family:var(--ff);font-weight:600;white-space:nowrap}
+.big-out{font-family:var(--ff);font-size:26px;font-weight:600;letter-spacing:-0.03em;color:var(--jade)}
+
+/* glossary */
+.gl{background:#fff;border:1px solid var(--line);padding:20px 24px;margin-bottom:12px}
+.gl h4{font-size:16px;font-family:var(--ff);margin-bottom:6px}
+.gl p{font-size:14px;color:var(--ink2);max-width:82ch}
+.gl .term{font-family:var(--ff);font-size:11px;color:var(--brass);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px}
+
+/* ---- 10-year chart ---- */
+.chartbox{background:#fff;border:1px solid var(--line);padding:22px 24px 18px;margin:0 0 30px}
+.chart-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.chart-head h3{font-size:18px;margin-bottom:3px}
+.chart-head p{font-size:12.5px;color:var(--mute)}
+.livebar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--mute);letter-spacing:0.04em}
+.lv{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.lv i{width:7px;height:7px;border-radius:50%;background:var(--line2);display:inline-block;font-style:normal}
+.lv.on i{background:var(--jade)}
+.lv.off i{background:var(--line2)}
+.lv.err i{background:var(--rust)}
+.btn-rf{font-family:var(--ff);font-size:11px;letter-spacing:0.06em;background:var(--ink);color:#fff;border:0;padding:6px 12px;border-radius:2px;cursor:pointer}
+.btn-rf:hover{background:var(--brass)}
+.btn-rf:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pill{font-size:12px;background:var(--wash);border:1px solid var(--line2);color:var(--slate);padding:6px 12px;border-radius:999px;cursor:pointer;font-family:var(--ff);transition:.15s}
+.pill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.pill:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.pill .est{color:var(--brass);font-size:10px;margin-left:4px}
+.rng{display:flex;gap:0;border:1px solid var(--line2);width:fit-content;margin-bottom:16px}
+.rng button{font-family:var(--ff);font-size:12px;background:#fff;border:0;border-right:1px solid var(--line2);color:var(--slate);padding:7px 15px;cursor:pointer}
+.rng button:last-child{border-right:0}
+.rng button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.rng button:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+.chart-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:16px}
+.cs{background:#fff;padding:11px 13px}
+.cs em{display:block;font-style:normal;font-size:10px;letter-spacing:0.11em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.cs b{font-size:15px;font-variant-numeric:tabular-nums;display:block}
+.chart-note{font-size:11.5px;color:var(--mute);margin-top:12px;line-height:1.65}
+.gl-line{stroke:var(--line);stroke-width:.5}
+.ax{font-size:10.5px;fill:var(--mute);font-variant-numeric:tabular-nums}
+
+/* ---- print ---- */
+@media print{
+  .mast,.strip,.subs,.filters,.pills,.rng,.livebar,.btn-rf,nav{display:none!important}
+  .panel{display:none!important}
+  .panel#rec{display:block!important}
+  body{background:#fff;font-size:11pt}
+  .card,.tool,.deep,.gl,.rec-card{break-inside:avoid;border-color:#999}
+  a{text-decoration:none;color:#000}
+}
+.rec-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--jade);padding:22px 26px;margin-bottom:16px}
+.rec-card.no{border-left-color:var(--rust)}
+.rec-rank{display:inline-block;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.rec-card h4{font-size:17px;font-family:var(--ff);margin-bottom:4px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline}
+.rec-card h4 span{font-size:14px;font-weight:700;color:var(--jade);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rec-card.no h4 span{color:var(--rust)}
+.rec-card p{font-size:14.5px;color:var(--ink2);max-width:82ch}
+.gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:22px 0 30px}
+.gate div{background:var(--wash);border:1px solid var(--line);border-top:3px solid var(--ink);padding:16px 18px}
+.gate b{display:block;font-size:22px;color:var(--brass);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.gate p{font-size:13.5px;color:var(--ink2)}
+.note{font-size:12.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:18px;margin-top:34px;max-width:88ch;line-height:1.7}
+.chat{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;height:min(62vh,560px);margin-bottom:18px}
+.log{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column;gap:16px}
+.msg{max-width:82%;padding:12px 16px;font-size:14.5px;line-height:1.65;white-space:pre-wrap}
+.msg.u{align-self:flex-end;background:var(--ink);color:#EDEFEA}
+.msg.a{align-self:flex-start;background:var(--wash);border:1px solid var(--line);color:var(--ink2)}
+.msg.e{align-self:flex-start;background:var(--rust-w);border:1px solid #E7C4BC;color:#5A1F16;font-size:13.5px}
+.msg.a b{color:var(--ink)}
+.typing{align-self:flex-start;color:var(--mute);font-size:13.5px;padding:12px 16px}
+.ask{display:flex;gap:0;border-top:1px solid var(--line)}
+.ask textarea{flex:1;border:0;padding:15px 18px;font-family:var(--ff);font-size:14.5px;resize:none;background:#fff;color:var(--ink);min-height:54px;max-height:130px}
+.ask textarea:focus{outline:2px solid var(--brass);outline-offset:-2px}
+.ask button{border:0;background:var(--ink);color:#fff;font-family:var(--ff);font-weight:700;font-size:14px;padding:0 26px;cursor:pointer}
+.ask button:disabled{background:var(--line2);cursor:default}
+.keybar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--brass-w);border:1px solid #E4CDA2;padding:12px 16px;margin-bottom:14px;font-size:13px;color:#6E4C12}
+.keybar b{color:#5A3F0F}
+.keybar button{font-family:var(--ff);font-size:12.5px;font-weight:700;background:#6E4C12;color:#fff;border:0;padding:7px 14px;border-radius:2px;cursor:pointer}
+.keybar button.ghost{background:transparent;color:#6E4C12;border:1px solid #C9A96A}
+.keybar.ok{background:var(--jade-w);border-color:#B9D9C9;color:#0F4A36}
+.keybar.ok b{color:#0F4A36}
+.keybar.ok button{background:#0F4A36}
+.keybar.ok button.ghost{background:transparent;color:#0F4A36;border-color:#8FBFA9}
+.seeds{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.seed{font-size:13px;background:#fff;border:1px solid var(--line2);color:var(--slate);padding:8px 14px;border-radius:2px;cursor:pointer;text-align:left}
+.seed:hover{border-color:var(--brass);color:var(--brass)}
+.seed:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.terms{background:var(--wash);border-top:1px dashed var(--line2);padding:18px 26px 20px}
+.terms-lab{display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:13px}
+.terms dl{display:grid;grid-template-columns:1fr 1fr;gap:13px 30px;margin:0}
+@media(max-width:820px){.terms dl{grid-template-columns:1fr}}
+.terms dt{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.terms dt i{font-style:normal;font-weight:400;color:var(--mute);font-size:11.5px;letter-spacing:0.02em}
+.terms dd{font-size:13px;color:var(--slate);margin:0;line-height:1.6}
+.terms.inline{border-top:0;border-left:3px solid var(--line2);background:transparent;padding:0 0 0 18px;margin:22px 0 0}
+.sec-gap{margin-top:44px}
+@media print{
+  .mast,.strip,.filters,.subs,.ranges,.asset-pick,.live,.live-msg,.switch,.chart-foot{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .panel{display:none!important}
+  .panel.on{display:block!important}
+  .thesis,.warn{background:#fff!important;color:#000!important;border:1px solid #000}
+  .thesis p,.warn p{color:#222!important}
+  .thesis h3,.warn h3{color:#000!important}
+  .thesis strong,.warn strong{color:#000!important}
+  .rank,.avoid,.card,.gate,.news,.tool{break-inside:avoid;page-break-inside:avoid}
+  a{text-decoration:none;color:#000}
+  .news h4 a::after,.ev h4 a::after{content:""}
+  .note{border-top:1px solid #000}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-top">
+      <div class="mark">
+        <b>BẢN ĐỒ CHU KỲ TÀI SẢN</b>
+        <span>Việt Nam · 2026 · v2026.07.23-b3</span>
+      </div>
+      <div class="fxbox">
+        <div class="stamp"><span class="dot"></span> Dữ liệu 23/07/2026</div>
+        <div class="switch" role="group" aria-label="Đổi đơn vị tiền tệ">
+          <button id="btnVnd" aria-pressed="true" onclick="setCur('vnd')">VND</button>
+          <button id="btnUsd" aria-pressed="false" onclick="setCur('usd')">USD</button>
+        </div>
+      </div>
+    </div>
+    <nav role="tablist" aria-label="Chủ đề">
+      <button class="tab" role="tab" aria-selected="true" data-tab="tq"><i>01</i>Tổng quan</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="tin"><i>02</i>Tin tức &amp; tác động</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="lich"><i>03</i>Lịch sự kiện &amp; kịch bản</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="dm"><i>04</i>Danh mục &amp; công cụ</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="kn"><i>05</i>Khuyến nghị tổng hợp</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="ai"><i>06</i>Hỏi đáp phản biện</button>
+    </nav>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-in">
+      <div class="tick"><em>VN-Index 22/07</em><b id="tkVni" class="dn">1.668,53 ▼ 3,58%</b></div>
+      <div class="tick"><em>Vàng thế giới</em><b id="tkAu" class="up fx" data-vnd="≈132 tr đ/lượng" data-usd="4.117 $/oz">≈132 tr đ/lượng</b></div>
+      <div class="tick"><em>Vàng SJC bán ra</em><b id="tkSjc" class="dn">146,0 tr đ/lượng</b></div>
+      <div class="tick"><em>Bitcoin</em><b id="tkBtc" class="dn fx" data-vnd="1,73 tỷ đ" data-usd="65.859 $">1,73 tỷ đ</b></div>
+      <div class="tick"><em>Tiền gửi 12T</em><b class="up">7,8 – 9,2%</b></div>
+      <div class="tick"><em>Tỷ giá trung tâm</em><b>25.272</b></div>
+      <div class="tick"><em>USD tự do (bán)</em><b>26.380</b></div>
+      <div class="tick"><em>DXY</em><b>101,13</b></div>
+      <div class="tick"><em>Brent</em><b id="tkBrent" class="up fx" data-vnd="2,39 tr đ/thùng" data-usd="91,01 $/thùng">2,39 tr đ/thùng</b></div>
+      <div class="tick"><em>Fed funds</em><b>3,50 – 3,75%</b></div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- ============ 01 TỔNG QUAN ============ -->
+<section class="panel on" id="tq">
+  <div class="eyebrow">Mục 01 — Định vị</div>
+  <h2 class="big">Mọi tài sản hôm nay đều đang bị so sánh với một con số: 9%.</h2>
+  <p class="lede">Đó là lãi suất thực nhận cao nhất trên thị trường tiền gửi Việt Nam lúc này. Nó là ngưỡng chặn (hurdle rate) mà mọi lớp tài sản khác phải vượt qua để đáng nắm giữ. Trang này định vị 8 lớp tài sản theo đúng pha chu kỳ của chúng, và nói rõ ngưỡng 9% đang bẻ gãy cái gì.</p>
+
+  <div class="thesis">
+    <h3>Luận điểm trung tâm</h3>
+    <p>Ba tháng qua đã đảo ngược giả định lớn nhất của năm 2026. Thị trường bước vào năm với kỳ vọng Fed cắt lãi suất; đến giữa tháng 7, <strong>9 trên 19 quan chức Fed đã ghi nhận ít nhất một lần tăng lãi suất trước cuối năm</strong>, và công cụ FedWatch định giá xác suất tăng trong cuộc họp tháng 9 ở mức <strong>65,7%</strong>. Lạm phát lõi Mỹ chạy quanh 3,3–3,4%, cao hơn nhiều mục tiêu 2%, do thuế quan, năng lượng Trung Đông và nhu cầu điện từ hạ tầng AI.</p>
+    <p>Ở trong nước, hệ quả đã thấy rõ: lãi suất huy động thực tế leo lên <strong>9–9,2%/năm</strong>, và VN-Index mất 62,03 điểm trong một phiên duy nhất (22/07) — phiên giảm mạnh nhất kể từ cú giảm 115 điểm ngày 09/03/2026. Đây <strong>không phải khủng hoảng lợi nhuận doanh nghiệp</strong>: GDP quý II vẫn tăng 8,39%, FDI giải ngân cao, CPI tháng 6 hạ nhiệt. Đây là một cú tái định giá do chi phí vốn — dòng tiền cá nhân rút khỏi tài sản rủi ro về nơi trả 9% không rủi ro.</p>
+    <p>Kết luận hành động: giai đoạn này <strong>thưởng cho người cho vay, phạt người đi vay</strong>. Ai đang cầm tiền mặt đang ở vị thế tốt nhất trong 4 năm. Ai đang cầm tài sản mua bằng đòn bẩy đang ở vị thế xấu nhất.</p>
+  </div>
+  <div class="terms inline"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Ngưỡng chặn <i>hurdle rate</i></dt><dd>Mức lợi suất tối thiểu một khoản đầu tư phải vượt qua để đáng nắm giữ. Ở Việt Nam lúc này là 8–9% — lãi suất tiền gửi không rủi ro.</dd></div><div><dt>Tái định giá <i>re-rating</i></dt><dd>Thị trường trả giá khác cho cùng một mức lợi nhuận, thường vì lãi suất đổi. Khác hẳn với việc lợi nhuận doanh nghiệp xấu đi.</dd></div><div><dt>Diều hâu và bồ câu <i>hawkish / dovish</i></dt><dd>Diều hâu là nghiêng về thắt chặt, nâng lãi suất để ghìm lạm phát. Bồ câu là nghiêng về nới lỏng, hạ lãi suất để hỗ trợ tăng trưởng.</dd></div><div><dt>Lạm phát lõi <i>core inflation</i></dt><dd>Chỉ số giá đã loại thực phẩm và năng lượng — hai nhóm biến động mạnh. Ngân hàng trung ương nhìn số này để ra quyết định.</dd></div></dl></div>
+
+  <div class="chartbox">
+    <div class="chart-head">
+      <div><h3>Diễn biến 10 năm</h3><p>Chọn tài sản và khoảng thời gian. Đơn vị đổi theo nút VND/USD ở đầu trang.</p></div>
+      <div>
+        <div class="livebar" id="liveBar"></div>
+        <div style="margin-top:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button class="btn-rf" onclick="refreshLive(true)">Cập nhật giá ngay</button>
+          <span id="liveStamp" style="font-size:11px;color:var(--mute)"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pills" id="assetSel" role="group" aria-label="Chọn tài sản"></div>
+    <div class="rng" id="rangeSel" role="group" aria-label="Chọn khoảng thời gian"></div>
+    <div id="chartArea"></div>
+    <div class="chart-stats" id="chartStats"></div>
+    <div class="chart-note" id="chartNote"></div>
+  </div>
+
+  <div class="subs" role="group" aria-label="Nhóm chu kỳ">
+    <button class="sub" aria-pressed="true" data-grp="ngan">Tài sản chu kỳ ngắn (3–10 năm)</button>
+    <button class="sub" aria-pressed="false" data-grp="dai">Tài sản chu kỳ dài (10–20 năm)</button>
+    <button class="sub" aria-pressed="false" data-grp="phi">Tài sản ít phụ thuộc chu kỳ</button>
+  </div>
+
+  <!-- ---------- NHÓM CHU KỲ NGẮN ---------- -->
+  <div class="group on" id="g-ngan">
+
+    <!-- TIỀN GỬI -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Tiền gửi ngân hàng VND</h3><p>Chu kỳ lãi suất điều hành · độ dài trung bình 4–6 năm</p></div>
+        <span class="phase-tag p-pk">Đỉnh chu kỳ</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Việt Nam đang ở năm thứ <b>2</b> / 5 của chu kỳ tăng lãi suất</div>
+          <div class="len">Đáy gần nhất: giữa 2024 (≈4,5%) · Đỉnh trước: cuối 2022 (≈10–11%)</div>
+        </div>
+        <div class="track">
+          <div class="seg s1">Cắt giảm</div><div class="seg s2">Đáy</div><div class="seg s3 hot">Tăng</div><div class="seg s4">Đỉnh</div>
+          <div class="pin" style="left:72%" data-lab="Bạn đang ở đây"></div>
+        </div>
+        <div class="years"><span>2023–2024</span><span>2024–2025</span><span class="now">2025–2026</span><span class="fut">2026–2027</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><em>Niêm yết cao nhất 12T</em><b>7,8%</b><small>ACB, vừa tăng 0,5 điểm %</small></div>
+          <div class="stat"><em>Thực nhận cao nhất</em><b>9,2%</b><small>gửi online, kỳ hạn 12T</small></div>
+          <div class="stat"><em>Nhóm quốc doanh (KKH)</em><b>2,1 – 2,9%</b><small>Agribank, BIDV, VCB, CTG</small></div>
+          <div class="stat"><em>Lãi 12T trên <span class="fx" data-vnd="500 triệu đ" data-usd="19.000 $">500 triệu đ</span></em><b class="fx" data-vnd="39,0 tr đ" data-usd="1.483 $">39,0 tr đ</b><small>theo biểu ACB mới</small></div>
+        </div>
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Thanh khoản hệ thống căng.</b> Tín dụng chảy mạnh vào đầu tư công và bất động sản từ quý III/2025 khiến nhiều ngân hàng phải chạy đua huy động.</li>
+              <li><b>Cuộc đua đang chuyển sang bí mật.</b> Nhiều nhà băng niêm yết công khai chỉ 6,3% nhưng trả thực tế 9,2% cho khách online — nghĩa là bạn phải hỏi, không thể đọc bảng.</li>
+              <li><b>Fed hawkish tạo trần dưới.</b> Chừng nào Fed còn khả năng tăng, NHNN không có dư địa hạ lãi suất mà không hy sinh tỷ giá.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Rủi ro tái đầu tư là rủi ro bị xem nhẹ nhất.</b> Người gửi kỳ hạn 3–6 tháng ở đỉnh chu kỳ sẽ phải tái tục ở mức thấp hơn nhiều vào 2027–2028.</li>
+              <li><b>Đỉnh lãi suất không kéo dài.</b> Lịch sử VN: pha đỉnh chỉ giữ được 3–5 quý trước khi hạ. Cửa sổ khóa kỳ hạn dài đang mở nhưng không mở lâu.</li>
+              <li><b>Bảo hiểm tiền gửi có hạn mức.</b> Càng đua lãi suất cao càng nên chia nhỏ qua nhiều tổ chức thay vì dồn một nơi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Khóa kỳ hạn 12–24 tháng ở vùng 8–9% thay vì quay vòng 3–6 tháng</li>
+          <li>Gọi trực tiếp hỏi lãi suất thực nhận — mức niêm yết không phải mức bạn được trả</li>
+          <li>Chia bậc thang: 4 phần đáo hạn lệch nhau 3 tháng</li>
+          <li>Ưu tiên ngân hàng có nền tảng vốn tốt, không chỉ nhìn con số cao nhất</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Dồn toàn bộ vào kỳ hạn ngắn vì "chờ lãi suất lên nữa"</li>
+          <li>Chạy theo lãi suất cao bất thường ở tổ chức có chất lượng tài sản kém</li>
+          <li>Rút trước hạn — mất gần hết lãi, phá vỡ toàn bộ lợi thế của pha này</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Rủi ro tái đầu tư <i>reinvestment risk</i></dt><dd>Rủi ro phải gửi lại ở lãi suất thấp hơn khi sổ hiện tại đáo hạn. Đây là rủi ro lớn nhất khi gửi tiền đúng lúc lãi suất ở đỉnh.</dd></div><div><dt>Bậc thang kỳ hạn <i>laddering</i></dt><dd>Chia vốn thành nhiều sổ đáo hạn lệch nhau đều đặn, để mỗi quý có một phần về mà không phải rút trước hạn.</dd></div><div><dt>Lãi suất niêm yết và thực nhận</dt><dd> Mức công bố trên bảng và mức ngân hàng thực trả có thể chênh nhau 2–3 điểm phần trăm. Phải hỏi trực tiếp mới biết.</dd></div><div><dt>Bảo hiểm tiền gửi</dt><dd>Khoản chi trả có hạn mức khi tổ chức nhận tiền gửi mất khả năng thanh toán. Vì có trần nên chia nhỏ qua nhiều ngân hàng an toàn hơn dồn một nơi.</dd></div></dl></div>
+      </article>
+
+    <!-- CỔ PHIẾU — CHI TIẾT -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Cổ phiếu · VN-Index</h3><p>Chu kỳ kinh doanh · độ dài trung bình 7–10 năm</p></div>
+        <span class="phase-tag p-gro">Tăng trưởng muộn · đang điều chỉnh</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Việt Nam đang ở năm thứ <b>6</b> / 8 của chu kỳ tăng bắt đầu từ đáy Covid 03/2020</div>
+          <div class="len">Đỉnh chu kỳ này: ≈1.930 (tháng 5/2026) · Hiện cách đỉnh −13,5%</div>
+        </div>
+        <div class="track">
+          <div class="seg s1">Tích lũy</div><div class="seg s2 hot">Tăng trưởng</div><div class="seg s3">Hưng phấn</div><div class="seg s4">Suy giảm</div>
+          <div class="pin" style="left:49%" data-lab="Điều chỉnh giữa chu kỳ"></div>
+        </div>
+        <div class="years"><span>2022–2023</span><span class="now">2024–2026</span><span class="fut">2027–2028</span><span class="fut">2029+</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><em>VN-Index 22/07</em><b>1.668,53</b><small>−62,03 điểm (−3,58%)</small></div>
+          <div class="stat"><em>6 tháng đầu 2026</em><b class="up">+4,23%</b><small>trước khi rơi tháng 7</small></div>
+          <div class="stat"><em>Tài khoản NĐT trong nước</em><b>13,38 tr</b><small>+267.600 mở mới riêng tháng 6</small></div>
+          <div class="stat"><em>Mã giảm phiên 22/07</em><b class="dn">489</b><small>trong đó 28 mã giảm sàn</small></div>
+        </div>
+
+        <div class="deep">
+          <h4>Phân rã theo nhóm ngành — phiên bán tháo 22/07</h4>
+          <p>Cấu trúc của cú giảm cho biết nguyên nhân. Đây không phải bán tháo đồng loạt vô định hướng.</p>
+          <table>
+            <thead><tr><th>Nhóm ngành</th><th>Diễn biến</th><th>Cơ chế tác động</th><th>Vị thế chu kỳ</th></tr></thead>
+            <tbody>
+              <tr><td><b>Bất động sản</b></td><td class="n dn">−6,07%</td><td>Nhạy nhất với lãi suất: vừa gánh chi phí vốn, vừa mất người mua dùng đòn bẩy, vừa áp lực đáo hạn trái phiếu</td><td>Cuối pha suy giảm</td></tr>
+              <tr><td><b>Ngân hàng</b></td><td class="n dn">−2,51%</td><td>NIM bị bóp khi lãi huy động tăng nhanh hơn lãi cho vay; lo ngại nợ xấu từ danh mục BĐS</td><td>Giữa pha điều chỉnh</td></tr>
+              <tr><td><b>Dầu khí</b></td><td class="n up">Ngược dòng tăng</td><td>Hưởng lợi trực tiếp từ Brent lên 91,01 USD do chiến sự Mỹ–Iran; BSR, GAS đóng góp điểm số dương</td><td>Đầu pha tăng</td></tr>
+              <tr><td><b>Điện, nước, tiện ích</b></td><td class="n">Phòng thủ</td><td>Cầu không co giãn, doanh thu điều tiết theo hợp đồng — dòng tiền gần như phẳng qua chu kỳ</td><td>Ít phụ thuộc chu kỳ</td></tr>
+              <tr><td><b>Bán lẻ, tiêu dùng</b></td><td class="n">Phân hóa</td><td>Hưởng lợi từ GDP +8,39% nhưng bị đe dọa nếu CPI tăng do giá xăng dầu trong nước</td><td>Giữa chu kỳ</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Cơ chế thật sự là dòng tiền, không phải lợi nhuận.</b> Khi tiền gửi trả 9%, cổ phiếu phải kỳ vọng ~14–15% mới bù được phần bù rủi ro. Rất ít nhóm ngành đáp ứng được ở mặt bằng định giá tháng 5.</li>
+              <li><b>Mùa KQKD quý II đang là biến số quyết định.</b> Đây là lúc kiểm chứng mức tăng nửa đầu năm có được bảo chứng bởi lợi nhuận cốt lõi hay không.</li>
+              <li><b>Khối ngoại bán ròng</b> — riêng tuần 29/6–3/7 bán ròng 2.800 tỷ đồng, cộng hưởng với việc khẩu vị rủi ro toàn cầu suy giảm.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Nâng hạng FTSE Russell là chất xúc tác cấu trúc.</b> Đợt giải ngân đầu tiên dự kiến từ tháng 9/2026 — dòng vốn thụ động này không quan tâm định giá ngắn hạn.</li>
+              <li><b>Nền tảng vĩ mô còn nguyên.</b> GDP quý II +8,39%, FDI giải ngân cao, đầu tư công đẩy mạnh. Chu kỳ kinh doanh chưa gãy, chỉ bị chiết khấu lại.</li>
+              <li><b>13,38 triệu tài khoản trong nước</b> là lực cầu cấu trúc sẽ quay lại khi lãi suất tiền gửi bắt đầu hạ — thường sớm hơn thị trường 2–3 quý.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="deep">
+          <h4>Ngưỡng kỹ thuật đang được theo dõi</h4>
+          <p>Các mốc do khối phân tích trong nước đưa ra, dùng làm mốc quan sát chứ không phải tín hiệu mua bán.</p>
+          <table>
+            <thead><tr><th>Vùng</th><th>Ý nghĩa</th><th>Diễn giải</th></tr></thead>
+            <tbody>
+              <tr><td class="n">1.930</td><td>Đỉnh tháng 5/2026</td><td>Vượt lại được thì mở đường lên vùng mục tiêu 1.977–2.030</td></tr>
+              <tr><td class="n">1.800</td><td>Hỗ trợ trước đã mất</td><td>Đã thủng ngày 14/07; nay trở thành kháng cự</td></tr>
+              <tr><td class="n">1.700</td><td>Mốc tâm lý</td><td>Đã thủng phiên 22/07</td></tr>
+              <tr><td class="n">1.600</td><td>Hỗ trợ kỳ vọng kế tiếp</td><td>Vùng quan sát nếu áp lực bán còn lan rộng</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Chia DCA 6–8 tháng thay vì vào một lệnh — đang trong pha điều chỉnh, chưa xác nhận đáy</li>
+          <li>Ưu tiên nhóm dòng tiền phẳng (điện, nước, tiêu dùng thiết yếu) có cổ tức tiền mặt trên 6%</li>
+          <li>Đọc KQKD quý II trước khi tăng tỷ trọng — số liệu sẽ nói rõ ai được bảo chứng</li>
+          <li>Giữ một phần tiền mặt làm quyền chọn cho kịch bản chỉ số về 1.500–1.600</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Dùng margin trong môi trường lãi vay ký quỹ tăng theo mặt bằng chung</li>
+          <li>Bắt đáy nhóm bất động sản chỉ vì "đã giảm nhiều" — chưa xử lý xong áp lực đáo hạn</li>
+          <li>Bán tháo toàn bộ ở đáy điều chỉnh khi nền tảng vĩ mô chưa gãy</li>
+          <li>Mua đuổi nhóm dầu khí sau khi tin xung đột đã phản ánh vào giá</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Phần bù rủi ro <i>equity risk premium</i></dt><dd>Phần lợi suất tăng thêm mà cổ phiếu phải trả để bù cho việc rủi ro hơn tiền gửi. Tiền gửi 9% thì cổ phiếu cần kỳ vọng 14–15%.</dd></div><div><dt>Biên lãi ròng <i>NIM</i></dt><dd>Chênh lệch giữa lãi cho vay và lãi huy động của ngân hàng. Lãi huy động tăng nhanh hơn lãi cho vay thì biên này bị bóp lại.</dd></div><div><dt>Bình quân giá theo thời gian <i>DCA</i></dt><dd>Chia tiền ra mua đều theo lịch thay vì vào một lệnh, để không cần đoán đúng đáy.</dd></div><div><dt>Nhóm phòng thủ <i>defensive sectors</i></dt><dd>Ngành có cầu không co giãn — điện, nước, dược, tiêu dùng thiết yếu. Giá cổ phiếu vẫn dao động nhưng dòng tiền doanh nghiệp gần như phẳng qua chu kỳ.</dd></div><div><dt>Bán ròng khối ngoại</dt><dd>Nhà đầu tư nước ngoài bán nhiều hơn mua. Đáng chú ý vì thường phản ánh khẩu vị rủi ro toàn cầu hơn là tình hình riêng của doanh nghiệp.</dd></div><div><dt>Điều chỉnh giữa chu kỳ <i>mid-cycle correction</i></dt><dd>Nhịp giảm xảy ra khi chu kỳ tăng chưa kết thúc — khác với đảo chiều thành pha suy giảm.</dd></div></dl></div>
+      </article>
+
+    <!-- TRÁI PHIẾU — CHI TIẾT -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Trái phiếu</h3><p>Chu kỳ tín dụng · ngược pha với lãi suất</p></div>
+        <span class="phase-tag p-pk">Đỉnh lợi suất · đáy giá</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Việt Nam đang ở năm thứ <b>2</b> / 5 của pha lợi suất tăng</div>
+          <div class="len">Giá trái phiếu và lợi suất đi ngược chiều nhau — pha này tốt cho người mua mới, xấu cho người đang cầm</div>
+        </div>
+        <div class="track">
+          <div class="seg s1">Lợi suất đáy</div><div class="seg s2">Lợi suất tăng</div><div class="seg s3 hot">Đỉnh lợi suất</div><div class="seg s4">Lợi suất giảm</div>
+          <div class="pin" style="left:66%" data-lab="Cửa sổ mua vào"></div>
+        </div>
+        <div class="years"><span>2024</span><span>2025</span><span class="now">2026</span><span class="fut">2027–2028</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="deep">
+          <h4>Phân tầng theo rủi ro tín dụng — điều quan trọng nhất ở lớp tài sản này</h4>
+          <p>Lợi suất cao ở trái phiếu không phải phần thưởng, nó là giá của rủi ro. Bảng dưới tách bạch cái gì là câu chuyện lợi suất, cái gì là câu chuyện xác suất mất vốn.</p>
+          <table>
+            <thead><tr><th>Loại</th><th>Lợi suất</th><th>Bản chất rủi ro</th><th>Đánh giá</th></tr></thead>
+            <tbody>
+              <tr><td><b>Trái phiếu Chính phủ</b></td><td class="n">Theo mặt bằng điều hành</td><td>Gần như không rủi ro tín dụng; chỉ rủi ro lãi suất nếu bán trước hạn</td><td>Nền của danh mục thu nhập cố định</td></tr>
+              <tr><td><b>Trái phiếu ngân hàng</b></td><td class="n up">vượt 8%</td><td>Rủi ro tín dụng thấp; tổ chức phát hành chịu giám sát vốn chặt chẽ</td><td>Đây là câu chuyện <b>lợi suất</b> — vùng hấp dẫn nhất hiện tại</td></tr>
+              <tr><td><b>Trái phiếu DN sản xuất, tiện ích</b></td><td class="n">9 – 11%</td><td>Phụ thuộc dòng tiền hoạt động; cần đọc kỹ tài sản đảm bảo</td><td>Chọn lọc, cần thẩm định từng phát hành</td></tr>
+              <tr><td><b>Trái phiếu DN bất động sản</b></td><td class="n dn">12 – 14%+</td><td>Đang chịu áp lực đáo hạn trong bối cảnh lãi suất cao; đây là kịch bản 2022–2023 quay lại</td><td>Đây là câu chuyện <b>xác suất mất vốn</b>, không phải lợi suất</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Áp lực đáo hạn đang siết bất động sản.</b> Lãi suất trái phiếu ngân hàng vượt 8% có nghĩa: chi phí tái cấp vốn của doanh nghiệp BĐS còn cao hơn nhiều — nhiều tổ chức phát hành sẽ không đảo được nợ.</li>
+              <li><b>Người đang nắm trái phiếu chịu lỗ trên giá.</b> Lợi suất tăng làm giá thị trường của trái phiếu cũ giảm; chỉ ai giữ đến đáo hạn mới không bị ảnh hưởng.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Khóa lợi suất ở đỉnh chu kỳ là lợi thế kéo dài nhiều năm.</b> Trái phiếu ngân hàng kỳ hạn 3–5 năm mua ở 8% sẽ vẫn trả 8% khi mặt bằng đã về 5%.</li>
+              <li><b>Thị trường TPDN đang phân tầng lại.</b> Sau chu kỳ này, chênh lệch lợi suất giữa tổ chức phát hành tốt và xấu sẽ giãn ra — đó là điều kiện lành mạnh hơn cho dài hạn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Ưu tiên trái phiếu ngân hàng và trái phiếu Chính phủ ở kỳ hạn 3–5 năm</li>
+          <li>Xác định rõ ý định giữ đến đáo hạn trước khi mua — điều đó vô hiệu hóa rủi ro lãi suất</li>
+          <li>Đọc bản cáo bạch: tài sản đảm bảo, lịch đáo hạn, tỷ lệ nợ trên vốn của tổ chức phát hành</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Trái phiếu doanh nghiệp bất động sản lợi suất 12–14% trong đúng pha siết thanh khoản</li>
+          <li>Mua trái phiếu qua kênh phân phối mà không đọc tổ chức phát hành là ai</li>
+          <li>Nhầm lẫn "trái phiếu do ngân hàng phân phối" với "trái phiếu do ngân hàng phát hành" — hai thứ khác nhau hoàn toàn</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Quan hệ nghịch giá và lợi suất</dt><dd>Lãi suất thị trường tăng thì giá trái phiếu đang lưu hành giảm, và ngược lại. Đây là lý do pha này xấu cho người đang cầm nhưng tốt cho người mua mới.</dd></div><div><dt>Giữ đến đáo hạn <i>hold to maturity</i></dt><dd>Nếu không bán giữa chừng thì biến động giá thị trường không chạm tới bạn — bạn nhận đúng lãi suất đã thỏa thuận.</dd></div><div><dt>Rủi ro tín dụng <i>credit risk</i></dt><dd>Rủi ro tổ chức phát hành không trả được nợ. Đây mới là thứ quyết định ở trái phiếu doanh nghiệp, không phải lãi suất.</dd></div><div><dt>Đảo nợ, tái cấp vốn <i>refinancing</i></dt><dd>Phát hành lô mới để trả lô cũ đến hạn. Khi lãi suất tăng cao, chi phí đảo nợ có thể vượt khả năng chịu đựng của doanh nghiệp.</dd></div><div><dt>Nhà đầu tư chứng khoán chuyên nghiệp</dt><dd>Tư cách pháp lý bắt buộc để mua trái phiếu doanh nghiệp phát hành riêng lẻ, thường yêu cầu danh mục từ 2 tỷ đồng.</dd></div><div><dt>Bản cáo bạch</dt><dd>Tài liệu công bố của đợt phát hành, nêu tài sản đảm bảo, lịch đáo hạn và tình hình nợ của tổ chức phát hành.</dd></div></dl></div>
+      </article>
+
+    <!-- NGOẠI TỆ — CHI TIẾT -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Ngoại tệ &amp; tỷ giá</h3><p>Chu kỳ đồng đô la · độ dài trung bình 15–17 năm</p></div>
+        <span class="phase-tag p-pk">Cuối pha đô la mạnh</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Chu kỳ tăng của USD đang ở năm thứ <b>15</b> / 17, tính từ 2011</div>
+          <div class="len">Fed hawkish đang kéo dài pha này thêm — nhưng không đảo ngược tuổi chu kỳ</div>
+        </div>
+        <div class="track">
+          <div class="seg s1">USD yếu</div><div class="seg s2">USD tạo đáy</div><div class="seg s3 hot">USD mạnh</div><div class="seg s4">Đảo chiều</div>
+          <div class="pin" style="left:73%" data-lab="Cuối pha mạnh"></div>
+        </div>
+        <div class="years"><span>2002–2008</span><span>2009–2011</span><span class="now">2011–2026</span><span class="fut">2027+</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="deep">
+          <h4>Bảng tỷ giá — khoảng cách giữa các thị trường mới là thông tin</h4>
+          <p>Chênh lệch giữa tỷ giá trung tâm, ngân hàng thương mại và thị trường tự do cho biết áp lực thật lên đồng nội tệ.</p>
+          <table>
+            <thead><tr><th>Kênh</th><th>Mua vào</th><th>Bán ra</th><th>Đọc gì từ con số này</th></tr></thead>
+            <tbody>
+              <tr><td><b>Tỷ giá trung tâm (NHNN) 23/07</b></td><td class="n" colspan="2">25.272 <small>(+12 đ)</small></td><td>Mức điều hành. Biên độ ±5% tương ứng 24.008 – 26.535</td></tr>
+              <tr><td><b>Vietcombank</b></td><td class="n">26.081 – 26.111</td><td class="n">26.471</td><td>Chênh lệch mua–bán ≈ 350–360 đ, phản ánh chi phí và biên của ngân hàng</td></tr>
+              <tr><td><b>Thị trường tự do 22/07</b></td><td class="n">26.350</td><td class="n">26.380</td><td>Chênh lệch chỉ ≈ 30 đ — thấp bất thường so với ngân hàng, cho thấy cung cầu tiền mặt chưa căng</td></tr>
+              <tr><td><b>Sở giao dịch NHNN 23/07</b></td><td class="n">24.059</td><td class="n">26.485</td><td>Mức bán can thiệp — trần thực tế mà NHNN sẵn sàng bảo vệ</td></tr>
+              <tr><td><b>Liên ngân hàng</b></td><td class="n" colspan="2">≈ 26.255 – 26.292</td><td>Biên độ 52 tuần: 25.844 – 26.457. Cả năm chỉ biến động ≈0,4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="stats">
+          <div class="stat"><em>DXY 23/07</em><b>101,13</b><small>nhích lên</small></div>
+          <div class="stat"><em>Biến động USD/VND 12T</em><b>+0,4%</b><small>ổn định đáng chú ý</small></div>
+          <div class="stat"><em>EUR/VND (VCB bán)</em><b>30.816</b><small>tăng theo USD</small></div>
+          <div class="stat"><em>GBP/VND (VCB bán)</em><b>35.772</b><small>—</small></div>
+        </div>
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Fed tăng lãi suất sẽ đẩy USD lên và ép VND.</b> Xác suất tăng tháng 9 ở mức 65,7%, tháng 7 ở mức 30,5% — đây là biến số số một với tỷ giá.</li>
+              <li><b>NHNN đang giữ tỷ giá rất tốt</b> — chỉ 0,4% biến động 12 tháng. Nhưng cái giá phải trả là không thể hạ lãi suất trong nước.</li>
+              <li><b>Giá dầu Brent 91 USD</b> làm tăng nhu cầu ngoại tệ nhập khẩu xăng dầu, tạo thêm áp lực cầu USD.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Chu kỳ USD đã đi 15 năm.</b> Các chu kỳ trước (1980–1985, 1995–2002) đều kết thúc bằng pha giảm kéo dài 6–9 năm. Vị thế USD dài hạn nên là bảo hiểm, không phải kỳ vọng lợi nhuận.</li>
+              <li><b>Với người Việt, nắm USD là bảo hiểm tỷ giá</b>, không phải kênh sinh lời: lãi suất tiền gửi USD trong nước ở mức 0%, trong khi tiền gửi VND trả 9%. Chênh lệch 9 điểm % là cái giá thật của việc nắm USD.</li>
+              <li><b>Xuất khẩu hưởng lợi khi VND yếu</b> — dệt may, thủy sản, điện tử. Đây là kênh gián tiếp để tiếp cận chủ đề tỷ giá qua cổ phiếu thay vì nắm ngoại tệ.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Nắm ngoại tệ đúng bằng nghĩa vụ ngoại tệ thật (học phí, y tế, du lịch, hàng nhập)</li>
+          <li>Nếu muốn tiếp cận chủ đề tỷ giá, làm qua cổ phiếu doanh nghiệp xuất khẩu thay vì găm tiền mặt USD</li>
+          <li>Theo dõi khoảng cách tỷ giá tự do so với ngân hàng — nó giãn ra trước khi tỷ giá chính thức điều chỉnh</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Găm USD tiền mặt để "đầu tư": chi phí cơ hội 9%/năm so với tiền gửi VND</li>
+          <li>Giao dịch forex đòn bẩy trên các sàn không được cấp phép tại Việt Nam — đây là hoạt động không hợp pháp và là nơi mất vốn nhiều nhất trong toàn bộ danh sách này</li>
+          <li>Đổi ngoại tệ ngoài hệ thống ngân hàng và tổ chức được phép</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Tỷ giá trung tâm</dt><dd>Mức Ngân hàng Nhà nước công bố hằng ngày làm gốc điều hành. Không phải mức bạn giao dịch được.</dd></div><div><dt>Biên độ</dt><dd>Khoảng dao động cho phép quanh tỷ giá trung tâm, hiện là ±5%. Ngân hàng thương mại chỉ được niêm yết trong khoảng đó.</dd></div><div><dt>Chỉ số USD <i>DXY</i></dt><dd>Đo sức mạnh đồng đô la so với rổ sáu đồng tiền lớn. Tăng nghĩa là USD mạnh lên so với thế giới, không riêng với VND.</dd></div><div><dt>Chi phí cơ hội <i>opportunity cost</i></dt><dd>Khoản lợi suất bạn từ bỏ khi chọn tài sản này thay vì tài sản khác. Giữ USD lãi 0% trong khi tiền gửi VND trả 9% là chi phí cơ hội 9 điểm phần trăm.</dd></div><div><dt>Chênh lệch mua – bán <i>spread</i></dt><dd>Khoảng cách giữa giá mua vào và bán ra. Spread giãn rộng nghĩa là bạn lỗ ngay tại thời điểm giao dịch.</dd></div></dl></div>
+      </article>
+
+    <!-- CRYPTO -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Crypto · Bitcoin</h3><p>Chu kỳ halving · cố định 4 năm</p></div>
+        <span class="phase-tag p-cor">Pha suy giảm</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Đang ở năm thứ <b>2</b> / 4 sau halving 04/2024</div>
+          <div class="len">Halving kế tiếp: khoảng 04/2028 · Năm thứ 2 hậu halving trong lịch sử luôn là năm tệ nhất (2014, 2018, 2022)</div>
+        </div>
+        <div class="track">
+          <div class="seg s1">Halving</div><div class="seg s2">Tăng giá</div><div class="seg s3">Đỉnh</div><div class="seg s4 hot">Suy giảm</div>
+          <div class="pin" style="left:82%" data-lab="Đang ở đây"></div>
+        </div>
+        <div class="years"><span>04/2024</span><span>2024–2025</span><span>cuối 2025</span><span class="now">2026–2027</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><em>BTC</em><b class="fx" data-vnd="1,73 tỷ đ" data-usd="65.859 $">1,73 tỷ đ</b><small>vốn hóa ≈1,33 nghìn tỷ USD</small></div>
+          <div class="stat"><em>So cùng kỳ 2025</em><b class="dn fx" data-vnd="−1,42 tỷ đ" data-usd="−54.150 $">−1,42 tỷ đ</b><small>mức giảm theo năm</small></div>
+          <div class="stat"><em>ETH</em><b class="fx" data-vnd="50,7 tr đ" data-usd="1.929 $">50,7 tr đ</b><small>vốn hóa ≈233 tỷ USD</small></div>
+          <div class="stat"><em>Dòng tiền thụ động</em><b>0%</b><small>tài sản không tạo dòng tiền</small></div>
+        </div>
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Bitcoin đã trở thành tài sản vĩ mô.</b> Nó có độ nhạy cao nhất với thanh khoản USD toàn cầu — Fed hawkish là kịch bản xấu nhất có thể xảy ra với lớp tài sản này.</li>
+              <li><b>Mức giảm hiện tại khớp mô hình lịch sử</b>, không phải sự kiện bất thường. Đây là hành vi bình thường của năm thứ 2 hậu halving.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Đây không phải tài sản thu nhập thụ động.</b> Nó không tạo dòng tiền. Staking 3–5% không bù nổi biến động 50%. Nếu mục tiêu của bạn là thu nhập, đây là công cụ sai.</li>
+              <li><b>Nếu vẫn tham gia, hãy gọi đúng tên:</b> đây là vị thế đầu cơ theo chu kỳ 4 năm, và pha tích lũy của chu kỳ kế tiếp thường rơi vào 2026–2027.</li>
+              <li><b>Khung pháp lý tại Việt Nam</b> với tài sản số vẫn đang trong quá trình hoàn thiện — rủi ro pháp lý là một biến số thật, không phải chi tiết phụ.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Nếu tham gia, giới hạn ở mức tiền có thể mất hoàn toàn mà không ảnh hưởng kế hoạch tài chính</li>
+          <li>DCA đều qua pha suy giảm nếu tin vào chu kỳ 4 năm, thay vì bắt đáy một lệnh</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Xếp crypto vào phần "thu nhập thụ động" của danh mục — nó không thuộc về đó</li>
+          <li>Dùng đòn bẩy trong pha thanh khoản thắt chặt</li>
+          <li>Các sản phẩm hứa lợi suất cố định trên tài sản số</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Halving</dt><dd>Sự kiện khoảng 4 năm một lần, phần thưởng khai thác Bitcoin giảm một nửa, tạo ra chu kỳ nguồn cung có thể dự đoán trước. Gần nhất tháng 4/2024.</dd></div><div><dt>Độ nhạy thanh khoản <i>beta thanh khoản</i></dt><dd>Mức phản ứng của một tài sản với lượng tiền rẻ trên thị trường toàn cầu. Bitcoin có độ nhạy cao nhất, nên chính sách của Fed tác động rất trực tiếp.</dd></div><div><dt>Staking</dt><dd>Khóa tài sản số để nhận thưởng định kỳ. Mức 3–5% không đủ bù cho biến động 50%, nên không biến crypto thành tài sản thu nhập được.</dd></div><div><dt>Tài sản vệ tinh <i>satellite</i></dt><dd>Phần nhỏ trong danh mục dành cho vị thế rủi ro cao, tách khỏi phần lõi và có quy tắc riêng.</dd></div></dl></div>
+      </article>
+  </div>
+
+  <!-- ---------- NHÓM CHU KỲ DÀI ---------- -->
+  <div class="group" id="g-dai">
+
+    <!-- BĐS -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Bất động sản</h3><p>Chu kỳ đất đai · ≈10 năm tại Việt Nam, 18 năm theo mô hình toàn cầu</p></div>
+        <span class="phase-tag p-cor">Phục hồi đang bị đe dọa</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Việt Nam đang ở năm thứ <b>3</b> / 10 của chu kỳ mới, tính từ đáy 2022–2023</div>
+          <div class="len">Các mốc trước: đỉnh 2007 → đáy 2011–2013 → đỉnh 2018–2019 → đáy 2022–2023</div>
+        </div>
+        <div class="track">
+          <div class="seg s1 hot">Phục hồi</div><div class="seg s2">Tăng trưởng</div><div class="seg s3">Sốt giá</div><div class="seg s4">Đóng băng</div>
+          <div class="pin" style="left:20%" data-lab="Phục hồi bị chặn"></div>
+        </div>
+        <div class="years"><span class="now">2024–2026</span><span class="fut">2027–2029</span><span class="fut">2030–2031</span><span class="fut">2032–2033</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="deep">
+          <h4>Phép tính quyết định tất cả</h4>
+          <p>Lớp tài sản này không cần phân tích phức tạp lúc này. Chỉ cần một phép trừ.</p>
+          <table>
+            <thead><tr><th>Khoản mục</th><th>Mức hiện tại</th><th>Ý nghĩa</th></tr></thead>
+            <tbody>
+              <tr><td>Lợi suất cho thuê ròng, căn hộ TP.HCM</td><td class="n">3,0 – 4,5%/năm</td><td>Đã trừ phí quản lý, thuế, trống nhà, khấu hao nội thất</td></tr>
+              <tr><td>Lãi vay mua nhà</td><td class="n dn">≈ 11 – 12%/năm</td><td>Sau khi hết kỳ ưu đãi</td></tr>
+              <tr><td>Tiền gửi không rủi ro</td><td class="n">8 – 9%/năm</td><td>Chi phí cơ hội của vốn tự có</td></tr>
+              <tr><td><b>Chênh lệch so với đòn bẩy</b></td><td class="n dn"><b>≈ −7 điểm %</b></td><td>Mỗi năm nắm giữ là một năm lỗ dòng tiền, trước khi tính đến giá</td></tr>
+              <tr><td><b>Chênh lệch so với tiền gửi</b></td><td class="n dn"><b>≈ −5 điểm %</b></td><td>Chỉ hòa vốn nếu giá bất động sản tăng trên 5%/năm đều đặn</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Cổ phiếu bất động sản giảm 6,07% trong một phiên</b> là thị trường đang định giá lại chính xác phép tính ở trên.</li>
+              <li><b>Áp lực đáo hạn trái phiếu quay lại.</b> Doanh nghiệp phát hành phải tái cấp vốn khi lãi suất ngân hàng đã vượt 8% — nhiều bên sẽ phải bán tài sản để trả nợ, tạo nguồn cung cưỡng bức.</li>
+              <li><b>Phần phục hồi 2024–2025 được nuôi bằng tín dụng rẻ.</b> Tín dụng rẻ đã hết từ quý IV/2025.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Chu kỳ 10 năm chưa gãy, chỉ bị kéo dài.</b> Đô thị hóa, thu nhập tăng, GDP 8,39% là nền cầu thật. Pha phục hồi có thể bị đẩy lùi 2–3 năm chứ không bị hủy.</li>
+              <li><b>Nguồn cung cưỡng bức tạo cơ hội cho người có tiền mặt.</b> Giai đoạn xử lý nợ là lúc tài sản tốt được bán với giá xấu — nhưng chỉ cho người không dùng đòn bẩy.</li>
+              <li><b>Phân khúc nhu cầu thực có dòng tiền phẳng nhất.</b> Giá thuê phân khúc bình dân rất "dính", ít giảm kể cả khi giá tài sản giảm.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Giữ tiền mặt, chờ nguồn cung cưỡng bức từ đợt xử lý đáo hạn trái phiếu</li>
+          <li>Nếu mua, chỉ mua bằng vốn tự có và ở phân khúc có người thuê thật</li>
+          <li>Tính lợi suất cho thuê ròng — sau thuế, phí, trống nhà — rồi so trực tiếp với 9% tiền gửi</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Mua bất động sản cho thuê bằng đòn bẩy ở lãi vay 11–12% — phép tính không cho phép</li>
+          <li>Đất nền không có dòng tiền, phụ thuộc hoàn toàn vào người mua tiếp theo</li>
+          <li>Sản phẩm hình thành trong tương lai của chủ đầu tư đang có áp lực đáo hạn</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Lợi suất cho thuê ròng <i>net rental yield</i></dt><dd>Tiền thuê một năm chia cho giá trị bất động sản, sau khi trừ thuế, phí quản lý, thời gian trống nhà và khấu hao nội thất. Luôn thấp hơn con số môi giới đưa ra.</dd></div><div><dt>Nguồn cung cưỡng bức <i>forced supply</i></dt><dd>Tài sản bị bán vì chủ phải trả nợ, không phải vì muốn bán. Xuất hiện ở cuối chu kỳ tín dụng và là lúc tài sản tốt được bán giá xấu.</dd></div><div><dt>Đòn bẩy <i>leverage</i></dt><dd>Dùng vốn vay để tăng quy mô đầu tư. Nó nhân đôi cả lãi lẫn lỗ, và quan trọng hơn, nó tước đi khả năng chờ.</dd></div><div><dt>Sản phẩm hình thành trong tương lai</dt><dd>Bất động sản bán khi chưa hoàn thiện. Rủi ro nằm ở khả năng hoàn thành của chủ đầu tư, không chỉ ở giá.</dd></div></dl></div>
+      </article>
+
+    <!-- VÀNG -->
+    <article class="card">
+      <div class="card-head">
+        <div><h3>Vàng</h3><p>Siêu chu kỳ hàng hóa &amp; tiền tệ · 15–20 năm mỗi pha</p></div>
+        <span class="phase-tag p-cor">Năm đầu pha điều chỉnh</span>
+      </div>
+      <div class="dial">
+        <div class="dial-meta">
+          <div class="yr">Đang ở năm thứ <b>1</b> của pha điều chỉnh, sau siêu chu kỳ tăng 2016 – 01/2026</div>
+          <div class="len">Lịch sử: 1971–1980 tăng → 1980–2000 giảm → 2001–2011 tăng → 2011–2015 giảm → 2016–2026 tăng</div>
+        </div>
+        <div class="track">
+          <div class="seg s1">Tích lũy</div><div class="seg s2">Siêu chu kỳ tăng</div><div class="seg s3">Đỉnh</div><div class="seg s4 hot">Điều chỉnh</div>
+          <div class="pin" style="left:79%" data-lab="Vừa vào pha này"></div>
+        </div>
+        <div class="years"><span>2013–2015</span><span>2016–2025</span><span>01/2026</span><span class="now">2026–?</span></div>
+        <div class="axis-note">Năm in nghiêng là giai đoạn dự phóng theo mô hình chu kỳ, chưa xảy ra.</div>
+        <div class="dial-foot"></div>
+      </div>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><em>Thế giới 23/07</em><b class="fx" data-vnd="≈132,9 tr đ/lượng" data-usd="4.117 $/oz">≈132,9 tr đ/lượng</b><small>quy đổi đã tính thuế, phí</small></div>
+          <div class="stat"><em>SJC bán ra 23/07</em><b>146,0 tr đ/lượng</b><small>chênh thế giới ≈7,1 tr đ</small></div>
+          <div class="stat"><em>Từ đỉnh 5.598 $ (01/2026)</em><b class="dn">−26%</b><small>nhưng đã bật từ 4.005 $ ngày 20/07</small></div>
+          <div class="stat"><em>NHTW mua ròng Q1</em><b class="up">244 tấn</b><small>vượt trung bình 5 năm</small></div>
+        </div>
+        <div class="rows">
+          <div class="blk">
+            <h4>Tác động ngắn hạn</h4>
+            <ul>
+              <li><b>Dòng vốn ETF đã đảo chiều hoàn toàn.</b> Từ đỉnh gần 30 tỷ USD vào cuối tháng 2, dòng 90 ngày nay ở mức âm 5 đến 10 tỷ USD.</li>
+              <li><b>Fed hawkish là kẻ thù trực tiếp của vàng.</b> Lãi suất thực dương cao làm tăng chi phí cơ hội của việc nắm tài sản không sinh lời.</li>
+              <li><b>Nhà đầu tư đã quay lại cổ phiếu công nghệ</b>, rút vốn khỏi các tài sản phòng thủ.</li>
+            </ul>
+          </div>
+          <div class="blk">
+            <h4>Tác động dài hạn</h4>
+            <ul>
+              <li><b>Lực mua ngân hàng trung ương là chân đế cấu trúc mới.</b> 244 tấn quý I là thứ chu kỳ giảm 2011–2015 không có. Đây là lý do pha điều chỉnh lần này có thể nông hơn lịch sử.</li>
+              <li><b>Nhưng cần biết lịch sử:</b> pha điều chỉnh sau siêu chu kỳ vàng kéo dài 4–20 năm, không phải 6 tháng. Không nên kỳ vọng phục hồi nhanh.</li>
+              <li><b>Dự báo tổ chức đang phân hóa mạnh:</b> JPMorgan đặt 4.500 USD cho quý IV, Goldman Sachs 4.900 USD cuối năm — cả hai đều cao hơn mức hiện tại, nhưng vẫn thấp hơn đỉnh tháng 1.</li>
+              <li><b>Vàng trong nước có phần bù riêng</b> so với giá thế giới — cần theo dõi khoảng cách này, nó là rủi ro riêng của người mua tại Việt Nam.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="do"><h4>Nên làm</h4><ul>
+          <li>Coi vàng là bảo hiểm danh mục, không phải kênh sinh lời — tỷ trọng 10–15%</li>
+          <li>Tích lũy chậm và đều trong pha điều chỉnh thay vì mua một lần</li>
+          <li>Theo dõi khoảng cách giá vàng trong nước so với giá thế giới quy đổi</li>
+        </ul></div>
+        <div class="dont"><h4>Nên tránh</h4><ul>
+          <li>Mua vào kỳ vọng quay lại đỉnh 01/2026 trong ngắn hạn</li>
+          <li>Tỷ trọng vượt 20% danh mục — vàng không tạo dòng tiền nào</li>
+          <li>Mua khi chênh lệch giá trong nước so với thế giới đang giãn rộng bất thường</li>
+        </ul></div>
+      </div>
+    <div class="terms"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Siêu chu kỳ <i>super cycle</i></dt><dd>Chu kỳ dài 15–20 năm mỗi pha, khác hẳn nhịp lên xuống hàng năm. Vàng đã trải qua bốn pha như vậy kể từ 1971.</dd></div><div><dt>Dòng vốn ETF <i>ETF flows</i></dt><dd>Lượng tiền vào ra các quỹ vàng niêm yết. Đây là chỉ báo nhanh về nhu cầu đầu tư, phản ứng trước cả giá.</dd></div><div><dt>Chân đế cấu trúc</dt><dd>Lực cầu ổn định không phụ thuộc giá — ở đây là việc ngân hàng trung ương mua ròng. Nó làm đáy của pha điều chỉnh nông hơn.</dd></div><div><dt>Phần bù nội địa</dt><dd>Chênh lệch giữa giá vàng trong nước và giá thế giới quy đổi. Đây là rủi ro riêng của người mua tại Việt Nam, tách biệt với biến động giá thế giới.</dd></div><div><dt>Lãi suất thực <i>real interest rate</i></dt><dd>Lãi suất danh nghĩa trừ lạm phát. Lãi suất thực dương cao làm tăng chi phí nắm giữ vàng vì vàng không sinh lời.</dd></div></dl></div>
+      </article>
+  </div>
+
+  <!-- ---------- NHÓM PHI CHU KỲ ---------- -->
+  <div class="group" id="g-phi">
+    <div class="thesis" style="margin-top:0">
+      <h3>Không có tài sản nào miễn nhiễm chu kỳ</h3>
+      <p>Bất cứ ai nói ngược lại đều đang bán một thứ gì đó cho bạn. Nhưng có một phân biệt quan trọng và hữu dụng: giữa <strong>tài sản có giá theo chu kỳ</strong> và <strong>tài sản có dòng tiền theo chu kỳ</strong>. Một số tài sản dao động mạnh về giá nhưng dòng tiền gần như phẳng qua mọi pha — và nếu mục tiêu của bạn là thu nhập thụ động chứ không phải lãi vốn, thì cột dòng tiền mới là cột bạn cần đọc.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Lớp tài sản</th><th>Giá</th><th>Dòng tiền</th><th>Vì sao dòng tiền phẳng</th></tr></thead>
+      <tbody>
+        <tr><td><b>Tiền gửi có kỳ hạn</b></td><td>Không đổi</td><td>Theo chu kỳ</td><td>Vốn gốc không biến động; chỉ lợi suất tái tục thay đổi. Bậc thang kỳ hạn làm phẳng luôn cả phần này</td></tr>
+        <tr><td><b>Cổ phiếu điện, nước, tiện ích</b></td><td>Theo chu kỳ</td><td>Gần phẳng</td><td>Cầu không co giãn. Không ai ngừng dùng điện khi suy thoái; doanh thu thường theo hợp đồng dài hạn</td></tr>
+        <tr><td><b>Cổ phiếu dược, tiêu dùng thiết yếu</b></td><td>Theo chu kỳ</td><td>Gần phẳng</td><td>Chi tiêu bắt buộc, giảm sau cùng trong ngân sách hộ gia đình</td></tr>
+        <tr><td><b>Bất động sản cho thuê nhu cầu thực</b></td><td>Theo chu kỳ</td><td>Gần phẳng</td><td>Giá thuê phân khúc bình dân rất "dính" — người thuê không có lựa chọn thay thế rẻ hơn</td></tr>
+        <tr><td><b>Trái phiếu Chính phủ giữ đến đáo hạn</b></td><td>Không liên quan</td><td>Cố định</td><td>Nếu không bán trước hạn thì biến động giá thị trường không chạm tới bạn</td></tr>
+        <tr><td><b>Vàng vật chất</b></td><td>Theo chu kỳ</td><td>Bằng 0</td><td>Bảo toàn sức mua qua nhiều chu kỳ nhưng không sinh ra đồng nào</td></tr>
+      </tbody>
+    </table>
+
+    <div class="deep sec-gap">
+      <h4>Thứ thật sự không phụ thuộc chu kỳ không phải là một tài sản</h4>
+      <p>Nó là cấu trúc danh mục và kỷ luật dòng tiền.</p>
+      <div class="rows">
+        <div class="blk">
+          <h4>Bậc thang kỳ hạn</h4>
+          <p>Chia tiền gửi thành 4 phần đáo hạn lệch nhau 3 tháng. Mỗi quý bạn tái tục một phần. Kết quả: bạn tự động mua trung bình lãi suất qua toàn bộ chu kỳ, không bao giờ kẹt toàn bộ vốn ở đáy, và luôn có một phần vốn sắp đáo hạn để chớp cơ hội.</p>
+        </div>
+        <div class="blk">
+          <h4>Bình quân giá theo thời gian</h4>
+          <p>Đầu tư một khoản cố định vào chỉ số mỗi tháng trong 5–7 năm. Bạn không cần đoán đúng đáy. Chu kỳ chuyển từ rủi ro thành lợi thế: pha giảm giúp bạn mua được nhiều đơn vị hơn cho cùng số tiền.</p>
+        </div>
+      </div>
+      <p style="margin-top:6px;font-size:14.5px;color:var(--ink2)">Đó không phải tài sản, đó là phương pháp. Và nó là thứ duy nhất thật sự không phụ thuộc vào việc bạn đoán đúng chu kỳ hay không.</p>
+  <div class="terms inline"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Cầu không co giãn <i>inelastic demand</i></dt><dd>Nhu cầu gần như không đổi dù giá hay thu nhập thay đổi. Không ai ngừng dùng điện khi suy thoái.</dd></div><div><dt>Giá thuê dính <i>sticky rent</i></dt><dd>Giá thuê điều chỉnh chậm hơn nhiều so với giá tài sản, nhất là ở phân khúc bình dân nơi người thuê không có lựa chọn rẻ hơn.</dd></div></dl></div>
+    </div>
+  </div>
+
+  <p class="note">Toàn bộ số liệu trên trang cập nhật ngày 23/07/2026 và thay đổi theo ngày. Đây là phân tích khung chu kỳ và bối cảnh thị trường, không phải khuyến nghị đầu tư cá nhân hóa. Tỷ trọng phù hợp phụ thuộc vào nhu cầu thanh khoản, thời hạn đầu tư và khả năng chịu biến động của riêng bạn.</p>
+</section>
+
+<!-- ============ 02 TIN TỨC ============ -->
+<section class="panel" id="tin">
+  <div class="eyebrow">Mục 02 — Tin tức &amp; tác động · cập nhật 16–23/07/2026</div>
+  <h2 class="big">Mỗi bản tin gắn thẳng vào đối tượng bị tác động và lớp tài sản mà nó chạm tới.</h2>
+  <p class="lede">Tin trong bảy ngày gần nhất, gồm cả tin chính trị lẫn kinh tế. Bấm vào tiêu đề để mở bài gốc. Mũi tên chỉ hướng tác động ước tính, không phải dự báo giá.</p>
+
+  <div class="filters" role="group" aria-label="Lọc theo tài sản" style="margin-top:26px">
+    <button class="chip" aria-pressed="true" data-f="all">Tất cả</button>
+    <button class="chip" aria-pressed="false" data-f="pol">Chính trị</button>
+    <button class="chip" aria-pressed="false" data-f="cp">Cổ phiếu</button>
+    <button class="chip" aria-pressed="false" data-f="tp">Trái phiếu</button>
+    <button class="chip" aria-pressed="false" data-f="tg">Tiền gửi</button>
+    <button class="chip" aria-pressed="false" data-f="fx">Ngoại tệ</button>
+    <button class="chip" aria-pressed="false" data-f="au">Vàng</button>
+    <button class="chip" aria-pressed="false" data-f="bds">Bất động sản</button>
+    <button class="chip" aria-pressed="false" data-f="cr">Crypto</button>
+  </div>
+
+  <article class="news neg" data-a="pol cp fx au">
+    <div class="news-top"><span class="date">21/07/2026</span><span class="src">CNBC</span><span class="kind pol">Chính trị</span></div>
+    <h4><a href="https://www.cnbc.com/2026/07/20/stock-market-today-live-updates.html" target="_blank" rel="noopener noreferrer">Trung gian đề xuất ngừng bắn 10 ngày giữa Mỹ và Iran, Brent vọt lên 91,01 USD</a></h4>
+    <p>Giá dầu giằng co mạnh khi phố Wall theo dõi nỗ lực hòa giải mới. Dầu WTI tăng 2% lên 84,91 USD/thùng, Brent tăng 2% lên 91,01 USD/thùng. Trước đó dầu đã tăng sau khi Tổng thống Trump đăng trên Truth Social rằng Tehran sẽ phải trả giá cho cái chết của ba quân nhân Mỹ. Vàng tăng hơn 1%, bạc tăng 5%.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Mỹ, Iran, các nước nhập khẩu dầu gồm Việt Nam, Nhật Bản, Hàn Quốc. <b>Doanh nghiệp Việt Nam hưởng lợi:</b> nhóm dầu khí BSR, GAS, PVS, PVD. <b>Doanh nghiệp Việt Nam chịu thiệt:</b> vận tải biển, hàng không, nhựa, phân bón, xi măng — nhóm có chi phí đầu vào gắn với giá dầu.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲▲ Cổ phiếu dầu khí</span><span class="tag t-dn">▼ Cổ phiếu sản xuất, vận tải</span><span class="tag t-up">▲ Vàng</span><span class="tag t-dn">▼ Áp lực CPI Việt Nam</span><span class="tag t-up">▲ Cầu USD nhập khẩu</span></div>
+  </article>
+
+  <article class="news neg" data-a="pol cp fx">
+    <div class="news-top"><span class="date">20/07/2026</span><span class="src">CNBC</span><span class="kind pol">Chính trị</span></div>
+    <h4><a href="https://www.cnbc.com/2026/07/19/stock-market-today-live-updates.html" target="_blank" rel="noopener noreferrer">Mỹ hoàn tất ngày không kích thứ 9 liên tiếp; Houthi đe dọa đóng eo biển Bab el-Mandeb</a></h4>
+    <p>S&amp;P 500 giảm 0,19% xuống 7.443,28 khi giá dầu tăng theo các đợt giao tranh mới. Tâm lý cải thiện phần nào sau khi người phát ngôn Bộ Ngoại giao Iran Esmail Baghaei nói các bên trung gian vẫn trao đổi thông điệp và đàm phán có thể được theo đuổi. Lực lượng Houthi nhiều lần dọa đóng eo biển Bab el-Mandeb — nút thắt cổ chai nối Biển Đỏ với Vịnh Aden, đồng thời cáo buộc Riyadh bao vây và ném bom sân bay Sanaa.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Mỹ, Iran, Yemen, Saudi Arabia, Ai Cập. <b>Ngành toàn cầu:</b> vận tải biển, bảo hiểm hàng hải, năng lượng. <b>Việt Nam:</b> tuyến xuất khẩu dệt may, da giày, thủy sản sang châu Âu đi qua Biển Đỏ — chi phí cước và bảo hiểm tăng nếu eo biển bị phong tỏa.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼ Cổ phiếu xuất khẩu</span><span class="tag t-up">▲ Giá dầu</span><span class="tag t-up">▲ Vàng</span><span class="tag t-dn">▼ Cổ phiếu toàn cầu</span></div>
+  </article>
+
+  <article class="news mix" data-a="pol fx">
+    <div class="news-top"><span class="date">21/07/2026</span><span class="src">CNBC</span><span class="kind pol">Chính trị</span></div>
+    <h4><a href="https://www.cnbc.com/2026/07/20/stock-market-today-live-updates.html" target="_blank" rel="noopener noreferrer">Anh có thủ tướng mới Andy Burnham, bổ nhiệm John Healey làm bộ trưởng tài chính</a></h4>
+    <p>Cổ phiếu quốc phòng và hàng không vũ trụ Anh tăng mạnh trong phiên sáng thứ Ba sau khi tân thủ tướng Andy Burnham công bố nhân sự bộ trưởng tài chính. Thay đổi lãnh đạo tại một nền kinh tế G7 trong bối cảnh chiến sự Trung Đông leo thang là biến số mới cho định hướng chi tiêu quốc phòng và chính sách tài khóa của châu Âu.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Anh và khối G7. <b>Ngành:</b> quốc phòng, hàng không vũ trụ châu Âu. <b>Việt Nam:</b> tác động gián tiếp qua tỷ giá GBP/VND — Vietcombank đang niêm yết bán ra quanh 35.772 đồng — ảnh hưởng chi phí du học và xuất khẩu sang Anh theo UKVFTA.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ Cổ phiếu quốc phòng Anh</span><span class="tag t-nu">◆ GBP/VND</span><span class="tag t-nu">◆ Trung tính với tài sản Việt Nam</span></div>
+  </article>
+
+  <article class="news pos" data-a="pol cp">
+    <div class="news-top"><span class="date">21/07/2026</span><span class="src">VnEconomy</span><span class="kind pol">Chính trị</span></div>
+    <h4><a href="https://vneconomy.vn/" target="_blank" rel="noopener noreferrer">Nội các Thủ tướng Nhật Sanae Takaichi phê chuẩn chiến lược kinh tế và tài khóa mới</a></h4>
+    <p>Ngày 21/7, nội các Nhật Bản thông qua kế hoạch dài hạn thúc đẩy tăng trưởng thông qua đầu tư công – tư, đồng thời điều chỉnh cách tiếp cận của Chính phủ với kỷ luật tài khóa. Nhật Bản là một trong những nguồn FDI và ODA lớn nhất của Việt Nam, nên định hướng đầu tư ra nước ngoài của khối doanh nghiệp Nhật là biến số dài hạn với dòng vốn vào Việt Nam.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Nhật Bản, Việt Nam. <b>Doanh nghiệp:</b> khối FDI Nhật tại Việt Nam trong sản xuất, bán lẻ, tài chính; các ngân hàng Việt có cổ đông chiến lược Nhật. <b>Ngành Việt Nam:</b> khu công nghiệp, xây dựng hạ tầng, logistics.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ FDI vào Việt Nam</span><span class="tag t-up">▲ Cổ phiếu khu công nghiệp</span><span class="tag t-nu">◆ JPY/VND</span></div>
+  </article>
+
+  <article class="news pos" data-a="pol cp bds">
+    <div class="news-top"><span class="date">21–22/07/2026</span><span class="src">Tạp chí Kinh tế Tài chính</span><span class="kind pol">Chính trị</span></div>
+    <h4><a href="https://tapchikinhtetaichinh.vn/gia-vang-hom-nay-23-7-the-gioi-van-tang-sjc-bat-ngo-dieu-chinh-giam-manh-162537.html" target="_blank" rel="noopener noreferrer">Hội nghị lần thứ ba Ban Chấp hành Trung ương Đảng khóa XIV; Thủ tướng đặt mục tiêu tăng trưởng trên 10%</a></h4>
+    <p>Hội nghị Trung ương 3 khóa XIV bước sang ngày làm việc thứ hai ngày 21/7 với nhiều nội dung quan trọng. Cùng thời điểm, Thủ tướng Lê Minh Hưng yêu cầu tỉnh Lạng Sơn phát huy tối đa lợi thế cửa khẩu và quyết tâm hoàn thành mục tiêu tăng trưởng từ 10% trở lên trong năm 2026. Riêng TP.HCM ghi nhận tín dụng 6 tháng đầu năm hơn 5,6 triệu tỷ đồng, tập trung vào sản xuất kinh doanh và các ngành ưu tiên.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Địa phương:</b> TP.HCM, Lạng Sơn và các tỉnh biên giới. <b>Ngành hưởng lợi:</b> đầu tư công, xây dựng hạ tầng, vật liệu xây dựng, logistics cửa khẩu, ngân hàng cho vay sản xuất.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ Cổ phiếu đầu tư công, vật liệu</span><span class="tag t-up">▲ Cổ phiếu ngân hàng (tín dụng)</span><span class="tag t-up">▲ Bất động sản khu công nghiệp</span></div>
+  </article>
+
+  <article class="news pos" data-a="pol bds">
+    <div class="news-top"><span class="date">20/07/2026</span><span class="src">Báo Tin Tức</span><span class="kind pol">Chính trị</span></div>
+    <h4><a href="https://baotintuc.vn/kinh-te/diem-tin-kinh-te-viet-nam-noi-bat-ngay-2072026-20260720203333709.htm" target="_blank" rel="noopener noreferrer">Bộ Xây dựng bỏ đề xuất sở hữu chung cư có thời hạn; Hà Nội thí điểm miễn giấy phép xây dựng nhà riêng lẻ</a></h4>
+    <p>Điểm tin kinh tế ngày 20/7 ghi nhận hai thay đổi chính sách đáng chú ý với thị trường bất động sản: Bộ Xây dựng đã rút đề xuất sở hữu chung cư có thời hạn, và Hà Nội triển khai thí điểm miễn giấy phép xây dựng với nhà ở riêng lẻ. Bản tin cũng nêu đề xuất mức án tới 12 năm tù với hành vi sản xuất và bán thực phẩm không đạt chuẩn.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Địa phương:</b> Hà Nội. <b>Doanh nghiệp:</b> chủ đầu tư dự án chung cư — bỏ đề xuất sở hữu có thời hạn loại bỏ một rủi ro pháp lý lớn đã đè lên định giá căn hộ nhiều năm qua. <b>Người dân:</b> chủ sở hữu căn hộ.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲▲ Bất động sản chung cư</span><span class="tag t-up">▲ Cổ phiếu bất động sản nhà ở</span><span class="tag t-nu">◆ Trung tính với tài sản khác</span></div>
+  </article>
+
+  <article class="news mix" data-a="pol cp tg fx au">
+    <div class="news-top"><span class="date">13/07/2026</span><span class="src">Chase / CME FedWatch</span><span class="kind eco">Kinh tế</span></div>
+    <h4><a href="https://www.chase.com/personal/investments/learning-and-insights/article/kevin-warsh-prices-are-too-high-what-to-expect-july-2026-federal-reserve-meeting" target="_blank" rel="noopener noreferrer">Chủ tịch Fed Kevin Warsh: giá cả đang quá cao; xác suất tăng lãi suất tháng 7 tăng gấp đôi trong 11 ngày</a></h4>
+    <p>Tính tới 9 giờ sáng giờ Miền Đông ngày 13/7, 36% thành viên thị trường dự đoán Fed sẽ tăng lãi suất trong cuộc họp kế tiếp, tăng từ mức 18% ngày 2/7. Phát biểu tại Diễn đàn ECB ở Sintra ngày 1/7, ông Warsh khẳng định lạm phát vẫn chưa đủ tốt và bác bỏ khả năng Fed chấp nhận mục tiêu lạm phát trên 2%. Ông cũng tuyên bố sẽ không đưa ra định hướng chính sách trước, khiến thị trường có ít manh mối hơn về hướng lãi suất so với các năm trước.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Mỹ và mọi nền kinh tế neo theo chính sách của Fed, gồm Việt Nam. <b>Tổ chức:</b> Cục Dự trữ Liên bang Mỹ; Ngân hàng Nhà nước Việt Nam bị thu hẹp dư địa hạ lãi suất. <b>Doanh nghiệp:</b> mọi doanh nghiệp Việt Nam vay bằng USD hoặc có nợ ngoại tệ.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼ Vàng</span><span class="tag t-dn">▼▼ Crypto</span><span class="tag t-dn">▼ Cổ phiếu</span><span class="tag t-up">▲ USD</span><span class="tag t-up">▲▲ Lãi suất tiền gửi VND</span></div>
+  </article>
+
+  <article class="news pos" data-a="cp au tg">
+    <div class="news-top"><span class="date">23/07/2026</span><span class="src">Tạp chí Kinh tế Tài chính</span><span class="kind eco">Kinh tế</span></div>
+    <h4><a href="https://tapchikinhtetaichinh.vn/gia-vang-hom-nay-23-7-the-gioi-van-tang-sjc-bat-ngo-dieu-chinh-giam-manh-162537.html" target="_blank" rel="noopener noreferrer">CPI và PPI Mỹ hạ nhiệt, giảm áp lực buộc Fed nâng lãi suất trong ngắn hạn</a></h4>
+    <p>Vàng thế giới duy trì trên vùng hỗ trợ 4.100 USD/ounce, được hỗ trợ sau khi nhiều số liệu kinh tế Mỹ cho thấy áp lực lạm phát tiếp tục hạ nhiệt. Chỉ số CPI và PPI giảm đã làm giảm áp lực để Fed tiếp tục nâng lãi suất trong ngắn hạn. Đây là tín hiệu ngược chiều đầu tiên với luận điểm diều hâu đã chi phối thị trường suốt tháng 7.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Mỹ, Việt Nam. <b>Tác động đảo chiều:</b> nếu số liệu này được xác nhận trong các kỳ công bố tới, kịch bản Fed giữ nguyên lãi suất tăng xác suất, kéo theo dư địa hạ lãi suất trong nước rộng hơn từ 2027. <b>Ngành Việt Nam:</b> ngân hàng, chứng khoán, bất động sản là ba nhóm nhạy nhất với chiều đảo này.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ Vàng</span><span class="tag t-up">▲ Cổ phiếu</span><span class="tag t-dn">▼ Kỳ vọng lãi suất tiền gửi đỉnh cao hơn</span></div>
+  </article>
+
+  <article class="news neg" data-a="cp bds tp">
+    <div class="news-top"><span class="date">22/07/2026</span><span class="src">Vietstock</span><span class="kind mkt">Thị trường</span></div>
+    <h4><a href="https://vietstock.vn/2026/07/vn-index-thung-1700-diem-nhip-wash-out-bao-gio-ket-thuc-145-1469587.htm" target="_blank" rel="noopener noreferrer">VN-Index thủng 1.700 điểm, phiên giảm mạnh nhất kể từ tháng 3</a></h4>
+    <p>Chỉ số mất 62,03 điểm về 1.668,53 — mức giảm lớn nhất kể từ cú giảm 115 điểm ngày 09/03/2026. Sắc đỏ lan ra 489 mã với 28 mã giảm sàn. Bất động sản giảm 6,07%, ngân hàng giảm 2,51%. Từ vùng trên 1.850 điểm đầu tháng 7, chỉ số liên tục đánh mất các cột mốc quan trọng. Theo Agriseco, nguyên nhân là căng thẳng địa chính trị và lập trường diều hâu của Fed cùng lúc làm suy giảm khẩu vị rủi ro trên các thị trường tài chính, bao gồm Việt Nam.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Ngành chịu thiệt nặng nhất:</b> bất động sản, ngân hàng. <b>Nhà đầu tư:</b> hơn 13,38 triệu tài khoản trong nước, đặc biệt nhóm dùng ký quỹ. <b>Doanh nghiệp:</b> gần 290 nghìn tỷ đồng vốn cổ phần đang chờ huy động với 70% kế hoạch phát hành chưa thực hiện — nguồn cung này càng khó phát hành khi thị trường giảm.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼ Cổ phiếu</span><span class="tag t-dn">▼▼ Cổ phiếu bất động sản</span><span class="tag t-dn">▼ Trái phiếu DN bất động sản</span><span class="tag t-up">▲ Tiền gửi (dòng tiền dịch chuyển)</span></div>
+  </article>
+
+  <article class="news mix" data-a="au">
+    <div class="news-top"><span class="date">23/07/2026</span><span class="src">VietnamNet</span><span class="kind mkt">Thị trường</span></div>
+    <h4><a href="https://vietnamnet.vn/gia-vang-hom-nay-23-7-2026-the-gioi-tang-du-doi-sjc-co-co-hoi-but-pha-manh-2538222.html" target="_blank" rel="noopener noreferrer">Vàng SJC giảm tới 7 triệu đồng/lượng dù giá thế giới đi lên</a></h4>
+    <p>Lúc 8h39 sáng 23/7, vàng miếng SJC giảm 5 triệu đồng/lượng cả hai chiều, lùi về 137–142 triệu đồng/lượng, chênh lệch mua bán nới rộng tới 5 triệu đồng/lượng. Vàng nhẫn trơn Bảo Tín Minh Châu giảm 5,4 triệu chiều mua và 4,2 triệu chiều bán. Trong khi đó vàng thế giới giao ngay vẫn giữ trên 4.120 USD/ounce. Tỷ giá USD tự do ngày 22/7 ở mức 26.350 mua vào và 26.380 bán ra.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Doanh nghiệp:</b> SJC, DOJI, PNJ, Bảo Tín Minh Châu, Bảo Tín Mạnh Hải, Phú Quý. <b>Người dân:</b> người mua vàng tích trữ — việc chênh lệch mua bán nới lên 4–5 triệu đồng/lượng nghĩa là bạn lỗ ngay 3% tại thời điểm mua.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼ Vàng trong nước</span><span class="tag t-up">▲ Vàng thế giới</span><span class="tag t-nu">◆ Chênh lệch nội địa thu hẹp</span></div>
+  </article>
+
+  <article class="news mix" data-a="fx au">
+    <div class="news-top"><span class="date">23/07/2026</span><span class="src">Tin nhanh Chứng khoán</span><span class="kind mkt">Thị trường</span></div>
+    <h4><a href="https://www.tinnhanhchungkhoan.vn/gia-vang-hom-nay-ngay-237-vang-sjc-bat-ngo-giam-7-trieu-dongluong-post394545.html" target="_blank" rel="noopener noreferrer">Tỷ giá trung tâm lên 25.272, DXY ở 101,13; vàng trong nước vẫn cao hơn thế giới 7,1 triệu đồng/lượng</a></h4>
+    <p>Ngân hàng Nhà nước công bố tỷ giá trung tâm ngày 23/7 ở mức 25.272 đồng/USD, tăng 12 đồng so với phiên trước. Với biên độ ±5%, biên độ dao động tương ứng là 24.008 – 26.535 đồng/USD; Sở giao dịch NHNN niêm yết bán ra 26.485 đồng. Chỉ số USD-Index mở cửa ở 101,13 điểm. Vàng thế giới quy đổi đã tính thuế và phí gia công tương đương 132,9 triệu đồng/lượng, thấp hơn giá trong nước khoảng 7,1 triệu đồng/lượng.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam, Mỹ. <b>Tổ chức:</b> Ngân hàng Nhà nước Việt Nam. <b>Doanh nghiệp:</b> nhóm nhập khẩu xăng dầu, dược phẩm, thiết bị và nhóm vay nợ USD chịu chi phí tăng; nhóm xuất khẩu dệt may, thủy sản, điện tử hưởng lợi.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ USD</span><span class="tag t-up">▲ Cổ phiếu xuất khẩu</span><span class="tag t-dn">▼ Doanh nghiệp vay ngoại tệ</span><span class="tag t-dn">▼ Dư địa hạ lãi suất của NHNN</span></div>
+  </article>
+
+  <article class="news mix" data-a="tg cp bds">
+    <div class="news-top"><span class="date">20/07/2026</span><span class="src">VietnamNet</span><span class="kind mkt">Thị trường</span></div>
+    <h4><a href="https://vietnamnet.vn/lai-suat-ngan-hang-hom-nay-20-7-2026-lai-suat-tiet-kiem-tang-sat-8-nam-2537199.html" target="_blank" rel="noopener noreferrer">ACB tăng lãi suất huy động, kỳ hạn 12 tháng lên 7,8%/năm — cao nhất thị trường</a></h4>
+    <p>ACB tăng thêm 0,5 điểm phần trăm ở các kỳ hạn 6–12 tháng: 6 tháng lên 7,6%, 9 tháng lên 7,7% và 12 tháng lên 7,8% — mức niêm yết công khai cao nhất thị trường. Các kỳ hạn dưới 6 tháng giữ nguyên, kỳ hạn 1–5 tháng ở 4,75%, kỳ hạn 1–2 tuần ở 0,5%. Với 500 triệu đồng gửi 12 tháng lĩnh lãi cuối kỳ, người gửi nhận về 39 triệu đồng tiền lãi.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Doanh nghiệp:</b> ACB dẫn đầu; trước đó Bac A Bank là ngân hàng đầu tiên tăng trong tháng 7, Techcombank giảm mức lãi cộng thêm xuống 0,8 điểm phần trăm. <b>Người hưởng lợi:</b> người gửi tiết kiệm. <b>Người chịu thiệt:</b> doanh nghiệp vay vốn, người vay mua nhà, nhà đầu tư dùng ký quỹ.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲▲ Tiền gửi</span><span class="tag t-dn">▼ Cổ phiếu (chi phí vốn)</span><span class="tag t-dn">▼▼ Bất động sản</span><span class="tag t-dn">▼ Biên lãi ròng ngân hàng</span></div>
+  </article>
+
+  <article class="news neg" data-a="cr">
+    <div class="news-top"><span class="date">22/07/2026</span><span class="src">Fortune</span><span class="kind mkt">Thị trường</span></div>
+    <h4><a href="https://fortune.com/article/price-of-bitcoin-07-22-2026/" target="_blank" rel="noopener noreferrer">Bitcoin ở 65.859 USD, thấp hơn khoảng 54.150 USD so với cùng kỳ năm ngoái</a></h4>
+    <p>Vốn hóa Bitcoin còn khoảng 1,33 nghìn tỷ USD, vẫn vượt xa Ethereum ở mức khoảng 233 tỷ USD. Diễn biến khớp với mô hình lịch sử của năm thứ hai sau halving — giai đoạn giảm giá đã lặp lại ở các chu kỳ 2014, 2018 và 2022. Bitcoin hiện có độ nhạy cao nhất với thanh khoản USD toàn cầu nên lập trường diều hâu của Fed tác động trực tiếp.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> toàn cầu, không có kênh tác động trực tiếp tới tài sản Việt Nam. <b>Nhà đầu tư:</b> nhóm nắm giữ tài sản số, đặc biệt nhóm dùng đòn bẩy. <b>Lưu ý pháp lý:</b> khung pháp lý cho tài sản số tại Việt Nam vẫn đang trong quá trình hoàn thiện.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼ Crypto</span><span class="tag t-nu">◆ Không tác động tới tài sản thu nhập</span></div>
+  </article>
+
+  <article class="news neg" data-a="cp fx">
+    <div class="news-top"><span class="date">19/07/2026</span><span class="src">VietnamNet</span><span class="kind eco">Kinh tế</span></div>
+    <h4><a href="https://vietnamnet.vn/kinh-doanh" target="_blank" rel="noopener noreferrer">Giá xăng E10 tăng 547 đồng/lít, dầu diesel tăng 1.584 đồng/lít sau tuần dầu thô tăng mạnh</a></h4>
+    <p>Dầu thô trên thị trường quốc tế trải qua một tuần tăng mạnh, kéo giá xăng dầu trong nước đi lên trong kỳ điều hành ngày 19/7. Mức tăng của dầu diesel đặc biệt đáng chú ý vì đây là nhiên liệu chính của vận tải hàng hóa và tàu cá — kênh truyền dẫn trực tiếp nhất từ giá dầu thế giới vào chỉ số giá tiêu dùng trong nước.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Ngành chịu thiệt:</b> vận tải đường bộ, vận tải biển, thủy sản đánh bắt, xây dựng, nông nghiệp. <b>Ngành hưởng lợi:</b> lọc hóa dầu và phân phối xăng dầu. <b>Hộ gia đình:</b> áp lực lên rổ CPI qua nhóm giao thông và thực phẩm.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼ Cổ phiếu vận tải, thủy sản</span><span class="tag t-up">▲ Cổ phiếu dầu khí</span><span class="tag t-dn">▼ Dư địa hạ lãi suất (qua CPI)</span></div>
+  </article>
+
+  <article class="news pos" data-a="cp pol">
+    <div class="news-top"><span class="date">Đầu tháng 7/2026</span><span class="src">Tổng hợp / IMF</span><span class="kind eco">Kinh tế</span></div>
+    <h4><a href="https://baomoi.com/kinh-te.epi" target="_blank" rel="noopener noreferrer">IMF nâng dự báo tăng trưởng GDP Việt Nam 2026 lên 7,5%; Việt Nam và EFTA hoàn tất đàm phán FTA</a></h4>
+    <p>IMF nâng dự báo tăng trưởng GDP của Việt Nam năm 2026 thêm 0,4 điểm phần trăm lên 7,5% — mức cao nhất khu vực ASEAN và thuộc nhóm dẫn đầu châu Á. Cùng thời điểm, Việt Nam và Hiệp hội Thương mại Tự do châu Âu EFTA hoàn tất đàm phán Hiệp định thương mại tự do, mở thêm thị trường xuất khẩu và giảm phụ thuộc vào thị trường Mỹ. Ở chiều ngược lại, ngoại thương đang đảo chiều sang nhập siêu kèm rủi ro thuế quan từ Mỹ.</p>
+    <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam, Thụy Sĩ, Na Uy, Iceland, Liechtenstein. <b>Ngành hưởng lợi:</b> thủy sản, dệt may, nông sản xuất khẩu sang châu Âu. <b>Rủi ro đối trọng:</b> chính quyền Mỹ đang chuẩn bị vòng thuế quan toàn cầu mới trong nửa cuối năm, và Việt Nam nằm trong nhóm có thặng dư thương mại lớn với Mỹ.</div>
+    <div class="tags"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲▲ Cổ phiếu thủy sản, dệt may</span><span class="tag t-up">▲ Nền tảng vĩ mô</span><span class="tag t-dn">▼ Rủi ro thuế quan Mỹ</span></div>
+  </article>
+
+  <p class="note">Tin được tổng hợp từ nguồn công khai trong khoảng 16–23/07/2026 và tóm tắt lại bằng ngôn ngữ của trang này; bấm tiêu đề để đọc bản gốc. Ký hiệu ▲▼ thể hiện hướng tác động ước tính lên lớp tài sản, không phải dự báo mức giá. Phần đối tượng bị tác động nêu tên doanh nghiệp và quốc gia để chỉ kênh truyền dẫn, không hàm ý khuyến nghị mua bán với bất kỳ mã nào.</p>
+</section>
+
+<!-- ============ 03 LỊCH & KỊCH BẢN ============ -->
+<section class="panel" id="lich">
+  <div class="eyebrow">Mục 03 — Chất xúc tác đã biết trước</div>
+  <h2 class="big">Tám sự kiện đã có ngày. Cuộc họp gần nhất chỉ còn 5 ngày nữa.</h2>
+  <p class="lede">Khác với tin bất ngờ, những sự kiện dưới đây đã được lên lịch. Mỗi mục ghi rõ đối tượng bị tác động — doanh nghiệp, quốc gia, tổ chức — và lớp tài sản chịu ảnh hưởng. Bấm tiêu đề để mở nguồn.</p>
+
+  <div class="sec-gap"></div>
+  <h3 class="sec">Lịch sự kiện</h3>
+  <div class="tl" style="margin-top:20px">
+    <div class="ev key">
+      <div class="when">28 – 29/07/2026 · còn 5 ngày</div>
+      <h4><a href="https://www.forbes.com/sites/investor-hub/article/fed-meeting-tracker-interest-rate-strategy/" target="_blank" rel="noopener noreferrer">Cuộc họp FOMC tháng 7 — không có Dot Plot</a></h4>
+      <p>Cuộc họp gần nhất, quyết định công bố ngày thứ hai. Lãi suất hiện ở 3,50–3,75% sau khi FOMC giữ nguyên trong cuộc họp 16–17/6. Không có bản Tóm tắt Dự phóng Kinh tế kèm theo, nên thị trường sẽ chỉ có tuyên bố chính sách và họp báo để đọc. Xác suất tăng lãi suất tại cuộc họp này đã lên 36% tính tới ngày 13/7, từ mức 18% ngày 2/7 — nhưng số liệu CPI và PPI hạ nhiệt công bố sau đó là lực kéo ngược.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Tổ chức:</b> Cục Dự trữ Liên bang Mỹ, chủ tịch Kevin Warsh. <b>Quốc gia:</b> Mỹ và toàn bộ thị trường mới nổi gồm Việt Nam. <b>Việt Nam:</b> Ngân hàng Nhà nước — kết quả cuộc họp quyết định dư địa điều hành tỷ giá và lãi suất trong quý IV. <b>Doanh nghiệp:</b> nhóm vay USD, nhóm nhập khẩu, và toàn bộ nhà đầu tư dùng ký quỹ.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼ Cổ phiếu nếu tăng</span><span class="tag t-up">▲ Tiền gửi</span><span class="tag t-up">▲ USD</span><span class="tag t-dn">▼ Vàng, Crypto</span></div>
+    </div>
+    <div class="ev key">
+      <div class="when">Tuần này · 21 – 24/07</div>
+      <h4><a href="https://www.cnbc.com/2026/07/20/stock-market-today-live-updates.html" target="_blank" rel="noopener noreferrer">Mùa báo cáo kết quả kinh doanh quý II — Alphabet, IBM, Tesla công bố trong tuần</a></h4>
+      <p>Trong khoảng 66 doanh nghiệp thuộc S&amp;P 500 đã báo cáo, gần 88% vượt dự báo lợi nhuận theo FactSet — khởi đầu mạnh. 3M tăng hơn 7% và General Motors tăng gần 5% sau khi vượt dự báo cả doanh thu lẫn lợi nhuận. Tại Việt Nam, mùa công bố quý II là chất xúc tác được kỳ vọng sẽ quyết định liệu mức tăng 4,23% nửa đầu năm có được bảo chứng bởi lợi nhuận cốt lõi hay không.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Doanh nghiệp Mỹ:</b> Alphabet, IBM, Tesla, 3M, General Motors. <b>Việt Nam:</b> nhóm ngân hàng cần đọc kỹ nhất — biên lãi ròng đang bị bóp khi lãi huy động tăng nhanh hơn lãi cho vay. Nhóm bất động sản cần đọc phần thuyết minh nợ vay và lịch đáo hạn trái phiếu.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ Cổ phiếu công nghệ nếu vượt</span><span class="tag t-dn">▼ Cổ phiếu ngân hàng VN</span><span class="tag t-nu">◆ Trung tính với vàng, tiền gửi</span></div>
+    </div>
+    <div class="ev">
+      <div class="when">Đang đàm phán · từ 21/07</div>
+      <h4><a href="https://www.cnbc.com/2026/07/20/stock-market-today-live-updates.html" target="_blank" rel="noopener noreferrer">Đề xuất ngừng bắn 10 ngày giữa Mỹ và Iran</a></h4>
+      <p>Các bên trung gian đang đề xuất một lệnh ngừng bắn 10 ngày. Đây là biến số có biên độ tác động lớn nhất trong toàn bộ lịch: Brent đang ở 91,01 USD. Nếu ngừng bắn thành hiện thực, giá dầu có thể lùi nhanh như từng xảy ra hồi tháng 4, kéo theo áp lực lạm phát toàn cầu và áp lực lên Fed cùng giảm. Nếu đổ vỡ, kịch bản ngược lại.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Mỹ, Iran, Israel, Saudi Arabia, Yemen. <b>Hạ tầng then chốt:</b> eo biển Hormuz và Bab el-Mandeb. <b>Doanh nghiệp Việt Nam:</b> BSR, GAS, PVS, PLX ở chiều hưởng lợi khi dầu cao; dệt may, thủy sản, vận tải biển, hàng không ở chiều chịu thiệt do cước và bảo hiểm.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲▲ Cổ phiếu nếu ngừng bắn</span><span class="tag t-dn">▼ Cổ phiếu dầu khí nếu ngừng bắn</span><span class="tag t-dn">▼ Vàng nếu ngừng bắn</span><span class="tag t-up">▲ Dư địa hạ lãi suất</span></div>
+    </div>
+    <div class="ev">
+      <div class="when">Nửa cuối 2026</div>
+      <h4><a href="https://www.npr.org/2026/07/08/nx-s1-5885946/iran-trump-oil-stock-inflation-gas-federal-reserve" target="_blank" rel="noopener noreferrer">Chính quyền Mỹ chuẩn bị vòng thuế quan toàn cầu mới</a></h4>
+      <p>Chính quyền Trump đang chuẩn bị một vòng thuế quan toàn cầu mới, có thể đẩy giá hàng nhập khẩu lên cao hơn trong nửa cuối năm. IMF đã hạ dự báo tăng trưởng kinh tế toàn cầu năm 2026 xuống 3%, từ mức 3,5% năm ngoái. Đây là biến số chính trị có tác động dài hạn nhất tới Việt Nam trong toàn bộ danh sách.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia chịu rủi ro cao:</b> Việt Nam nằm trong nhóm có thặng dư thương mại lớn với Mỹ; Canada đã bị áp thuế nhập khẩu mới với lý do phân biệt đối xử hàng Mỹ. <b>Ngành Việt Nam:</b> dệt may, da giày, đồ gỗ, điện tử, thủy sản. <b>Đối trọng:</b> hiệp định thương mại tự do Việt Nam – EFTA vừa hoàn tất đàm phán giúp mở thị trường thay thế.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼ Cổ phiếu xuất khẩu</span><span class="tag t-dn">▼ Nền tảng vĩ mô VN</span><span class="tag t-up">▲ Áp lực lạm phát toàn cầu</span><span class="tag t-dn">▼ Cổ phiếu khu công nghiệp</span></div>
+    </div>
+    <div class="ev key">
+      <div class="when">Tháng 9/2026</div>
+      <h4><a href="https://www.schwab.com/learn/story/fomc-meeting" target="_blank" rel="noopener noreferrer">Cuộc họp FOMC tháng 9 — có công bố Dot Plot</a></h4>
+      <p>Cuộc họp quan trọng nhất còn lại của năm. Dot Plot tháng 6 cho thấy 9 trên 18 quan chức nộp dự phóng đã ghi nhận ít nhất một lần tăng lãi suất trong 2026, 8 người giữ nguyên và 1 người cắt giảm; trung vị lãi suất cuối 2026 nâng lên 3,8% từ 3,4%. Chủ tịch Warsh không nộp dự phóng. Lạm phát lõi PCE dự phóng 3,3% cho 2026, nâng mạnh từ mức 2,7% hồi tháng 3.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Tổ chức:</b> FOMC. <b>Quốc gia:</b> Mỹ, Việt Nam và toàn bộ thị trường mới nổi. <b>Trùng thời điểm:</b> đợt giải ngân FTSE đầu tiên vào Việt Nam cũng dự kiến từ tháng 9 — hai lực ngược chiều gặp nhau đúng một tháng, đây là điểm cần chuẩn bị vị thế trước.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼ Vàng, Crypto nếu diều hâu</span><span class="tag t-up">▲▲ Tiền gửi</span><span class="tag t-up">▲ USD/VND</span><span class="tag t-dn">▼▼ Bất động sản</span></div>
+    </div>
+    <div class="ev key">
+      <div class="when">Từ tháng 9/2026</div>
+      <h4><a href="https://vietstock.vn/2026/07/vn-index-thung-1700-diem-nhip-wash-out-bao-gio-ket-thuc-145-1469587.htm" target="_blank" rel="noopener noreferrer">Đợt giải ngân đầu tiên theo bộ chỉ số FTSE Russell</a></h4>
+      <p>Dòng vốn thụ động đón đầu nâng hạng, với đợt giải ngân đầu tiên dự kiến từ tháng 9/2026. Đây là chất xúc tác cấu trúc duy nhất trong lịch có hướng tác động dương rõ ràng, và nó không nhạy với định giá ngắn hạn vì các quỹ chỉ số phải mua theo tỷ trọng rổ.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Doanh nghiệp hưởng lợi:</b> nhóm vốn hóa lớn đủ điều kiện vào rổ chỉ số, tập trung ở ngân hàng, tiêu dùng và bất động sản đầu ngành. <b>Tổ chức:</b> các quỹ ETF ngoại theo dõi bộ chỉ số FTSE; công ty chứng khoán hưởng lợi từ thanh khoản tăng.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲▲ Cổ phiếu vốn hóa lớn</span><span class="tag t-up">▲ Thanh khoản thị trường</span><span class="tag t-up">▲ Cầu chuyển đổi ngoại tệ sang VND</span></div>
+    </div>
+    <div class="ev">
+      <div class="when">Quý III – IV/2026</div>
+      <h4><a href="https://vn.investing.com/news/commodities-news/gia-vang-giam-nhe-khi-bat-on-lai-suat-keo-dai-truoc-them-bien-ban-fed-2657935" target="_blank" rel="noopener noreferrer">Đợt đáo hạn trái phiếu doanh nghiệp bất động sản</a></h4>
+      <p>Không có một ngày cụ thể mà là dòng chảy liên tục. Lãi suất trái phiếu ngân hàng đã vượt 8%, nghĩa là chi phí tái cấp vốn của nhóm bất động sản ở mức không khả thi với nhiều tổ chức phát hành. Đây chính là cơ chế đã dẫn tới khủng hoảng trái phiếu doanh nghiệp 2022–2023.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Quốc gia:</b> Việt Nam. <b>Doanh nghiệp:</b> các tổ chức phát hành trái phiếu bất động sản có lô đáo hạn trong quý III và IV. <b>Ngân hàng:</b> nhóm có tỷ trọng tín dụng bất động sản cao chịu rủi ro nợ xấu. <b>Nhà đầu tư cá nhân:</b> người đang nắm trái phiếu doanh nghiệp phân phối qua kênh ngân hàng.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-dn">▼▼▼ Trái phiếu DN bất động sản</span><span class="tag t-dn">▼▼ Bất động sản</span><span class="tag t-dn">▼ Cổ phiếu ngân hàng</span><span class="tag t-up">▲ Nguồn cung cưỡng bức cho người cầm tiền mặt</span></div>
+    </div>
+    <div class="ev">
+      <div class="when">Tháng 12/2026</div>
+      <h4><a href="https://www.cnbc.com/2026/06/17/fed-interest-rate-decision-june-2026.html" target="_blank" rel="noopener noreferrer">Cuộc họp FOMC cuối năm — có Dot Plot</a></h4>
+      <p>Mốc xác nhận cho cả năm. Nếu Fed đã tăng trong tháng 9, cuộc họp này quyết định đây là một lần tăng đơn lẻ hay khởi đầu một chu kỳ thắt chặt mới. Đây là điểm mà kịch bản lãi suất Việt Nam năm 2027 được định hình, và cũng là điểm quyết định cửa sổ khóa kỳ hạn dài hiện tại còn mở bao lâu.</p>
+      <div class="who"><span class="who-lab">Đối tượng bị tác động</span><b>Tổ chức:</b> FOMC, Ngân hàng Nhà nước Việt Nam. <b>Người chịu tác động trực tiếp nhất:</b> người gửi tiết kiệm có khoản đáo hạn đầu 2027 và doanh nghiệp có lịch tái cấp vốn năm 2027.</div>
+      <div class="tags" style="margin-top:10px"><span class="tag-lab">Tài sản</span><span class="tag t-up">▲ Tiền gửi nếu tiếp tục thắt chặt</span><span class="tag t-up">▲▲ Trái phiếu nếu đảo chiều</span><span class="tag t-dn">▼ Cổ phiếu nếu thắt chặt tiếp</span></div>
+    </div>
+  </div>
+
+  <div class="sec-gap"></div>
+  <h3 class="sec">Ba kịch bản Fed và tác động lên từng lớp tài sản</h3>
+  <p class="lede" style="margin-bottom:14px">Xác suất tham chiếu theo định giá thị trường qua <a href="https://www.chase.com/personal/investments/learning-and-insights/article/kevin-warsh-prices-are-too-high-what-to-expect-july-2026-federal-reserve-meeting" target="_blank" rel="noopener noreferrer" style="color:var(--brass)">công cụ CME FedWatch</a> và <a href="https://www.schwab.com/learn/story/fomc-meeting" target="_blank" rel="noopener noreferrer" style="color:var(--brass)">Dot Plot tháng 6</a>, cho cuộc họp tháng 9/2026.</p>
+  <div class="who" style="max-width:88ch;margin-bottom:24px"><span class="who-lab">Đối tượng bị tác động ở cả ba kịch bản</span><b>Tổ chức:</b> Cục Dự trữ Liên bang Mỹ, Ngân hàng Nhà nước Việt Nam. <b>Quốc gia:</b> Mỹ, Việt Nam và các thị trường mới nổi có tỷ giá neo mềm vào USD. <b>Doanh nghiệp Việt Nam nhạy nhất:</b> ngân hàng (biên lãi ròng), bất động sản (chi phí vốn và đáo hạn trái phiếu), công ty chứng khoán (thanh khoản và dư nợ ký quỹ), doanh nghiệp vay ngoại tệ. <b>Cá nhân:</b> người gửi tiết kiệm hưởng lợi ở kịch bản diều hâu; người vay mua nhà hưởng lợi ở kịch bản bồ câu.</div>
+
+  <div class="scen">
+    <div class="sc hawk">
+      <span class="prob">≈66%</span>
+      <h4>Fed tăng lãi suất tháng 9</h4>
+      <p>Lạm phát lõi 3,3–3,4% không hạ, thuế quan và năng lượng tiếp tục truyền dẫn vào giá.</p>
+      <ul>
+        <li><span>Cổ phiếu VN</span><span class="dn">▼▼</span></li>
+        <li><span>Tiền gửi VND</span><span class="up">▲▲</span></li>
+        <li><span>Trái phiếu (lợi suất)</span><span class="up">▲▲</span></li>
+        <li><span>Vàng</span><span class="dn">▼▼</span></li>
+        <li><span>Bất động sản</span><span class="dn">▼▼▼</span></li>
+        <li><span>USD/VND</span><span class="up">▲▲</span></li>
+        <li><span>Crypto</span><span class="dn">▼▼▼</span></li>
+      </ul>
+    </div>
+    <div class="sc base">
+      <span class="prob">≈27%</span>
+      <h4>Fed giữ nguyên, giọng điệu vẫn cứng</h4>
+      <p>Dữ liệu việc làm yếu đi đủ để Fed chờ thêm, nhưng chưa đủ để đổi hướng.</p>
+      <ul>
+        <li><span>Cổ phiếu VN</span><span class="up">▲</span></li>
+        <li><span>Tiền gửi VND</span><span>▲ đi ngang cao</span></li>
+        <li><span>Trái phiếu (lợi suất)</span><span>◆ đi ngang</span></li>
+        <li><span>Vàng</span><span class="up">▲</span></li>
+        <li><span>Bất động sản</span><span class="dn">▼</span></li>
+        <li><span>USD/VND</span><span>◆ ổn định</span></li>
+        <li><span>Crypto</span><span class="up">▲</span></li>
+      </ul>
+    </div>
+    <div class="sc dove">
+      <span class="prob">≈7%</span>
+      <h4>Fed phát tín hiệu cắt giảm</h4>
+      <p>Kịch bản xác suất thấp nhất hiện nay, nhưng là kịch bản đảo chiều mạnh nhất nếu xảy ra.</p>
+      <ul>
+        <li><span>Cổ phiếu VN</span><span class="up">▲▲▲</span></li>
+        <li><span>Tiền gửi VND</span><span class="dn">▼▼ (cửa sổ đóng)</span></li>
+        <li><span>Trái phiếu (giá)</span><span class="up">▲▲▲</span></li>
+        <li><span>Vàng</span><span class="up">▲▲▲</span></li>
+        <li><span>Bất động sản</span><span class="up">▲▲</span></li>
+        <li><span>USD/VND</span><span class="dn">▼</span></li>
+        <li><span>Crypto</span><span class="up">▲▲▲</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deep">
+    <h4>Điều quan trọng nhất rút ra từ ba cột trên</h4>
+    <p>Nhìn theo hàng ngang thay vì cột dọc.</p>
+    <p style="font-size:14.5px;color:var(--ink2);max-width:80ch;margin-bottom:12px">Có đúng <b>một hàng</b> mà bạn không thua ở bất kỳ kịch bản nào: trái phiếu và tiền gửi mua ở mức lợi suất hôm nay. Ở kịch bản diều hâu, bạn vẫn nhận đủ 8–9% đã khóa. Ở kịch bản bồ câu, bạn nhận đủ 8–9% trong khi thị trường chỉ còn trả 5%, và giá trái phiếu bạn đang cầm còn tăng.</p>
+    <p style="font-size:14.5px;color:var(--ink2);max-width:80ch">Đó là định nghĩa của một vị thế bất đối xứng thuận lợi. Nó không hào nhoáng, nhưng nó là thứ hiếm nhất trên bảng này. Ngược lại, bất động sản dùng đòn bẩy thua ở hai trên ba kịch bản và chỉ hòa ở kịch bản thứ ba.</p>
+  </div>
+  <div class="terms inline"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>FOMC</dt><dd>Ủy ban ra quyết định lãi suất của Fed, họp tám lần mỗi năm. Đây là cuộc họp thị trường tài chính toàn cầu theo dõi sát nhất.</dd></div><div><dt>Dot Plot <i>biểu đồ chấm</i></dt><dd>Bảng dự phóng lãi suất của từng quan chức Fed, chỉ công bố ở các cuộc họp tháng 3, 6, 9 và 12. Cho biết Fed nghĩ gì về tương lai chứ không chỉ hiện tại.</dd></div><div><dt>FedWatch</dt><dd>Công cụ của sàn CME quy đổi giá hợp đồng tương lai thành xác suất Fed tăng hay giảm lãi suất. Đây là kỳ vọng thị trường, không phải dự báo chính thức.</dd></div><div><dt>Vị thế bất đối xứng <i>asymmetric position</i></dt><dd>Vị thế mà phần được nhiều hơn hẳn phần mất, hoặc không mất ở bất kỳ kịch bản nào. Rất hiếm và đáng ưu tiên khi gặp.</dd></div></dl></div>
+
+  <div class="sec-gap"></div>
+  <h3 class="sec">Ngưỡng cần canh</h3>
+  <table style="margin-top:18px">
+    <thead><tr><th>Chỉ báo</th><th>Mức hiện tại</th><th>Ngưỡng theo dõi</th><th>Nếu chạm ngưỡng thì sao</th></tr></thead>
+    <tbody>
+      <tr><td>VN-Index</td><td class="n">1.668,53</td><td class="n">1.600 / 1.800 / 1.930</td><td>Thủng 1.600 là mở rộng pha điều chỉnh; vượt lại 1.800 là tín hiệu ổn định sớm</td></tr>
+      <tr><td>Lãi suất tiền gửi 12T</td><td class="n">7,8 – 9,2%</td><td class="n">vượt 10% / xuống dưới 7%</td><td>Vượt 10% là dấu hiệu căng thanh khoản nghiêm trọng; xuống dưới 7% là cửa sổ khóa kỳ hạn đã đóng</td></tr>
+      <tr><td>USD/VND (tự do)</td><td class="n">26.380</td><td class="n">27.000</td><td>Chênh lệch tự do so với ngân hàng giãn rộng là tín hiệu sớm của áp lực tỷ giá</td></tr>
+      <tr><td>Vàng thế giới</td><td class="n fx" data-vnd="≈132,9 tr đ/lượng" data-usd="4.117 $/oz">≈132,9 tr đ/lượng</td><td class="n fx" data-vnd="≈129 / ≈145 tr đ/lượng" data-usd="4.000 / 4.500 $/oz">≈129 / ≈145 tr đ/lượng</td><td>Thủng mốc dưới là xác nhận pha điều chỉnh sâu; chạm mốc trên là về vùng dự báo của tổ chức</td></tr>
+      <tr><td>Brent</td><td class="n fx" data-vnd="≈2,39 tr đ/thùng" data-usd="91,01 $/thùng">≈2,39 tr đ/thùng</td><td class="n fx" data-vnd="≈2,63 tr đ/thùng" data-usd="100 $/thùng">≈2,63 tr đ/thùng</td><td>Vượt ngưỡng là rủi ro CPI trong nước, ảnh hưởng dư địa điều hành lãi suất</td></tr>
+      <tr><td>Xác suất Fed tăng tháng 9</td><td class="n">65,7%</td><td class="n">vượt 80% / dưới 40%</td><td>Đây là chỉ báo dẫn dắt tất cả các dòng còn lại trong bảng này</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Các ngưỡng trên là mốc quan sát để theo dõi diễn biến, không phải tín hiệu mua bán. Việc chạm một ngưỡng không tự động dẫn tới hành động nào.</p>
+</section>
+
+<!-- ============ 04 DANH MỤC & CÔNG CỤ ============ -->
+<section class="panel" id="dm">
+  <div class="eyebrow">Mục 04 — Danh mục &amp; công cụ</div>
+  <h2 class="big">Từ bản đồ chu kỳ đến con số cụ thể trong tài khoản của bạn.</h2>
+  <p class="lede">Ba công cụ dưới đây chuyển các luận điểm ở Mục 01 thành phân bổ và dòng tiền có thể kiểm chứng. Đổi đơn vị VND/USD ở góc trên bên phải áp dụng cho toàn bộ kết quả.</p>
+
+  <div class="sec-gap"></div>
+  <div class="tool">
+    <h3>Máy tính phân bổ danh mục</h3>
+    <p>Tỷ trọng phản ánh vị thế chu kỳ tháng 7/2026 — nghiêng về tài sản thu nhập cố định vì đó là nơi đang có lợi suất đỉnh chu kỳ.</p>
+    <div class="field">
+      <div class="f"><label for="cap">Số vốn khả dụng</label><input type="number" id="cap" value="1000" min="0" step="10" oninput="calcAlloc()"><span id="capUnit" style="font-size:11px;color:var(--mute);font-family:var(--ff)">triệu đồng</span></div>
+      <div class="f"><label for="prof">Hồ sơ rủi ro</label>
+        <select id="prof" onchange="calcAlloc()">
+          <option value="cons">Thận trọng — ưu tiên bảo toàn vốn</option>
+          <option value="bal" selected>Cân bằng — thu nhập là chính</option>
+          <option value="grow">Tăng trưởng — chấp nhận biến động</option>
+        </select>
+      </div>
+      <div class="f"><label for="hzn">Thời hạn</label>
+        <select id="hzn" onchange="calcAlloc()">
+          <option value="s">Dưới 2 năm</option>
+          <option value="m" selected>2 – 5 năm</option>
+          <option value="l">Trên 5 năm</option>
+        </select>
+      </div>
+    </div>
+    <div class="out">
+      <div class="head">Phân bổ đề xuất</div>
+      <div class="bar" id="allocBar"></div>
+      <ul class="legend" id="allocList"></ul>
+      <p style="font-size:12.5px;color:var(--mute);margin-top:14px;line-height:1.6" id="allocNote"></p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h3>Máy tính lãi tiền gửi</h3>
+    <p>Tính lãi đơn lĩnh cuối kỳ, theo cách các ngân hàng Việt Nam niêm yết.</p>
+    <div class="field">
+      <div class="f"><label for="dep">Số tiền gửi</label><input type="number" id="dep" value="500" min="0" step="10" oninput="calcDep()"><span id="depUnit" style="font-size:11px;color:var(--mute);font-family:var(--ff)">triệu đồng</span></div>
+      <div class="f"><label for="rate">Lãi suất (%/năm)</label><input type="number" id="rate" value="7.8" min="0" step="0.1" oninput="calcDep()"></div>
+      <div class="f"><label for="term">Kỳ hạn (tháng)</label><input type="number" id="term" value="12" min="1" step="1" oninput="calcDep()"></div>
+    </div>
+    <div class="out">
+      <div class="head">Kết quả</div>
+      <ul class="legend">
+        <li><span>Tiền lãi nhận được</span><span class="v big-out" id="depInt">—</span></li>
+        <li><span>Tổng nhận cuối kỳ</span><span class="v" id="depTot">—</span></li>
+        <li><span>Thu nhập bình quân mỗi tháng</span><span class="v" id="depMo">—</span></li>
+        <li><span>Nếu tái tục đủ 5 năm ở mức này (lãi kép)</span><span class="v" id="dep5">—</span></li>
+      </ul>
+      <p style="font-size:12.5px;color:var(--mute);margin-top:14px;line-height:1.6">Tham chiếu: mức niêm yết công khai cao nhất 12 tháng hiện là 7,8%/năm; mức thực nhận cao nhất ghi nhận được là 9,2%/năm. Thử cả hai để thấy khoảng cách.</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h3>Mô hình bậc thang kỳ hạn</h3>
+    <p>Cách biến rủi ro tái đầu tư — rủi ro lớn nhất khi gửi tiền ở đỉnh lãi suất — thành lợi thế.</p>
+    <div class="field">
+      <div class="f"><label for="lad">Tổng tiền gửi</label><input type="number" id="lad" value="1000" min="0" step="10" oninput="calcLadder()"><span id="ladUnit" style="font-size:11px;color:var(--mute);font-family:var(--ff)">triệu đồng</span></div>
+    </div>
+    <table id="ladTable">
+      <thead><tr><th>Phần</th><th>Kỳ hạn</th><th>Số tiền</th><th>Đáo hạn</th><th>Vai trò</th></tr></thead>
+      <tbody id="ladBody"></tbody>
+    </table>
+    <p style="font-size:13px;color:var(--slate);line-height:1.7;max-width:82ch">Mỗi quý có một phần đáo hạn. Nếu lãi suất còn cao, bạn tái tục ở mức cao. Nếu lãi suất đã hạ, ba phần còn lại vẫn đang khóa ở mức cũ. Nếu thị trường cổ phiếu về vùng bạn muốn mua, bạn luôn có một phần vốn sắp về mà không phải rút trước hạn.</p>
+  </div>
+
+  <div class="deep">
+    <h4>Bảng nên và không nên, gộp toàn danh mục</h4>
+    <p>Rút gọn từ toàn bộ Mục 01 để in ra hoặc lưu lại.</p>
+    <div class="act" style="border-top:0;padding:0;background:transparent">
+      <div class="do"><h4>Nên làm trong pha này</h4><ul>
+        <li>Khóa lợi suất kỳ hạn dài khi lãi suất đang ở đỉnh chu kỳ</li>
+        <li>Chia bậc thang kỳ hạn thay vì dồn một kỳ hạn duy nhất</li>
+        <li>DCA đều vào cổ phiếu phòng thủ có cổ tức tiền mặt cao</li>
+        <li>Giữ 15–20% tiền mặt làm quyền chọn cho các kịch bản ở Mục 03</li>
+        <li>Ưu tiên trái phiếu ngân hàng và trái phiếu Chính phủ hơn trái phiếu doanh nghiệp lợi suất cao</li>
+        <li>Tính lợi suất ròng của mọi tài sản rồi so trực tiếp với 9% tiền gửi</li>
+      </ul></div>
+      <div class="dont"><h4>Nên tránh trong pha này</h4><ul>
+        <li>Mọi hình thức đòn bẩy — margin, vay mua nhà, vay đầu tư</li>
+        <li>Trái phiếu doanh nghiệp bất động sản lợi suất 12–14%</li>
+        <li>Bất động sản cho thuê mua bằng vốn vay</li>
+        <li>Găm USD tiền mặt để đầu tư, và mọi sàn forex đòn bẩy không được cấp phép</li>
+        <li>Xếp crypto vào phần thu nhập thụ động của danh mục</li>
+        <li>Dồn toàn bộ tiền gửi vào kỳ hạn ngắn để chờ lãi suất lên tiếp</li>
+      </ul></div>
+    </div>
+  </div>
+  <p class="note">Các mô hình phân bổ trên là minh họa dựa trên vị thế chu kỳ, không phải khuyến nghị đầu tư cá nhân hóa và không thay thế tư vấn từ đơn vị được cấp phép. Máy tính lãi tiền gửi dùng công thức lãi đơn lĩnh cuối kỳ, chưa tính thuế và phí phát sinh.</p>
+</section>
+
+<!-- ============ 06 KHUYẾN NGHỊ ============ -->
+
+<!-- ============ 06 KHUYẾN NGHỊ ============ -->
+<section class="panel" id="kn">
+  <div class="eyebrow">Mục 05 — Khuyến nghị tổng hợp</div>
+  <h2 class="big">Sau khi đi qua tám lớp tài sản, mọi thứ quy về một logic duy nhất.</h2>
+  <p class="lede">Trang này gộp toàn bộ kết luận của Mục 01 thành một thứ tự ưu tiên có thể hành động. In ra được.</p>
+
+  <div class="build">
+    <h3>Nhập số tiền, nhận danh mục cụ thể</h3>
+    <p>Tỷ trọng thay đổi theo quy mô vốn, không chỉ theo khẩu vị rủi ro. Lý do: thị trường Việt Nam có các ngưỡng tối thiểu thật — một lượng vàng SJC là 146 triệu, trái phiếu doanh nghiệp riêng lẻ yêu cầu tư cách nhà đầu tư chuyên nghiệp. Dưới một số mức vốn, vài tài sản đơn giản là không tiếp cận được.</p>
+    <div class="field">
+      <div class="f"><label for="bAmt">Số tiền có thể đầu tư</label><input type="number" id="bAmt" value="500" min="0" step="10" oninput="buildPlan()"><span class="unit" id="bUnit">triệu đồng</span></div>
+      <div class="f"><label for="bRisk">Khẩu vị rủi ro</label>
+        <select id="bRisk" onchange="buildPlan()">
+          <option value="c">Thận trọng</option>
+          <option value="b" selected>Cân bằng</option>
+          <option value="g">Tăng trưởng</option>
+        </select>
+      </div>
+      <div class="f"><label for="bSat">Tài sản vệ tinh (Bitcoin)</label>
+        <select id="bSat" onchange="buildPlan()">
+          <option value="0" selected>Không tham gia</option>
+          <option value="2">Có — 2% vốn</option>
+          <option value="5">Có — 5% vốn</option>
+        </select>
+      </div>
+    </div>
+    <div class="tier" id="bTier"></div>
+    <table class="plan"><thead><tr><th>Tài sản</th><th>Tỷ trọng</th><th>Số tiền</th><th>Cách thực thi cụ thể</th></tr></thead>
+      <tbody id="bBody"></tbody><tfoot id="bFoot"></tfoot></table>
+    <div class="yield-box">
+      <div>Thu nhập ước tính năm đầu<b id="bInc">—</b></div>
+      <div>Bình quân mỗi tháng<b id="bMo">—</b></div>
+      <div>Lợi suất danh mục<b id="bYld">—</b></div>
+    </div>
+    <div class="flags" id="bFlags"></div>
+  </div>
+
+  <div class="gate">
+    <h4>Ba câu hỏi dùng để xếp hạng, theo đúng thứ tự này</h4>
+    <ol>
+      <li>Tài sản đó có tạo ra dòng tiền không?</li>
+      <li>Dòng tiền đó có vượt 9% — mức tiền gửi không rủi ro — không?</li>
+      <li>Vị thế chu kỳ đang thuận hay nghịch?</li>
+    </ol>
+    <p style="font-size:14px;color:#5A3F0F;margin-top:12px;max-width:78ch">Trượt câu 1 thì không thuộc danh mục thu nhập thụ động, bất kể nó hấp dẫn thế nào. Trượt câu 2 thì đang thua một lựa chọn an toàn hơn. Chỉ khi qua được cả hai, câu 3 mới quyết định vào bao nhiêu và khi nào.</p>
+  </div>
+  <div class="terms inline"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Dòng tiền <i>cash flow</i></dt><dd>Tiền tài sản thực sự trả cho bạn theo định kỳ — lãi tiền gửi, coupon trái phiếu, cổ tức, tiền thuê. Khác với lãi vốn vốn chỉ hiện thực hóa khi bán.</dd></div><div><dt>Thu nhập thụ động</dt><dd>Thu nhập không đòi hỏi lao động thường xuyên. Điều kiện tiên quyết là tài sản phải tự tạo dòng tiền, nếu không thì đó là đầu cơ chứ không phải thu nhập.</dd></div><div><dt>Lãi vốn <i>capital gain</i></dt><dd>Phần lời từ chênh lệch giá mua và giá bán. Chỉ có thật khi bạn bán, và phụ thuộc vào việc có người trả giá cao hơn.</dd></div><div><dt>Tỷ trọng rủi ro <i>risk contribution</i></dt><dd>Phần rủi ro danh mục đến từ một tài sản. Không bằng tỷ trọng vốn: Bitcoin chiếm 5% vốn nhưng chiếm 31% rủi ro vì biến động cao gấp 13 lần phần còn lại.</dd></div></dl></div>
+
+  <h3 class="sec">Nên đầu tư — theo thứ tự ưu tiên</h3>
+  <p class="lede" style="margin-bottom:22px">Tỷ trọng dành cho hồ sơ cân bằng. Điều chỉnh theo hồ sơ của bạn ở Mục 04.</p>
+
+  <div class="rank">
+    <div class="no">1</div>
+    <div>
+      <h4>Tiền gửi kỳ hạn 12 – 24 tháng</h4>
+      <p>Đây là tài sản duy nhất trên toàn bảng <b>không thua ở bất kỳ kịch bản Fed nào</b>. Nếu Fed tăng lãi suất, bạn vẫn nhận đủ 8–9% đã khóa. Nếu Fed cắt, bạn vẫn nhận đủ 8–9% trong khi thị trường chỉ còn trả 5%. Đó là vị thế bất đối xứng thuận lợi — thứ hiếm nhất ở đây. Đang ở năm thứ 2 trên 5 của chu kỳ tăng lãi suất, và lịch sử Việt Nam cho thấy pha đỉnh chỉ giữ được 3–5 quý.</p>
+    </div>
+    <div class="w">35–40%<small>tỷ trọng</small></div>
+  </div>
+
+  <div class="rank">
+    <div class="no">2</div>
+    <div>
+      <h4>Trái phiếu ngân hàng và trái phiếu Chính phủ, kỳ hạn 3 – 5 năm</h4>
+      <p>Cùng logic với mục 1 nhưng khóa lâu hơn. Lợi suất trái phiếu ngân hàng đã vượt 8% — đây là câu chuyện lợi suất chứ không phải câu chuyện rủi ro. Nếu Fed đảo chiều, giá trái phiếu bạn đang cầm còn tăng thêm. Điều kiện bắt buộc: xác định giữ đến đáo hạn, vì điều đó vô hiệu hóa hoàn toàn rủi ro lãi suất.</p>
+    </div>
+    <div class="w">15%<small>tỷ trọng</small></div>
+  </div>
+
+  <div class="rank">
+    <div class="no">3</div>
+    <div>
+      <h4>Cổ phiếu phòng thủ cổ tức cao, giải ngân theo DCA</h4>
+      <p>Đang bị bán rẻ vì chi phí vốn, <b>không phải vì lợi nhuận xấu</b>. GDP quý II tăng 8,39%, IMF vừa nâng dự báo cả năm lên 7,5% — cao nhất ASEAN. Khi lãi suất hạ, cơ chế bán tháo hiện tại đảo ngược. Cộng thêm dòng vốn FTSE từ tháng 9. Bắt buộc chia DCA 6–8 tháng vì chưa có gì xác nhận đáy. Ưu tiên điện, nước, tiêu dùng thiết yếu — nhóm có dòng tiền phẳng qua chu kỳ.</p>
+    </div>
+    <div class="w">20–25%<small>tỷ trọng</small></div>
+  </div>
+
+  <div class="rank">
+    <div class="no">4</div>
+    <div>
+      <h4>Vàng</h4>
+      <p>Giữ như bảo hiểm danh mục, không phải kênh sinh lời — nó không tạo ra đồng nào. Lực mua ròng 244 tấn của ngân hàng trung ương trong quý I là chân đế cấu trúc mà chu kỳ giảm 2011–2015 không có. Nhưng tích lũy chậm và đều, đừng mua một lần: pha điều chỉnh sau siêu chu kỳ trong lịch sử kéo dài 4–20 năm.</p>
+    </div>
+    <div class="w">10%<small>tỷ trọng</small></div>
+  </div>
+
+  <div class="rank">
+    <div class="no">5</div>
+    <div>
+      <h4>Tiền mặt và tiền gửi kỳ hạn ngắn</h4>
+      <p>Đây không phải phần "chưa biết làm gì". Đây là quyền chọn có chủ đích cho cuộc họp FOMC 28–29/7 và cuộc họp tháng 9. Nếu VN-Index về vùng 1.500–1.600, hoặc nếu đợt đáo hạn trái phiếu bất động sản tạo ra nguồn cung cưỡng bức, bạn cần đạn mà không phải rút trước hạn khoản nào.</p>
+    </div>
+    <div class="w">15%<small>tỷ trọng</small></div>
+  </div>
+
+  <h3 class="sec sec-gap">Không nên đầu tư</h3>
+  <p class="lede" style="margin-bottom:22px">Xếp theo mức độ nghiêm trọng, không theo lớp tài sản.</p>
+
+  <div class="avoid">
+    <h4>1. Mọi hình thức đòn bẩy — margin, vay mua nhà, vay đầu tư</h4>
+    <p>Đây là mục quan trọng hơn tất cả những mục còn lại cộng lại. Đòn bẩy biến một pha điều chỉnh bình thường thành một sự kiện mất vốn vĩnh viễn, vì nó tước đi thứ duy nhất bạn cần trong pha này: thời gian chờ.</p>
+    <div class="maths">Lãi vay 11–12%/năm &nbsp;vs&nbsp; lợi suất tài sản 3–9%/năm</div>
+  </div>
+
+  <div class="avoid">
+    <h4>2. Bất động sản cho thuê mua bằng vốn vay</h4>
+    <p>Lớp tài sản này không cần phân tích phức tạp lúc này, chỉ cần một phép trừ. Cổ phiếu bất động sản giảm 6,07% trong một phiên chính là thị trường đang định giá lại đúng phép tính bên dưới.</p>
+    <div class="maths">Lợi suất cho thuê ròng 3,0–4,5% &nbsp;−&nbsp; lãi vay 11–12% &nbsp;=&nbsp; âm ≈7 điểm % mỗi năm</div>
+  </div>
+
+  <div class="avoid">
+    <h4>3. Trái phiếu doanh nghiệp bất động sản lợi suất 12–14%</h4>
+    <p>Lợi suất cao ở đây không phải phần thưởng, nó là giá của rủi ro. Khi tổ chức phát hành có chất lượng tín dụng tốt nhất đã phải trả trên 8%, chi phí tái cấp vốn của nhóm bất động sản là không khả thi với nhiều doanh nghiệp. Cơ chế dẫn tới khủng hoảng 2022–2023 đang lặp lại gần như nguyên vẹn, và đợt đáo hạn rơi đúng quý III–IV này.</p>
+  </div>
+
+  <div class="avoid">
+    <h4>4. Găm USD tiền mặt để đầu tư</h4>
+    <p>Lãi suất tiền gửi USD trong nước là 0%. Tỷ giá USD/VND cả 12 tháng qua chỉ biến động 0,4%. Bạn đang trả chi phí cơ hội 9%/năm để nắm một tài sản gần như không nhúc nhích. Nắm ngoại tệ đúng bằng nghĩa vụ ngoại tệ thật — học phí, y tế, du lịch, hàng nhập — thì hợp lý; nắm để đầu tư thì không.</p>
+    <div class="maths">Chi phí cơ hội ≈ 9 điểm %/năm &nbsp;so với&nbsp; biến động tỷ giá 0,4%/năm</div>
+  </div>
+
+  <div class="avoid">
+    <h4>5. Sàn forex đòn bẩy không được cấp phép</h4>
+    <p>Đây là hoạt động không hợp pháp tại Việt Nam, và là nơi mất vốn nhiều nhất trong toàn bộ danh sách này. Không có phân tích chu kỳ nào áp dụng được ở đây, vì vấn đề không nằm ở thị trường.</p>
+  </div>
+
+  <div class="avoid" style="border-left-color:var(--brass)">
+    <h4 style="color:var(--brass)">6. Crypto — loại khỏi phần thu nhập thụ động, nhưng không phải loại hoàn toàn</h4>
+    <p>Bitcoin không tạo ra dòng tiền nào nên trượt ngay câu hỏi số 1: nó không thuộc phần thu nhập thụ động của danh mục, và điều này không có ngoại lệ. Nhưng cần công bằng: trong 10 năm qua Bitcoin tăng khoảng 52%/năm, cao nhất trong toàn bộ sáu tài sản trên biểu đồ ở Mục 01. Và về chu kỳ, pha hiện tại — năm thứ 2 sau halving, đã giảm gần 50% từ đỉnh cuối 2025 — trong lịch sử là <b>cửa sổ tích lũy</b> chứ không phải cửa sổ tránh: người mua cuối 2018 và cuối 2022 là người có lợi nhất ở chu kỳ kế tiếp.</p>
+    <p style="margin-top:10px">Nên nếu mục tiêu của bạn mở rộng từ thu nhập sang tổng lợi nhuận, một tỷ trọng vệ tinh 1–5% là biện minh được — chọn trong ô "tài sản vệ tinh" ở máy tính phía trên. Ba điều kiện bắt buộc: đó là tiền mất hết cũng không ảnh hưởng kế hoạch tài chính, không dùng đòn bẩy, và chấp nhận rằng Bitcoin đã ba lần sụt 75–85% và không ai biết lần này dừng ở đâu. Khung pháp lý cho tài sản số tại Việt Nam vẫn đang trong quá trình hoàn thiện — đây là rủi ro thật, không phải chi tiết phụ.</p>
+  </div>
+
+  <div class="avoid">
+    <h4>7. Mua vàng ngay tại thời điểm này</h4>
+    <p>Không phải vì vàng xấu, mà vì thời điểm xấu. Sáng 23/7 chênh lệch mua – bán của SJC nới lên 4–5 triệu đồng/lượng, cộng với chênh lệch so với giá thế giới khoảng 7 triệu. Bạn lỗ ngay khoảng 3% tại thời điểm bấm mua. Chờ khoảng chênh lệch thu hẹp lại rồi hãy tích lũy.</p>
+  </div>
+
+  <div class="warn">
+    <h3>Ba điều phải nói thẳng</h3>
+    <p><strong>Khuyến nghị này có thể sai, và đây là cách nó sai.</strong> CPI và PPI Mỹ vừa hạ nhiệt. Nếu Fed đảo chiều bồ câu sớm hơn dự kiến, một danh mục nghiêng nặng về tiền gửi sẽ thua thị trường cổ phiếu một khoảng rất lớn. Đó là cái giá của việc chọn vị thế không thua ở mọi kịch bản — bạn cũng không thắng lớn ở kịch bản nào.</p>
+    <p><strong>9% là con số danh nghĩa.</strong> Nếu xăng dầu tiếp tục đẩy CPI lên — diesel vừa tăng 1.584 đồng/lít và Brent đang ở 91 USD — thì lãi suất thực dương thu hẹp lại. Hãy theo dõi CPI hàng tháng, đừng chỉ nhìn con số 9%.</p>
+    <p><strong>Và điều quan trọng nhất: trang này không biết tình hình của bạn.</strong> Toàn bộ phân tích giả định bạn đã có quỹ dự phòng 6 tháng chi tiêu, không có nợ lãi suất cao, và tiền đầu tư là tiền chưa cần dùng trong 3–5 năm tới. Nếu một trong ba giả định đó sai, thứ tự ưu tiên phải viết lại hoàn toàn — và việc trả hết nợ lãi suất cao sẽ đứng trên mọi mục trong bảng.</p>
+  </div>
+
+  <p class="note">Đây là phân tích khung chu kỳ dựa trên số liệu thị trường ngày 23/07/2026, không phải khuyến nghị đầu tư cá nhân hóa và không thay thế tư vấn từ đơn vị được cấp phép. Tên doanh nghiệp và ngành nêu trong trang chỉ để chỉ kênh truyền dẫn tác động, không hàm ý khuyến nghị mua bán với bất kỳ mã nào.</p>
+</section>
+
+<!-- ============ 07 HỎI ĐÁP ============ -->
+<section class="panel" id="ai">
+  <div class="eyebrow">Mục 06 — Hỏi đáp phản biện</div>
+  <h2 class="big">Cãi lại trang này.</h2>
+  <p class="lede">Trợ lý bên dưới nắm toàn bộ số liệu và lập luận của web, gồm cả những điểm yếu mà trang tự thừa nhận. Nó được yêu cầu đánh giá phản biện của bạn một cách công bằng thay vì bảo vệ trang bằng mọi giá.</p>
+
+  <div class="keybar" id="keyBar"></div>
+
+  <div class="seeds" id="seeds">
+    <button class="seed" onclick="seed(this)">Vì sao tiền gửi được xếp trên cổ phiếu khi GDP đang tăng 8,39%?</button>
+    <button class="seed" onclick="seed(this)">Lập luận về Bitcoin có mâu thuẫn không — vừa nói cửa sổ tích lũy vừa khuyên tránh?</button>
+    <button class="seed" onclick="seed(this)">Nếu Fed cắt lãi suất tháng 9 thì danh mục này sai ở đâu?</button>
+    <button class="seed" onclick="seed(this)">Vì sao bất động sản bị loại trong khi chu kỳ mới đi được 3/10 năm?</button>
+    <button class="seed" onclick="seed(this)">Điểm yếu lớn nhất của toàn bộ khung phân tích này là gì?</button>
+  </div>
+
+  <script type="text/plain" id="aiBrief">VN-Index 1.668,53 (22/07, -3,58%); đỉnh chu kỳ ~1.930 tháng 5/2026; 6 tháng đầu năm +4,23%. BĐS -6,07%, ngân hàng -2,51% phiên đó. Lãi suất tiền gửi 12T: niêm yết cao nhất 7,8% (ACB), thực nhận cao nhất 9,2%. Trái phiếu ngân hàng >8%; TPDN bất động sản 12-14%, áp lực đáo hạn quý III-IV. Vàng thế giới ~4.117 USD/oz, -26% từ đỉnh 5.598 (01/2026), đã bật từ 4.005 ngày 20/07. Vàng SJC bán ~146 tr đ/lượng, cao hơn thế giới quy đổi ~7,1 tr; chênh mua-bán nới 4-5 tr. Bitcoin ~65.859 USD, -48% từ đỉnh cuối 2025 (~126.000). Halving 04/2024, kế tiếp ~2028. Tỷ giá trung tâm 25.272; VCB bán 26.471; tự do 26.380; DXY 101,13; USD/VND cả năm chỉ biến động 0,4%. Brent 91,01 USD (chiến sự Mỹ-Iran); diesel +1.584 đ/lít ngày 19/07. Fed funds 3,50-3,75%, chủ tịch Kevin Warsh. Dot Plot tháng 6: 9/18 quan chức ghi nhận ít nhất một lần TĂNG trong 2026. Xác suất tăng tháng 9 ~65,7%. FOMC gần nhất 28-29/07/2026. Lạm phát lõi Mỹ 3,3-3,4% nhưng CPI và PPI vừa hạ nhiệt. GDP VN quý II +8,39%; IMF nâng dự báo cả năm lên 7,5%, cao nhất ASEAN. FTSE Russell giải ngân đầu tiên từ tháng 9/2026. Lợi suất cho thuê căn hộ TP.HCM 3,0-4,5%; lãi vay 11-12%.
+
+LUẬN ĐIỂM TRUNG TÂM: mọi tài sản bị so với ngưỡng chặn 9% (tiền gửi không rủi ro). Cổ phiếu cần kỳ vọng 14-15% mới bù phần bù rủi ro; BĐS cho thuê yield 4% thành tài sản lỗ. Đợt giảm VN-Index là tái định giá do CHI PHÍ VỐN, không phải lợi nhuận xấu. Giai đoạn này thưởng người cho vay, phạt người đi vay.
+
+VỊ TRÍ CHU KỲ: Tiền gửi năm 2/5 pha tăng, gần đỉnh (chu kỳ 4-6 năm). Trái phiếu năm 2/5, đỉnh lợi suất = đáy giá = cửa sổ mua. Cổ phiếu năm 6/8 từ đáy Covid 03/2020, điều chỉnh giữa chu kỳ. Ngoại tệ năm 15/17 chu kỳ USD từ 2011. Crypto năm 2/4 chu kỳ halving, pha suy giảm. BĐS năm 3/10 từ đáy 2022-2023, phục hồi bị lãi suất đe dọa. Vàng năm 1 pha điều chỉnh sau siêu chu kỳ 2016-2026.
+
+KHUYẾN NGHỊ (cân bằng): (1) Tiền gửi 12-24T 35-40%; (2) Trái phiếu ngân hàng/TPCP 3-5 năm 15%; (3) Cổ phiếu phòng thủ DCA 6-8 tháng 20-25%; (4) Vàng 10%; (5) Tiền mặt 15%. Tiền gửi đứng đầu vì là tài sản DUY NHẤT không thua ở bất kỳ kịch bản Fed nào: Fed tăng thì vẫn nhận đủ 8-9% đã khóa; Fed cắt thì vẫn nhận 8-9% khi thị trường chỉ trả 5%. KHÔNG NÊN: mọi đòn bẩy; BĐS cho thuê bằng vốn vay (yield 3-4,5% vs lãi vay 11-12% = âm 7 điểm %); TPDN bất động sản 12-14%; găm USD tiền mặt (chi phí cơ hội 9% vs biến động 0,4%); sàn forex đòn bẩy không phép; crypto trong phần thu nhập thụ động; mua vàng lúc chênh mua-bán đang nới.
+
+BITCOIN (trình bày cân bằng): loại khỏi danh mục thu nhập thụ động vì KHÔNG TẠO DÒNG TIỀN — loại theo danh mục, không phải phán xét tài sản tồi. Công bằng: 10 năm qua tăng ~52%/năm, cao nhất trong 6 tài sản. Về chu kỳ, pha hiện tại (năm 2 hậu halving, -48%) lịch sử là CỬA SỔ TÍCH LŨY. Nhưng đáy các chu kỳ trước ở -87% (2015), -84% (2018), -77% (2022), mất 12-13 tháng đỉnh->đáy; nay mới -48% sau 8 tháng, dù xu hướng đang nông dần nên đáy lần này có thể chỉ -65 đến -70%. Chu kỳ hồi sinh cần thanh khoản USD đảo chiều, mà Fed đang diều hâu. Cỡ vị thế tối đa 5% dạng vệ tinh: BTC biến động ~65%/năm, phần còn lại danh mục ~5%/năm; ở 5% BTC chiếm 31% rủi ro, ở 7% chiếm 48%, ở 10% chiếm 67%. Điểm giao 50% ở ~7%. Cách hai: ở 7,5% tỷ trọng, cú sụt 80% xóa trọn một năm thu nhập toàn danh mục. Vượt 5% là "đầu cơ chu kỳ thanh khoản" — hợp lệ nhưng mục tiêu, thước đo, quy tắc thoát khác, nên tách sổ. Nếu tin chu kỳ hồi sinh thì luận điểm đó đòi hỏi LỊCH MUA ĐỀU, không phải vị thế lớn ngay.
+
+KỊCH BẢN FED tháng 9: diều hâu ~66% (cổ phiếu giảm, tiền gửi tăng, vàng và crypto giảm mạnh, BĐS giảm rất mạnh, USD tăng); trung tính ~27%; bồ câu ~7% (cổ phiếu và crypto tăng mạnh, cửa sổ khóa lãi suất đóng).
+
+NGƯỠNG TỐI THIỂU VN: 1 lượng SJC ~146 tr; lãi suất ưu đãi thường từ 100 tr; trái phiếu DN riêng lẻ cần tư cách NĐT chuyên nghiệp, danh mục từ 2 tỷ. Bốn tầng vốn: <100tr / 100tr-1 tỷ / 1-5 tỷ / >5 tỷ.
+
+GIẢ ĐỊNH NỀN: người đọc đã có quỹ dự phòng 6 tháng, không nợ lãi suất cao, tiền đầu tư chưa cần dùng 3-5 năm. Sai một giả định thì toàn bộ thứ tự phải viết lại, trả nợ đứng trên mọi mục.
+
+ĐIỂM YẾU TỰ THỪA NHẬN: danh mục nghiêng tiền gửi sẽ THUA XA cổ phiếu nếu Fed đảo chiều bồ câu sớm — cái giá của vị thế không thua ở mọi kịch bản là cũng không thắng lớn ở kịch bản nào. 9% là số danh nghĩa, xăng dầu đẩy CPI lên thì lãi suất thực thu hẹp. Chuỗi VN-Index 2025 là suy ra từ mức tăng 4,23% nửa đầu 2026, không phải số công bố. Chuỗi giá căn hộ TP.HCM là ước tính tham chiếu.</script>
+  <div class="chat">
+    <div class="log" id="log">
+      <div class="msg a">Chào bạn. Tôi nắm số liệu và lập luận của trang này tính tới 23/07/2026.
+
+Bạn có thể hỏi vì sao một tài sản được xếp ở vị trí đó, phản biện bất kỳ kết luận nào, hoặc yêu cầu tôi chỉ ra chỗ yếu nhất trong khung phân tích.
+
+Hai điều tôi không làm: đưa khuyến nghị đầu tư cho riêng bạn, và dự báo giá.</div>
+    </div>
+    <div class="ask">
+      <textarea id="q" rows="1" placeholder="Nhập câu hỏi hoặc phản biện… (Enter để gửi, Shift+Enter xuống dòng)"></textarea>
+      <button id="send" onclick="askAI()">Gửi</button>
+    </div>
+  </div>
+  <p class="note" style="margin-top:0">Trợ lý này chạy qua endpoint <span class="num">/api/ask</span> trên máy chủ của bạn và chỉ hoạt động sau khi đã deploy kèm biến môi trường <span class="num">ANTHROPIC_API_KEY</span>. Mở file trực tiếp trên máy sẽ không dùng được. Nội dung trả lời do mô hình sinh ra, có thể sai — hãy đối chiếu với số liệu gốc ở các mục trước. Đây không phải tư vấn đầu tư.</p>
+</section>
+
+</main>
+
+<script>
+var RATE = 26300;
+var cur = 'vnd';
+
+function setCur(c){
+  cur = c;
+  document.getElementById('btnVnd').setAttribute('aria-pressed', c==='vnd');
+  document.getElementById('btnUsd').setAttribute('aria-pressed', c==='usd');
+  document.querySelectorAll('.fx').forEach(function(el){
+    el.textContent = c==='usd' ? el.dataset.usd : el.dataset.vnd;
+  });
+  var u = c==='usd' ? 'nghìn USD' : 'triệu đồng';
+  ['capUnit','depUnit','ladUnit'].forEach(function(id){
+    var e = document.getElementById(id); if(e) e.textContent = u;
+  });
+  calcAlloc(); calcDep(); calcLadder();
+  if(typeof drawChart==='function') drawChart();
+}
+
+/* money formatting — input values are in "triệu đồng" or "nghìn USD" */
+function money(v){
+  if(cur==='usd'){
+    if(v>=1000) return (v/1000).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tr USD';
+    return v.toLocaleString('vi-VN',{maximumFractionDigits:1})+' ng USD';
+  }
+  if(v>=1000) return (v/1000).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tỷ đ';
+  return v.toLocaleString('vi-VN',{maximumFractionDigits:1})+' tr đ';
+}
+
+/* ---- tabs ---- */
+document.querySelectorAll('.tab').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected','false')});
+    b.setAttribute('aria-selected','true');
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+    document.getElementById(b.dataset.tab).classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+/* ---- sub tabs ---- */
+document.querySelectorAll('.sub').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.sub').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true');
+    document.querySelectorAll('.group').forEach(function(g){g.classList.remove('on')});
+    document.getElementById('g-'+b.dataset.grp).classList.add('on');
+  });
+});
+
+/* ---- news filter ---- */
+document.querySelectorAll('.chip').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true');
+    var f = b.dataset.f;
+    document.querySelectorAll('.news').forEach(function(n){
+      n.classList.toggle('hide', f!=='all' && n.dataset.a.split(' ').indexOf(f)<0);
+    });
+  });
+});
+
+/* ---- allocation ---- */
+var MODELS = {
+  cons: [['Tiền gửi kỳ hạn dài',50,'#186B4F'],['Trái phiếu ngân hàng & CP',20,'#3A6079'],['Cổ phiếu phòng thủ',10,'#A6752B'],['Vàng',8,'#C9A227'],['Tiền mặt / kỳ hạn ngắn',12,'#8A9299']],
+  bal:  [['Tiền gửi kỳ hạn dài',38,'#186B4F'],['Trái phiếu ngân hàng & CP',15,'#3A6079'],['Cổ phiếu phòng thủ',22,'#A6752B'],['Vàng',10,'#C9A227'],['Tiền mặt / kỳ hạn ngắn',15,'#8A9299']],
+  grow: [['Tiền gửi kỳ hạn dài',26,'#186B4F'],['Trái phiếu ngân hàng & CP',12,'#3A6079'],['Cổ phiếu phòng thủ & tăng trưởng',34,'#A6752B'],['Vàng',10,'#C9A227'],['Tiền mặt / kỳ hạn ngắn',18,'#8A9299']]
+};
+var NOTES = {
+  cons:'Hồ sơ thận trọng đang ở vị thế thuận lợi nhất trong 4 năm: lợi suất không rủi ro 8–9% cho phép đạt mục tiêu thu nhập mà không cần chấp nhận biến động.',
+  bal:'Tỷ trọng cổ phiếu được giữ ở mức vừa phải và nên giải ngân theo DCA 6–8 tháng, vì thị trường đang trong pha điều chỉnh chưa xác nhận đáy.',
+  grow:'Ngay cả hồ sơ tăng trưởng cũng nên giữ tỷ trọng thu nhập cố định cao bất thường trong pha này — lợi suất 9% không rủi ro là cơ hội theo chu kỳ, không phải lựa chọn mặc định.'
+};
+function calcAlloc(){
+  var cap = parseFloat(document.getElementById('cap').value)||0;
+  var p = document.getElementById('prof').value;
+  var h = document.getElementById('hzn').value;
+  var m = MODELS[p].map(function(r){return r.slice()});
+  if(h==='s'){ m[0][1]+=8; m[2][1]-=6; m[3][1]-=2; }
+  if(h==='l'){ m[0][1]-=6; m[2][1]+=6; }
+  var bar='', list='';
+  m.forEach(function(r){
+    bar += '<span style="width:'+r[1]+'%;background:'+r[2]+'"></span>';
+    list += '<li><span><i class="swatch" style="background:'+r[2]+'"></i>'+r[0]+'</span><span class="v">'+r[1]+'% · '+money(cap*r[1]/100)+'</span></li>';
+  });
+  document.getElementById('allocBar').innerHTML = bar;
+  document.getElementById('allocList').innerHTML = list;
+  document.getElementById('allocNote').textContent = NOTES[p];
+}
+
+/* ---- deposit ---- */
+function calcDep(){
+  var d = parseFloat(document.getElementById('dep').value)||0;
+  var r = parseFloat(document.getElementById('rate').value)||0;
+  var t = parseFloat(document.getElementById('term').value)||0;
+  var i = d*(r/100)*(t/12);
+  document.getElementById('depInt').textContent = money(i);
+  document.getElementById('depTot').textContent = money(d+i);
+  document.getElementById('depMo').textContent = t>0 ? money(i/t) : '—';
+  var per = t/12, n = per>0 ? 5/per : 0;
+  document.getElementById('dep5').textContent = money(d*Math.pow(1+(r/100)*per, n));
+}
+
+/* ---- ladder ---- */
+var LAD = [['6 tháng','Tháng 1','Thanh khoản gần, tái tục sớm nếu lãi suất còn tăng'],
+           ['9 tháng','Tháng 4','Cầu nối, giữ nhịp đáo hạn đều mỗi quý'],
+           ['12 tháng','Tháng 7','Khóa mức lợi suất niêm yết cao nhất hiện tại'],
+           ['24 tháng','Tháng 7 năm sau','Bảo hiểm chống rủi ro tái đầu tư khi lãi suất hạ']];
+function calcLadder(){
+  var v = parseFloat(document.getElementById('lad').value)||0;
+  var html='';
+  LAD.forEach(function(r,idx){
+    html += '<tr><td><b>Phần '+(idx+1)+'</b></td><td class="n">'+r[0]+'</td><td class="n">'+money(v/4)+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';
+  });
+  document.getElementById('ladBody').innerHTML = html;
+}
+
+calcAlloc(); calcDep(); calcLadder();
+
+/* ================= 10-YEAR CHART + LIVE FEEDS ================= */
+var SERIES = {
+  vni:{n:'VN-Index', u:'điểm', q:'idx', est:0, live:0,
+    d:[[2016,665],[2017,984],[2018,893],[2019,961],[2020,1104],[2021,1498],[2022,1007],[2023,1130],[2024,1267],[2025,1785],[2026.19,1790],[2026.37,1930],[2026.50,1862.08],[2026.52,1840.7],[2026.54,1782.45],[2026.56,1668.53]]},
+  au:{n:'Vàng thế giới', u:'USD/oz', q:'usd', est:0, live:1,
+    d:[[2016,1152],[2017,1303],[2018,1282],[2019,1517],[2020,1898],[2021,1829],[2022,1824],[2023,2063],[2024,2625],[2025,5100],[2026.08,5598],[2026.51,4155],[2026.53,4140],[2026.55,4005],[2026.56,4117]]},
+  btc:{n:'Bitcoin', u:'USD', q:'usd', est:0, live:1,
+    d:[[2016,963],[2017,13860],[2018,3742],[2019,7193],[2020,28990],[2021,46306],[2022,16547],[2023,42265],[2024,93429],[2025,89000],[2026.08,84275],[2026.52,63000],[2026.56,65859]]},
+  ls:{n:'Lãi suất tiền gửi 12T', u:'%/năm', q:'pct', est:0, live:0,
+    d:[[2016,6.8],[2017,6.8],[2018,6.9],[2019,6.8],[2020,5.6],[2021,5.5],[2022,9.5],[2023,5.3],[2024,4.8],[2025,5.5],[2026.25,6.3],[2026.50,7.3],[2026.55,7.8],[2026.56,7.8]]},
+  fx:{n:'USD/VND', u:'đồng', q:'idx', est:0, live:1,
+    d:[[2016,22790],[2017,22710],[2018,23180],[2019,23170],[2020,23100],[2021,22790],[2022,23600],[2023,24270],[2024,25450],[2025,26200],[2026.25,26100],[2026.52,26255],[2026.55,26292],[2026.56,26321]]},
+  bds:{n:'Giá căn hộ TP.HCM', u:'chỉ số, 2016 = 100', q:'idx', est:1, live:0,
+    d:[[2016,100],[2017,112],[2018,128],[2019,141],[2020,148],[2021,160],[2022,168],[2023,158],[2024,165],[2025,180],[2026.56,186]]}
+};
+var curAsset='vni', curRange=10;
+var LIVE={};
+
+function fmtN(v,q){
+  if(q==='pct') return v.toLocaleString('vi-VN',{maximumFractionDigits:2})+'%';
+  if(v>=1000) return Math.round(v).toLocaleString('vi-VN');
+  return v.toLocaleString('vi-VN',{maximumFractionDigits:2});
+}
+function unitOf(s){
+  if(s.q==='usd') return cur==='usd' ? s.u : 'triệu đồng';
+  return s.u;
+}
+function convVal(s,v){
+  if(s.q==='usd' && cur==='vnd') return v*RATE/1e6;
+  return v;
+}
+
+function buildSel(){
+  var h='';
+  for(var k in SERIES){
+    var e = SERIES[k].est ? '<span class="est">ước tính</span>' : '';
+    h += '<button class="pill" aria-pressed="'+(k===curAsset)+'" onclick="pickAsset(\''+k+'\')">'+SERIES[k].n+e+'</button>';
+  }
+  document.getElementById('assetSel').innerHTML = h;
+  var r='';[1,3,5,10].forEach(function(y){
+    r += '<button aria-pressed="'+(y===curRange)+'" onclick="pickRange('+y+')">'+y+' năm</button>';
+  });
+  document.getElementById('rangeSel').innerHTML = r;
+}
+function pickAsset(k){ curAsset=k; buildSel(); drawChart(); }
+function pickRange(y){ curRange=y; buildSel(); drawChart(); }
+
+function drawChart(){
+  var s = SERIES[curAsset];
+  var cut = 2026.56 - curRange;
+  var pts = s.d.filter(function(p){return p[0]>=cut;});
+  if(pts.length<4) pts = s.d.slice(-Math.min(4,s.d.length));
+  var vals = pts.map(function(p){return convVal(s,p[1]);});
+  var xs = pts.map(function(p){return p[0];});
+  var mn=Math.min.apply(null,vals), mx=Math.max.apply(null,vals);
+  var pad=(mx-mn)*0.12||Math.abs(mx*0.1)||1; mn-=pad; mx+=pad;
+  var x0=Math.min.apply(null,xs), x1=Math.max.apply(null,xs);
+  var L=70,R=14,T=18,B=34,W=700,H=290;
+  var px=function(x){return L+(x-x0)/((x1-x0)||1)*(W-L-R);};
+  var py=function(v){return T+(mx-v)/((mx-mn)||1)*(H-T-B);};
+  var line='', area='M'+px(xs[0])+' '+(H-B);
+  pts.forEach(function(p,i){
+    var X=px(p[0]).toFixed(1), Y=py(convVal(s,p[1])).toFixed(1);
+    line += (i?' L':'M')+X+' '+Y; area += ' L'+X+' '+Y;
+  });
+  area += ' L'+px(xs[xs.length-1])+' '+(H-B)+' Z';
+  var rise = vals[vals.length-1] >= vals[0];
+  var col = rise ? '#186B4F' : '#9C3A2C';
+  var g='';
+  for(var i=0;i<=4;i++){
+    var v=mn+(mx-mn)*i/4, Y=py(v).toFixed(1);
+    g += '<line class="gl-line" x1="'+L+'" y1="'+Y+'" x2="'+(W-R)+'" y2="'+Y+'"/>';
+    g += '<text class="ax" x="'+(L-8)+'" y="'+(+Y+3.5)+'" text-anchor="end">'+fmtN(v,s.q)+'</text>';
+  }
+  var lab='', step=Math.max(1,Math.round((x1-x0)/5));
+  for(var y=Math.ceil(x0);y<=Math.floor(x1);y+=step){
+    lab += '<text class="ax" x="'+px(y).toFixed(1)+'" y="'+(H-12)+'" text-anchor="middle">'+y+'</text>';
+  }
+  var last=pts[pts.length-1];
+  var svg='<svg width="100%" viewBox="0 0 700 '+H+'" role="img" aria-label="Biểu đồ '+s.n+'">'
+    +g+lab
+    +'<path d="'+area+'" fill="'+col+'" opacity="0.08"/>'
+    +'<path d="'+line+'" fill="none" stroke="'+col+'" stroke-width="1.8" stroke-linejoin="round"/>'
+    +'<circle cx="'+px(last[0]).toFixed(1)+'" cy="'+py(convVal(s,last[1])).toFixed(1)+'" r="4" fill="'+col+'"/>'
+    +'</svg>';
+  document.getElementById('chartArea').innerHTML = svg;
+
+  var first=vals[0], lastv=vals[vals.length-1];
+  var chg=(lastv-first)/Math.abs(first)*100;
+  var span=Math.max(0.25, xs[xs.length-1]-xs[0]);
+  var cagr=(Math.pow(Math.abs(lastv/first),1/span)-1)*100;
+  var U=unitOf(s);
+  document.getElementById('chartStats').innerHTML =
+    '<div class="cs"><em>Hiện tại</em><b>'+fmtN(lastv,s.q)+'</b></div>'
+   +'<div class="cs"><em>Đầu kỳ ('+xs[0].toFixed(0)+')</em><b>'+fmtN(first,s.q)+'</b></div>'
+   +'<div class="cs"><em>Thay đổi</em><b style="color:'+col+'">'+(chg>=0?'+':'')+chg.toFixed(1)+'%</b></div>'
+   +'<div class="cs"><em>Bình quân năm ('+span.toFixed(1)+' năm)</em><b style="color:'+col+'">'+(cagr>=0?'+':'')+cagr.toFixed(1)+'%</b></div>'
+   +'<div class="cs"><em>Đỉnh kỳ</em><b>'+fmtN(Math.max.apply(null,vals),s.q)+'</b></div>'
+   +'<div class="cs"><em>Đáy kỳ</em><b>'+fmtN(Math.min.apply(null,vals),s.q)+'</b></div>';
+
+  var note='Đơn vị: '+U+'. Dữ liệu các năm là giá trị cuối kỳ, làm tròn để tham chiếu xu hướng — không dùng để tính toán chính xác.';
+  if(s.q==='usd' && cur==='vnd') note += ' Quy đổi theo tỷ giá hiện hành '+RATE.toLocaleString('vi-VN')+' đồng/USD, không phải tỷ giá lịch sử từng năm.';
+  if(s.est) note += ' Riêng chuỗi này là CHỈ SỐ ƯỚC TÍNH do Việt Nam chưa có chỉ số giá bất động sản chính thức công bố công khai — chỉ dùng để hình dung hình dạng chu kỳ, không phải số liệu chính thức.';
+  if(s.live) note += ' Điểm cuối được thay bằng giá trực tiếp khi kết nối thành công.';
+  document.getElementById('chartNote').textContent = note;
+}
+
+/* ---------- live feeds ---------- */
+var FEEDS=[
+  {k:'btc', lab:'Bitcoin', url:'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+   get:function(j){return j.bitcoin.usd;}},
+  {k:'au', lab:'Vàng', url:'https://api.gold-api.com/price/XAU',
+   get:function(j){return j.price;}},
+  {k:'fx', lab:'USD/VND', url:'https://open.er-api.com/v6/latest/USD',
+   get:function(j){return j.rates.VND;}}
+];
+var feedState={};
+
+function renderLiveBar(){
+  var h='';
+  FEEDS.forEach(function(f){
+    var st=feedState[f.k]||'off';
+    var txt = st==='on' ? 'trực tiếp' : (st==='err' ? 'không kết nối' : 'đang tải');
+    h += '<span class="lv '+st+'"><i></i>'+f.lab+' · '+txt+'</span>';
+  });
+  (typeof PFEEDS!=='undefined'?PFEEDS:[]).forEach(function(f){
+    var st=feedState[f.k]||'off';
+    var txt = st==='on' ? 'trực tiếp' : (st==='err' ? 'không lấy được' : 'đang tải');
+    h += '<span class="lv '+st+'"><i></i>'+f.lab+' · '+txt+'</span>';
+  });
+  h += '<span class="lv off"><i></i>Lãi suất, Fed funds · sửa tay</span>';
+  document.getElementById('liveBar').innerHTML=h;
+}
+
+function refreshLive(manual){
+  renderLiveBar();
+  FEEDS.forEach(function(f){
+    var ctl = new AbortController();
+    var t = setTimeout(function(){ctl.abort();},7000);
+    fetch(f.url,{signal:ctl.signal})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){
+        clearTimeout(t);
+        var v=f.get(j);
+        if(typeof v!=='number'||!isFinite(v)) throw 0;
+        LIVE[f.k]=v; feedState[f.k]='on';
+        var arr=SERIES[f.k].d; arr[arr.length-1][1]=v;
+        renderLiveBar();
+        if(curAsset===f.k) drawChart();
+        syncTicker();
+      })
+      .catch(function(){ clearTimeout(t); feedState[f.k]='err'; renderLiveBar(); });
+  });
+  document.getElementById('liveStamp').textContent =
+    'Lần thử gần nhất: ' + new Date().toLocaleTimeString('vi-VN');
+}
+
+function syncTicker(){
+  if(LIVE.btc){
+    document.querySelectorAll('.fx[data-usd$="$"]').forEach(function(el){
+      if(el.dataset.usd.indexOf('65.859')>=0 || el.dataset.live==='btc'){
+        el.dataset.live='btc';
+        el.dataset.usd=Math.round(LIVE.btc).toLocaleString('vi-VN')+' $';
+        el.dataset.vnd=(LIVE.btc*RATE/1e9).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tỷ đ';
+        el.textContent = cur==='usd'?el.dataset.usd:el.dataset.vnd;
+      }
+    });
+  }
+  if(LIVE.fx){ RATE=Math.round(LIVE.fx); }
+}
+
+var liveTimer=null;
+function startLive(){
+  refreshLive();
+  if(liveTimer) clearInterval(liveTimer);
+  liveTimer=setInterval(refreshLive,60000);
+}
+
+buildSel(); drawChart(); startLive();
+
+/* ---------- lớp proxy: dữ liệu cần server ---------- */
+var PROXY='https://vn-asset-cycle-api.vercel.app/api/market';
+var PFEEDS=[{k:'vni',lab:'VN-Index'},{k:'sjc',lab:'Vàng SJC'},{k:'brent',lab:'Brent'},{k:'dxy',lab:'DXY'}];
+function tset(id,txt,pct){
+  var el=document.getElementById(id); if(!el||txt==null) return;
+  el.textContent=txt;
+  if(pct!=null){ el.className=el.className.replace(/\b(up|dn)\b/g,'').replace(/\s+/g,' ').trim()+' '+(pct>=0?'up':'dn'); }
+}
+function nf(v,d){ return Number(v).toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function ar(p){ return p==null?'':(p>=0?' \u25B2 ':' \u25BC ')+Math.abs(p).toFixed(2)+'%'; }
+
+
+/* ===== Lấy 4 nguồn còn lại qua CORS proxy công cộng — chạy được khi CHƯA deploy ===== */
+var PROXIES=[
+  function(u){ return 'https://api.codetabs.com/v1/proxy/?quest='+encodeURIComponent(u); },
+  function(u){ return 'https://api.allorigins.win/raw?url='+encodeURIComponent(u); }
+];
+function pfetch(url){
+  var i=0;
+  function go(){
+    var ctl=new AbortController(); var t=setTimeout(function(){ctl.abort();},9000);
+    return fetch(PROXIES[i](url),{cache:'no-store',signal:ctl.signal})
+      .then(function(r){ clearTimeout(t); if(!r.ok) throw 0; return r.text(); })
+      .catch(function(e){ clearTimeout(t); i++; if(i<PROXIES.length) return go(); throw e; });
+  }
+  return go();
+}
+var YQ='https://query1.finance.yahoo.com/v8/finance/chart/';
+function yq(sym){
+  return pfetch(YQ+encodeURIComponent(sym)+'?interval=1d&range=5d').then(function(t){
+    var m=JSON.parse(t).chart.result[0].meta;
+    var prev=m.chartPreviousClose||m.previousClose||null;
+    return {price:m.regularMarketPrice, changePct: prev?((m.regularMarketPrice/prev-1)*100):null};
+  });
+}
+var PXFEEDS=[
+ {k:'vni', lab:'VN-Index', tick:'tkVni', run:function(){
+    var to=Math.floor(Date.now()/1000), from=to-30*86400;
+    return pfetch('https://dchart-api.vndirect.com.vn/dchart/history?symbol=VNINDEX&resolution=D&from='+from+'&to='+to)
+      .then(function(t){
+        var c=JSON.parse(t).c;
+        if(!c||c.length<2) throw 0;
+        var pr=c[c.length-1], pv=c[c.length-2];
+        return {price:pr, changePct:(pr/pv-1)*100};
+      });
+  }, fmt:function(d){ return nf(d.price,2)+ar(d.changePct); }, series:'vni'},
+
+ {k:'sjc', lab:'Vàng SJC', tick:'tkSjc', run:function(){
+    return pfetch('https://sjc.com.vn/GoldPrice/Services/PriceService.ashx').then(function(t){
+      var rows=JSON.parse(t).data;
+      var r=rows.filter(function(x){return /1l|10l|1kg|sjc/i.test(String(x.TypeName||x.Name||''));})[0]||rows[0];
+      var sell=parseFloat(String(r.SellValue!=null?r.SellValue:r.Sell).replace(/[^\d.]/g,''));
+      if(!sell) throw 0;
+      return {price: sell<1e6 ? sell*1000 : sell};
+    });
+  }, fmt:function(d){ var v=d.price; if(v<50e6) v*=10; return nf(v/1e6,1)+' tr đ/lượng'; }},
+
+ {k:'brent', lab:'Brent', tick:'tkBrent', run:function(){ return yq('BZ=F'); },
+  fmt:function(d){ return nf(d.price,2)+' $/thùng'; }},
+
+ {k:'dxy', lab:'DXY', tick:'tkDxy', run:function(){ return yq('DX-Y.NYB'); },
+  fmt:function(d){ return nf(d.price,2); }}
+];
+
+function refreshViaProxy(){
+  PXFEEDS.forEach(function(f){
+    f.run().then(function(d){
+      if(!d || !isFinite(d.price)) throw 0;
+      feedState[f.k]='on';
+      tset(f.tick, f.fmt(d), d.changePct);
+      if(f.series && SERIES[f.series]){
+        var a=SERIES[f.series].d; a[a.length-1][1]=d.price;
+        if(curAsset===f.series) drawChart();
+      }
+      renderLiveBar();
+    }).catch(function(){ if(feedState[f.k]!=='on') feedState[f.k]='err'; renderLiveBar(); });
+  });
+}
+
+function refreshProxy(){
+  var ctl=new AbortController(); var t=setTimeout(function(){ctl.abort();},9000);
+  fetch(PROXY,{signal:ctl.signal,cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){
+      clearTimeout(t);
+      var d=j.data||{}, h=j.health||{};
+      PFEEDS.forEach(function(f){ feedState[f.k] = (h[{vni:'vnindex',sjc:'goldSJC',brent:'brent',dxy:'dxy'}[f.k]]==='ok')?'on':'err'; });
+      if(d.vnindex&&d.vnindex.price){
+        LIVE.vni=d.vnindex.price; SERIES.vni.d[SERIES.vni.d.length-1][1]=d.vnindex.price;
+        tset('tkVni', nf(d.vnindex.price,2)+ar(d.vnindex.changePct), d.vnindex.changePct);
+      }
+      if(d.goldSJC&&d.goldSJC.sell){ var gv=d.goldSJC.sell; if(gv<50e6) gv*=10; tset('tkSjc', nf(gv/1e6,1)+' tr \u0111/l\u01B0\u1EE3ng'); }
+      if(d.brent&&d.brent.price) tset('tkBrent', nf(d.brent.price,2)+' $/th\u00F9ng', d.brent.changePct);
+      if(d.dxy&&d.dxy.price) tset('tkDxy', nf(d.dxy.price,2), d.dxy.changePct);
+      if(d.fx&&d.fx.sell){ LIVE.fx=d.fx.sell; RATE=Math.round(d.fx.sell); SERIES.fx.d[SERIES.fx.d.length-1][1]=d.fx.sell; feedState.fx='on'; }
+      if(d.goldWorld&&d.goldWorld.price){ LIVE.au=d.goldWorld.price; SERIES.au.d[SERIES.au.d.length-1][1]=d.goldWorld.price; feedState.au='on'; }
+      renderLiveBar(); syncTicker(); drawChart();
+    })
+    .catch(function(){
+      clearTimeout(t);
+      refreshViaProxy();   // chưa deploy hoặc API lỗi -> đi đường CORS proxy
+    });
+}
+var proxyTimer=setInterval(refreshProxy,120000);
+refreshProxy();
+
+var _oldSetCur=setCur;
+setCur=function(c){ _oldSetCur(c); drawChart(); };
+
+/* ================= PORTFOLIO BUILDER (Mục 06) ================= */
+/* Đơn vị nội bộ: triệu đồng. Ngưỡng tối thiểu lấy theo thực tế thị trường VN 07/2026. */
+var MIN_SJC = 146;      // 1 lượng vàng miếng SJC, triệu đồng
+var MIN_NHAN = 15;      // vàng nhẫn 1 chỉ, xấp xỉ
+var MIN_BOND_PRO = 2000;// tư cách NĐT chứng khoán chuyên nghiệp: danh mục từ 2 tỷ
+var MIN_SPECIAL = 100;  // ngưỡng tiền gửi được hưởng lãi suất ưu đãi
+
+function bAmtVND(){
+  var v = parseFloat(document.getElementById('bAmt').value)||0;
+  return cur==='usd' ? v*1000*RATE/1e6 : v;   // nghìn USD -> triệu đồng
+}
+function bFmt(m){                              // m tính bằng triệu đồng
+  if(cur==='usd'){
+    var u = m*1e6/RATE;
+    return u>=1e6 ? (u/1e6).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tr USD'
+                  : (u/1e3).toLocaleString('vi-VN',{maximumFractionDigits:1})+' ng USD';
+  }
+  return m>=1000 ? (m/1000).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tỷ đ'
+                 : m.toLocaleString('vi-VN',{maximumFractionDigits:1})+' tr đ';
+}
+
+function tierOf(m){
+  if(m < 100)  return {i:1,name:'Tầng 1 · Tích lũy nền',
+    txt:'Dưới 100 triệu, phần lớn tài sản chưa tiếp cận được: chưa mua nổi một lượng vàng SJC, chưa đủ ngưỡng lãi suất ưu đãi, chưa đủ tư cách mua trái phiếu riêng lẻ. Việc đúng lúc này không phải là phân bổ mà là tích lũy về ngưỡng 100 triệu, đồng thời tận dụng lãi suất đang ở đỉnh chu kỳ.'};
+  if(m < 1000) return {i:2,name:'Tầng 2 · Xây danh mục',
+    txt:'Đã đủ ngưỡng hưởng lãi suất ưu đãi và bắt đầu chia bậc thang kỳ hạn. Trái phiếu doanh nghiệp riêng lẻ vẫn ngoài tầm, nên phần thu nhập cố định dồn vào tiền gửi. Cổ phiếu tiếp cận qua chứng chỉ quỹ hoặc mua trực tiếp nhóm phòng thủ.'};
+  if(m < 5000) return {i:3,name:'Tầng 3 · Danh mục đầy đủ',
+    txt:'Từ 2 tỷ trở lên bạn đủ điều kiện xác nhận tư cách nhà đầu tư chứng khoán chuyên nghiệp — mở khoá trái phiếu doanh nghiệp riêng lẻ. Đây là tầng đầu tiên triển khai được đầy đủ năm nhóm tài sản trong khuyến nghị.'};
+  return {i:4,name:'Tầng 4 · Phân tầng nâng cao',
+    txt:'Quy mô này cho phép chia nhỏ rủi ro đối tác: tiền gửi rải qua nhiều tổ chức, trái phiếu mua trực tiếp nhiều tổ chức phát hành, và giữ tỷ lệ tiền mặt lớn hơn để đón nguồn cung cưỡng bức từ đợt đáo hạn trái phiếu quý III–IV.'};
+}
+
+/* [tên, %, lợi suất ước tính %/năm, ghi chú] */
+function planFor(t, risk, m){
+  var R = {c:0, b:1, g:2}[risk];
+  var rows = [];
+  if(t.i===1){
+    rows.push(['Tiền gửi kỳ hạn 12 tháng', [80,70,60][R], 7.8, 'Gộp thành một sổ để đạt ngưỡng ưu đãi thay vì chia nhỏ']);
+    rows.push(['Chứng chỉ quỹ mở cổ phiếu', [10,20,30][R], 0, 'Mua từ 1–2 triệu mỗi lệnh, đặt lệnh định kỳ hàng tháng']);
+    rows.push(['Tiền mặt dự phòng', 10, 0, 'Giữ ngoài đầu tư, không tính vào danh mục']);
+  } else if(t.i===2){
+    rows.push(['Tiền gửi bậc thang 6–24 tháng', [55,42,32][R], 8.2, 'Chia 4 sổ đáo hạn lệch nhau 3 tháng']);
+    rows.push(['Cổ phiếu phòng thủ, DCA 6–8 tháng', [15,25,35][R], 6.0, 'Điện, nước, tiêu dùng thiết yếu; cổ tức tiền mặt trên 6%']);
+    rows.push(['Vàng', [8,10,10][R], 0, m*0.08 >= MIN_SJC ? 'Đủ mua vàng miếng SJC' : 'Chưa đủ 1 lượng SJC — dùng vàng nhẫn']);
+    rows.push(['Tiền gửi kỳ hạn ngắn 1–3 tháng', [22,23,23][R], 4.75, 'Quyền chọn cho FOMC 28–29/7 và tháng 9']);
+  } else {
+    rows.push(['Tiền gửi bậc thang 12–24 tháng', [45,36,26][R], 8.5, t.i===4 ? 'Rải qua ít nhất 3 ngân hàng để chia rủi ro đối tác' : 'Chia 4 sổ đáo hạn lệch nhau 3 tháng']);
+    rows.push(['Trái phiếu ngân hàng và TPCP 3–5 năm', [18,15,12][R], 8.0, m >= MIN_BOND_PRO ? 'Đủ điều kiện xác nhận NĐT chuyên nghiệp' : 'Chưa đủ 2 tỷ — tiếp cận qua quỹ trái phiếu']);
+    rows.push(['Cổ phiếu phòng thủ, DCA 6–8 tháng', [17,24,34][R], 6.0, 'Chia đều theo tháng, không vào một lệnh']);
+    rows.push(['Vàng', [8,10,10][R], 0, 'Tích lũy dần; chờ chênh lệch mua–bán SJC thu hẹp dưới 2 triệu']);
+    rows.push(['Tiền mặt và kỳ hạn ngắn', [12,15,18][R], 4.75, 'Đạn cho kịch bản VN-Index về 1.500–1.600']);
+  }
+  return rows;
+}
+
+function buildPlan(){
+  var m = bAmtVND();
+  var risk = document.getElementById('bRisk').value;
+  var sat = parseFloat(document.getElementById('bSat').value)||0;
+  document.getElementById('bUnit').textContent = cur==='usd' ? 'nghìn USD' : 'triệu đồng';
+
+  var t = tierOf(m);
+  document.getElementById('bTier').innerHTML = '<b>'+t.name+'</b><span>'+t.txt+'</span>';
+
+  var rows = planFor(t, risk, m);
+  if(sat>0){
+    var scale = (100-sat)/100;
+    rows = rows.map(function(r){ return [r[0], r[1]*scale, r[2], r[3]]; });
+    rows.push(['Bitcoin — vệ tinh', sat, 0, 'Tiền mất hết cũng không ảnh hưởng kế hoạch; không đòn bẩy']);
+  }
+
+  var html='', inc=0;
+  rows.forEach(function(r){
+    var amt = m*r[1]/100;
+    inc += amt*r[2]/100;
+    var isSat = r[0].indexOf('Bitcoin')===0;
+    html += '<tr'+(isSat?' class="sat"':'')+'><td><b>'+r[0]+'</b></td><td class="n">'+r[1].toFixed(1)+'%</td><td class="n">'+bFmt(amt)+'</td><td>'+r[3]+'</td></tr>';
+  });
+  document.getElementById('bBody').innerHTML = html;
+  document.getElementById('bFoot').innerHTML = '<tr><td>Tổng</td><td class="n">100%</td><td class="n">'+bFmt(m)+'</td><td>—</td></tr>';
+
+  document.getElementById('bInc').textContent = bFmt(inc);
+  document.getElementById('bMo').textContent = bFmt(inc/12);
+  document.getElementById('bYld').textContent = m>0 ? (inc/m*100).toFixed(2)+'%/năm' : '—';
+
+  /* cảnh báo theo ngưỡng thật */
+  var f=[];
+  if(m<=0) f.push(['','Nhập số tiền để xem danh mục.']);
+  if(m>0 && m<100) f.push(['','Dưới ngưỡng 100 triệu, phần lớn ngân hàng không áp dụng lãi suất ưu đãi. Ưu tiên gộp thành một sổ.']);
+  var au = rows.filter(function(r){return r[0].indexOf('Vàng')===0;})[0];
+  if(au && m*au[1]/100 < MIN_SJC && m*au[1]/100 > 0)
+    f.push(['','Phần vàng chỉ '+bFmt(m*au[1]/100)+', chưa đủ một lượng SJC (146 triệu). Dùng vàng nhẫn hoặc dồn phần này sang tiền gửi.']);
+  if(m>=MIN_BOND_PRO) f.push(['ok','Từ 2 tỷ trở lên bạn đủ điều kiện xác nhận tư cách nhà đầu tư chứng khoán chuyên nghiệp — mở khoá trái phiếu doanh nghiệp riêng lẻ.']);
+  if(m>=5000) f.push(['','Với quy mô này, đừng gửi quá nhiều vào một tổ chức. Bảo hiểm tiền gửi có hạn mức chi trả — chia qua ít nhất 3 ngân hàng.']);
+  if(sat>0) f.push(['','Phần Bitcoin '+bFmt(m*sat/100)+' nằm ngoài mục tiêu thu nhập thụ động. Chỉ giữ nếu mất hết cũng không ảnh hưởng kế hoạch tài chính.']);
+  f.push(['','Danh mục này giả định bạn đã có quỹ dự phòng 6 tháng chi tiêu và không còn nợ lãi suất cao. Nếu chưa, trả nợ và lập quỹ dự phòng đứng trên mọi dòng trong bảng.']);
+  document.getElementById('bFlags').innerHTML = f.map(function(x){
+    return '<div class="flag'+(x[0]==='ok'?' ok':'')+'">'+x[1]+'</div>'; }).join('');
+}
+buildPlan();
+var _prevSetCur2 = setCur;
+setCur = function(c){ _prevSetCur2(c); if(typeof buildPlan==='function') buildPlan(); };
+
+/* ================= AI PHẢN BIỆN ================= */
+var HIST=[], busy=false;
+function esc(t){ return String(t).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+function bubble(cls,txt){
+  var d=document.createElement('div'); d.className='msg '+cls; d.innerHTML=esc(txt);
+  var log=document.getElementById('log'); log.appendChild(d); log.scrollTop=log.scrollHeight; return d;
+}
+function seed(btn){ document.getElementById('q').value=btn.textContent; askAI(); }
+
+function askAI(){
+  if(busy) return;
+  var box=document.getElementById('q'), q=box.value.trim();
+  if(!q) return;
+  box.value=''; bubble('u',q);
+  HIST.push({role:'user',content:q});
+  busy=true; document.getElementById('send').disabled=true;
+  var tip=document.createElement('div'); tip.className='typing'; tip.textContent='Đang suy nghĩ…';
+  var log=document.getElementById('log'); log.appendChild(tip); log.scrollTop=log.scrollHeight;
+
+  var call = fetch('https://vn-asset-cycle-api.vercel.app/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:HIST})})
+    .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
+    .catch(function(){ if(BYOK) return isAnthropic(BYOK)?askDirect():askGemini(); throw 0; })
+    .then(function(o){ if(!o.ok && BYOK) return isAnthropic(BYOK)?askDirect():askGemini(); return o; });
+  call
+    .then(function(o){
+      tip.remove();
+      if(!o.ok || o.j.error){ bubble('e', o.j.error || 'Không gọi được trợ lý.'); return; }
+      bubble('a', o.j.text);
+      HIST.push({role:'assistant',content:o.j.text});
+    })
+    .catch(function(){
+      tip.remove();
+      bubble('e', BYOK ? 'Không gọi được API. Kiểm tra lại khóa, và nếu dùng Anthropic thì kiểm tra số dư.' : 'Chưa nối trợ lý. Bấm "Dán khóa API" ở khung phía trên để dùng ngay, hoặc deploy kèm biến ANTHROPIC_API_KEY.');
+    })
+    .then(function(){ busy=false; document.getElementById('send').disabled=false; box.focus(); });
+}
+
+(function(){
+  var box=document.getElementById('q'); if(!box) return;
+  box.addEventListener('keydown',function(e){
+    if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); askAI(); }
+  });
+  box.addEventListener('input',function(){ box.style.height='auto'; box.style.height=Math.min(box.scrollHeight,130)+'px'; });
+})();
+
+/* ========== Chế độ dùng khóa API riêng (không cần máy chủ) ========== */
+function isAnthropic(k){ return !!k && k.indexOf('sk-ant-')===0; }
+var BYOK=null, BRIEF_C = document.getElementById('aiBrief') ? document.getElementById('aiBrief').textContent : '';
+try{ BYOK = localStorage.getItem('anthropic_key') || null; }catch(e){}
+
+function keyBar(){
+  var el=document.getElementById('keyBar'); if(!el) return;
+  if(BYOK){
+    el.className='keybar ok';
+    el.innerHTML='<span><b>Đang dùng khóa '+(isAnthropic(BYOK)?'Anthropic':'Google Gemini')+'</b> — khóa lưu trong trình duyệt này. Tab này chạy được kể cả khi chưa deploy.</span>'+
+      '<button class="ghost" onclick="clearKey()">Xoá khóa</button>';
+  } else {
+    el.className='keybar';
+    el.innerHTML='<span><b>Chưa nối trợ lý.</b> Cách miễn phí: lấy khóa Gemini tại <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:#6E4C12">aistudio.google.com/apikey</a> — không cần thẻ tín dụng, không hết hạn.</span>'+
+      '<button onclick="setKey()">Dán khóa API</button>';
+  }
+}
+function setKey(){
+  var k=prompt('Dán khóa API  [v2026.07.23-b3]\n\nGoogle Gemini — miễn phí, lấy tại aistudio.google.com/apikey\nAnthropic — trả phí, khóa bắt đầu bằng sk-ant-\n\nKhóa lưu trong trình duyệt này, không gửi đi đâu khác. Đừng dùng trên máy công cộng hoặc máy dùng chung.');
+  if(!k) return;
+  k=k.trim();
+  if(k.length < 20){ alert('Khóa quá ngắn, có vẻ bị thiếu. Hãy sao chép lại toàn bộ khóa.'); return; }
+  BYOK=k; try{ localStorage.setItem('anthropic_key',k); }catch(e){}
+  keyBar();
+}
+function clearKey(){
+  BYOK=null; try{ localStorage.removeItem('anthropic_key'); }catch(e){}
+  keyBar();
+}
+
+
+function SYSPROMPT(){ return 'Bạn là trợ lý phản biện gắn trong trang "Bản đồ chu kỳ tài sản · Việt Nam 2026". Giải thích, bảo vệ VÀ phản biện lập luận của trang. Trả lời tiếng Việt, điềm đạm, dưới 250 từ trừ khi cần dài hơn. Chỉ dùng dữ liệu trong tóm tắt dưới đây; ngoài phạm vi thì nói thẳng là không có dữ liệu, không bịa số. Số liệu chốt 23/07/2026. Nếu người dùng phản biện đúng thì thừa nhận, đừng bảo vệ trang bằng mọi giá. TUYỆT ĐỐI KHÔNG đưa khuyến nghị đầu tư cá nhân hóa và không dự báo giá. Nếu người dùng có dấu hiệu dùng đòn bẩy, dùng tiền dự phòng, hay dồn hết tài sản vào một khoản, hãy nêu quan ngại thẳng thắn. Nếu người dùng lật ngược quan điểm quá nhanh chỉ vì bạn phản biện, hãy chỉ ra điều đó.\n\nTÓM TẮT LẬP LUẬN CỦA TRANG:\n'+BRIEF_C; }
+function askGemini(){
+  var sys = SYSPROMPT();
+  var contents = HIST.map(function(m){
+    return {role: m.role==='assistant'?'model':'user', parts:[{text:String(m.content).slice(0,4000)}]};
+  });
+  var MODELS=['gemini-flash-latest','gemini-2.5-flash','gemini-2.0-flash'];
+  var mi=0;
+  function tryModel(){
+  return fetch('https://generativelanguage.googleapis.com/v1beta/models/'+MODELS[mi]+':generateContent?key='+encodeURIComponent(BYOK),{
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      system_instruction:{parts:[{text:sys}]},
+      contents: contents,
+      generationConfig:{maxOutputTokens:1200, temperature:0.7}
+    })
+  }).then(function(r){
+    return r.json().then(function(j){
+      if(!r.ok){
+        var m=(j.error&&j.error.message)||'';
+        if(r.status===429) return {ok:false,j:{error:'Đã hết hạn mức miễn phí trong ngày hoặc trong phút. Gemini cho 15 lượt mỗi phút và khoảng 1.500 lượt mỗi ngày. Đợi một lát rồi thử lại.'}};
+        if(r.status===400 && /api key/i.test(m)) return {ok:false,j:{error:'Khóa API không hợp lệ hoặc đã bị xoá. Tạo khóa mới tại aistudio.google.com/apikey rồi bấm Xoá khóa và dán lại.'}};
+        if(r.status===403) return {ok:false,j:{error:'Khóa bị từ chối. Kiểm tra xem Generative Language API đã được bật cho dự án chưa.'}};
+        return {ok:false,j:{error:'Gemini lỗi '+r.status+': '+m}};
+      }
+      var c=j.candidates&&j.candidates[0];
+      var t=c&&c.content&&c.content.parts ? c.content.parts.map(function(p){return p.text||'';}).join('') : '';
+      return {ok:true,j:{text:t.trim()||'Không nhận được nội dung trả lời.'}};
+    });
+  });
+  }
+  function attempt(){
+    return tryModel().then(function(o){
+      if(!o.ok && /404|not found|not supported/i.test(o.j.error||'') && mi < MODELS.length-1){ mi++; return attempt(); }
+      return o;
+    });
+  }
+  return attempt();
+}
+
+function askDirect(){
+  return fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':BYOK,
+             'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1200,
+      system:SYSPROMPT(),
+      messages:HIST})
+  }).then(function(r){
+    return r.json().then(function(j){
+      if(!r.ok) return {ok:false,j:{error:'Anthropic API lỗi '+r.status+': '+((j.error&&j.error.message)||'')}};
+      return {ok:true,j:{text:(j.content||[]).filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('\n').trim()}};
+    });
+  });
+}
+keyBar();
+
+</script>
+</body>
+</html>
