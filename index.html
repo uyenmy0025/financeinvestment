@@ -13,7 +13,7 @@
   --line:#D8DBD4; --line2:#C2C7BD; --slate:#5F6B72; --mute:#8A9299;
   --brass:#A6752B; --brass-w:#F5EAD6; --jade:#186B4F; --jade-w:#E2EFE8;
   --rust:#9C3A2C; --rust-w:#F7E5E1; --steel:#3A6079; --steel-w:#E3ECF2;
-  --ff:Calibri,Carlito,"Segoe UI",sans-serif; --r:4px; --max:1180px;
+  --ff:Calibri,Carlito,"Segoe UI",sans-serif; --r:4px; --max:calc(1100px - 1cm);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -22,9 +22,10 @@ body{
   font-family:var(--ff); font-weight:400;
   font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3,h4{font-family:var(--ff);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+h1,h2,h3,h4{font-family:var(--ff);font-weight:700;line-height:1.3;letter-spacing:-0.01em;padding-bottom:0.06em;overflow-wrap:break-word}
 .num{font-family:var(--ff);font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.wrap{width:84%;max-width:var(--max);margin:0 auto;padding:0}
+@media(max-width:760px){.wrap{width:92%}}
 
 /* ---------- masthead ---------- */
 .mast{background:var(--ink);color:#EDEFEA;border-bottom:3px solid var(--brass)}
@@ -65,9 +66,21 @@ nav::-webkit-scrollbar{display:none}
 .strip-in::-webkit-scrollbar{display:none}
 .tick{padding:11px 22px 11px 0;margin-right:22px;border-right:1px solid #3A4A5A;white-space:nowrap;display:flex;align-items:baseline;gap:9px}
 .tick:last-child{border-right:0}
-.tick em{font-style:normal;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8FA0AC}
+.tick em{line-height:1.6;font-style:normal;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8FA0AC}
 .tick b{font-family:var(--ff);font-weight:600;font-size:13.5px}
 .up{color:#6BC79E}.dn{color:#E8897B}
+.upbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 0;border-top:1px solid #2A3846}
+.upbar .txt{font-size:12.5px;color:#9FADB8;letter-spacing:0.01em}
+.upbar .txt b{color:#E7EBE6;font-weight:600}
+.upbar .txt .warn2{color:#F0B27A}
+.rfbtn{display:inline-flex;align-items:center;gap:7px;font-family:var(--ff);font-size:12.5px;font-weight:700;
+  background:#22303E;color:#E7EBE6;border:1px solid #3A4A5A;padding:7px 15px;border-radius:2px;cursor:pointer;transition:.15s}
+.rfbtn:hover{background:#2C3D4E;border-color:var(--brass)}
+.rfbtn:disabled{opacity:.5;cursor:default}
+.rfbtn svg{width:13px;height:13px}
+.rfbtn.spin svg{animation:rot 1s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.rfbtn.spin svg{animation:none}}
 .stat-tag{font-size:9px;letter-spacing:0.08em;background:#3A4A5A;color:#AEBBC4;padding:1px 5px;border-radius:2px;margin-left:5px;text-transform:none}
 
 /* ---------- panels ---------- */
@@ -77,30 +90,30 @@ main{padding:40px 0 90px}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.panel.on{animation:none}*{transition:none!important}}
 
-.eyebrow{font-family:var(--ff);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
-.lede{font-size:17px;color:var(--slate);max-width:62ch;line-height:1.7}
-h2.big{font-size:clamp(26px,3.4vw,38px);margin-bottom:12px}
+.eyebrow{font-family:var(--ff);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--brass);margin-bottom:12px;line-height:1.6}
+.lede{font-size:17px;color:var(--slate);line-height:1.7;max-width:100%}
+h2.big{font-size:clamp(25px,3.2vw,36px);margin-bottom:14px;line-height:1.32;padding-bottom:0.08em}
 h3.sec{font-size:19px;margin-bottom:6px}
 
 .rank{background:#fff;border:1px solid var(--line);border-left:5px solid var(--jade);padding:22px 26px;margin-bottom:14px;display:grid;grid-template-columns:52px 1fr 118px;gap:20px;align-items:start}
 @media(max-width:760px){.rank{grid-template-columns:44px 1fr;}.rank .w{grid-column:2}}
 .rank .no{font-size:30px;font-weight:700;color:var(--jade);letter-spacing:-0.04em;line-height:1}
 .rank h4{font-size:17px;margin-bottom:6px}
-.rank p{font-size:14px;color:var(--ink2);max-width:70ch}
+.rank p{font-size:14px;color:var(--ink2)}
 .rank .w{text-align:right;font-size:22px;font-weight:700;color:var(--jade);letter-spacing:-0.03em;font-variant-numeric:tabular-nums}
 .rank .w small{display:block;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mute);font-weight:400}
 .avoid{background:#fff;border:1px solid var(--line);border-left:5px solid var(--rust);padding:20px 26px;margin-bottom:12px}
 .avoid h4{font-size:16px;margin-bottom:6px;color:var(--rust)}
-.avoid p{font-size:14px;color:var(--ink2);max-width:76ch}
+.avoid p{font-size:14px;color:var(--ink2)}
 .avoid .maths{font-size:13px;background:var(--rust-w);color:#5A1F16;padding:8px 12px;margin-top:10px;display:inline-block;font-variant-numeric:tabular-nums}
 .warn{background:var(--ink);color:#E7EBE6;padding:26px 30px;border-left:5px solid var(--rust);margin:30px 0}
 .warn h3{color:#fff;font-size:18px;margin-bottom:12px}
-.warn p{color:#C9D2D8;font-size:15px;max-width:78ch;line-height:1.75}
+.warn p{color:#C9D2D8;font-size:15px;line-height:1.75}
 .warn p+p{margin-top:12px}
 .warn strong{color:#F2A99B}
 .build{background:var(--ink);color:#E7EBE6;padding:26px 30px;margin:0 0 30px;border-left:5px solid var(--brass)}
 .build h3{color:#fff;font-size:19px;margin-bottom:4px}
-.build>p{color:#9FADB8;font-size:13.5px;margin-bottom:18px;max-width:76ch}
+.build>p{color:#9FADB8;font-size:13.5px;margin-bottom:18px}
 .build .f label{color:#9FADB8}
 .build .f input{background:#22303E;border-color:#3A4A5A;color:#fff}
 .build .f input:focus{background:#2A3B4C;outline-color:var(--brass)}
@@ -131,7 +144,7 @@ h3.sec{font-size:19px;margin-bottom:6px}
 .chart-head p{font-size:13px;color:var(--mute);margin-bottom:16px}
 /* thesis block — the page's opening argument */
 .thesis{background:var(--ink);color:#E7EBE6;padding:32px 34px;border-left:5px solid var(--brass);margin:28px 0 36px}
-.thesis p{max-width:74ch;font-size:16.5px;line-height:1.75;color:#C9D2D8}
+.thesis p{font-size:16.5px;line-height:1.75;color:#C9D2D8}
 .thesis p+p{margin-top:14px}
 .thesis strong{color:#F2C878;font-weight:600}
 .thesis h3{color:#fff;font-size:20px;margin-bottom:12px}
@@ -147,7 +160,7 @@ h3.sec{font-size:19px;margin-bottom:6px}
 .group{display:none}.group.on{display:block}
 
 /* ---------- asset card ---------- */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:20px;overflow:hidden}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:20px}
 .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:22px 26px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .card-head h3{font-size:21px;margin-bottom:3px}
 .card-head p{font-size:13px;color:var(--mute)}
@@ -159,7 +172,7 @@ h3.sec{font-size:19px;margin-bottom:6px}
 
 /* the signature element: cycle dial */
 .dial{padding:24px 26px 20px;background:var(--wash);border-bottom:1px solid var(--line)}
-.dial-meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:32px;flex-wrap:wrap}
+.dial-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:26px;flex-wrap:wrap}
 .dial-meta .yr{font-family:var(--ff);font-size:13px;font-weight:600;color:var(--ink)}
 .dial-meta .yr b{font-size:22px;color:var(--brass)}
 .dial-meta .len{font-size:12px;color:var(--mute);font-family:var(--ff)}
@@ -182,16 +195,16 @@ h3.sec{font-size:19px;margin-bottom:6px}
 
 /* card body grid */
 .body{padding:24px 26px 8px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}
 .stat{background:#fff;padding:14px 16px}
-.stat em{display:block;font-style:normal;font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+.stat em{line-height:1.6;display:block;font-style:normal;font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
 .stat b{font-family:var(--ff);font-weight:600;font-size:17px;display:block;letter-spacing:-0.03em}
 .stat small{font-size:11.5px;color:var(--slate);display:block;margin-top:2px}
 
 .rows{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
 @media(max-width:820px){.rows{grid-template-columns:1fr;gap:0}}
 .blk{padding-bottom:22px}
-.blk h4{font-size:12px;letter-spacing:0.13em;text-transform:uppercase;color:var(--slate);font-family:var(--ff);font-weight:600;padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.blk h4{line-height:1.55;font-size:12px;letter-spacing:0.13em;text-transform:uppercase;color:var(--slate);font-family:var(--ff);font-weight:600;padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--line)}
 .blk p{font-size:14.5px;color:var(--ink2);margin-bottom:10px}
 .blk ul{list-style:none;font-size:14.5px;color:var(--ink2)}
 .blk li{padding-left:18px;position:relative;margin-bottom:9px}
@@ -200,7 +213,7 @@ h3.sec{font-size:19px;margin-bottom:6px}
 /* action box */
 .act{background:var(--wash);border-top:1px solid var(--line);padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
 @media(max-width:820px){.act{grid-template-columns:1fr;gap:20px}}
-.act h4{font-family:var(--ff);font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.act h4{line-height:1.55;font-family:var(--ff);font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:8px}
 .act .do h4{color:var(--jade)}
 .act .dont h4{color:var(--rust)}
 .act ul{list-style:none;font-size:14px}
@@ -221,14 +234,14 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 /* news */
 .autobox{background:var(--ink);color:#E7EBE6;padding:20px 24px;margin-bottom:22px;border-left:5px solid var(--jade)}
 .autobox h3{color:#fff;font-size:17px;margin-bottom:4px}
-.autobox p{color:#9FADB8;font-size:13px;margin-bottom:14px;max-width:76ch}
+.autobox p{color:#9FADB8;font-size:13px;margin-bottom:14px}
 .autobox button{font-size:13px;font-weight:700;background:var(--jade);color:#fff;border:0;padding:9px 18px;border-radius:2px;cursor:pointer}
 .autobox button:disabled{background:#3A4A5A;cursor:default}
 .autostat{font-size:12px;color:#8FA0AC;margin-top:10px}
 .auto-item{background:#fff;border:1px solid var(--line);border-left:4px solid var(--line2);padding:16px 20px;margin-bottom:10px}
 .auto-item.up{border-left-color:var(--jade)}
 .auto-item.down{border-left-color:var(--rust)}
-.auto-item h4{font-size:15px;margin-bottom:5px;line-height:1.35}
+.auto-item h4{font-size:15px;margin-bottom:5px;line-height:1.5}
 .auto-item h4 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line2)}
 .auto-item h4 a:hover{color:var(--brass);border-bottom-color:var(--brass)}
 .auto-item .meta{font-size:11px;color:var(--mute);letter-spacing:0.05em;margin-bottom:8px}
@@ -245,8 +258,8 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 .news-top{display:flex;gap:14px;align-items:baseline;margin-bottom:7px;flex-wrap:wrap}
 .date{font-family:var(--ff);font-size:11px;letter-spacing:0.09em;color:var(--mute);white-space:nowrap}
 .src{font-size:11px;color:var(--mute);letter-spacing:0.05em}
-.news h4{font-size:16.5px;font-family:var(--ff);margin-bottom:8px;line-height:1.3}
-.news p{font-size:14px;color:var(--ink2);margin-bottom:14px;max-width:80ch}
+.news h4{font-size:16.5px;font-family:var(--ff);margin-bottom:8px;line-height:1.45}
+.news p{font-size:14px;color:var(--ink2);margin-bottom:14px}
 .tags{display:flex;gap:7px;flex-wrap:wrap;padding-top:12px;border-top:1px dashed var(--line)}
 .tag{font-family:var(--ff);font-size:11px;letter-spacing:0.03em;padding:4px 9px;border-radius:2px;display:inline-flex;align-items:center;gap:5px}
 .t-dn{background:var(--rust-w);color:var(--rust)}
@@ -260,10 +273,10 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 .kind.pol{background:#EEEDFE;color:#534AB7}
 .kind.eco{background:var(--steel-w);color:var(--steel)}
 .kind.mkt{background:var(--brass-w);color:var(--brass)}
-.who{font-size:13px;color:var(--slate);background:var(--wash);border:1px solid var(--line);padding:10px 13px;margin-bottom:13px;line-height:1.6}
+.who{font-size:12.5px;color:var(--slate);background:var(--wash);border:1px solid var(--line);padding:8px 11px;margin-bottom:9px;line-height:1.55}
 .who b{color:var(--ink)}
-.who-lab{display:block;font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
-.ev .who{margin:10px 0 0;max-width:74ch}
+.who-lab{line-height:1.6;display:block;font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.ev .who{margin:10px 0 0}
 .tag-lab{font-family:var(--ff);font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:var(--mute);margin-right:4px;align-self:center}
 
 /* timeline */
@@ -273,7 +286,7 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ev.key::before{background:var(--brass);border-color:var(--brass)}
 .ev .when{font-family:var(--ff);font-size:11.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--brass);margin-bottom:4px}
 .ev h4{font-size:16px;font-family:var(--ff);margin-bottom:5px}
-.ev p{font-size:14px;color:var(--slate);max-width:74ch}
+.ev p{font-size:14px;color:var(--slate)}
 
 /* scenarios */
 .scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px}
@@ -314,7 +327,7 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 /* glossary */
 .gl{background:#fff;border:1px solid var(--line);padding:20px 24px;margin-bottom:12px}
 .gl h4{font-size:16px;font-family:var(--ff);margin-bottom:6px}
-.gl p{font-size:14px;color:var(--ink2);max-width:82ch}
+.gl p{font-size:14px;color:var(--ink2)}
 .gl .term{font-family:var(--ff);font-size:11px;color:var(--brass);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px}
 
 /* ---- 10-year chart ---- */
@@ -369,12 +382,12 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 .rec-card h4{font-size:17px;font-family:var(--ff);margin-bottom:4px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline}
 .rec-card h4 span{font-size:14px;font-weight:700;color:var(--jade);font-variant-numeric:tabular-nums;white-space:nowrap}
 .rec-card.no h4 span{color:var(--rust)}
-.rec-card p{font-size:14.5px;color:var(--ink2);max-width:82ch}
+.rec-card p{font-size:14.5px;color:var(--ink2)}
 .gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:22px 0 30px}
 .gate div{background:var(--wash);border:1px solid var(--line);border-top:3px solid var(--ink);padding:16px 18px}
 .gate b{display:block;font-size:22px;color:var(--brass);margin-bottom:6px;font-variant-numeric:tabular-nums}
 .gate p{font-size:13.5px;color:var(--ink2)}
-.note{font-size:12.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:18px;margin-top:34px;max-width:88ch;line-height:1.7}
+.note{font-size:12px;color:var(--mute);border-top:1px solid var(--line);padding-top:18px;margin-top:34px;line-height:1.7}
 .chat{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;height:min(62vh,560px);margin-bottom:18px}
 .log{flex:1;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column;gap:16px}
 .msg{max-width:82%;padding:12px 16px;font-size:14.5px;line-height:1.65;white-space:pre-wrap}
@@ -401,8 +414,8 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
 .seed:hover{border-color:var(--brass);color:var(--brass)}
 .seed:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
 .terms{background:var(--wash);border-top:1px dashed var(--line2);padding:18px 26px 20px}
-.terms-lab{display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:13px}
-.terms dl{display:grid;grid-template-columns:1fr 1fr;gap:13px 30px;margin:0}
+.terms-lab{line-height:1.6;display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:13px}
+.terms dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:9px 26px;margin:0}
 @media(max-width:820px){.terms dl{grid-template-columns:1fr}}
 .terms dt{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
 .terms dt i{font-style:normal;font-weight:400;color:var(--mute);font-size:11.5px;letter-spacing:0.02em}
@@ -432,7 +445,7 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
     <div class="mast-top">
       <div class="mark">
         <b>BẢN ĐỒ CHU KỲ TÀI SẢN</b>
-        <span>Việt Nam · 2026 · v2026.07.23-b9</span>
+        <span>Việt Nam · 2026 · v2026.07.23-b17</span>
       </div>
       <div class="fxbox">
         <div class="stamp"><span class="dot"></span> Dữ liệu 23/07/2026</div>
@@ -441,6 +454,13 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
           <button id="btnUsd" aria-pressed="false" onclick="setCur('usd')">USD</button>
         </div>
       </div>
+    </div>
+    <div class="upbar">
+      <button class="rfbtn" id="rfBtn" onclick="refreshAll()" title="Tải lại toàn bộ dữ liệu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        Làm mới toàn bộ
+      </button>
+      <div class="txt" id="upTxt">Chưa tải dữ liệu trực tiếp — đang hiển thị số liệu chốt 23/07/2026.</div>
     </div>
     <nav role="tablist" aria-label="Chủ đề">
       <button class="tab" role="tab" aria-selected="true" data-tab="tq"><i>01</i>Tổng quan</button>
@@ -1261,7 +1281,7 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
   <div class="sec-gap"></div>
   <h3 class="sec">Ba kịch bản Fed và tác động lên từng lớp tài sản</h3>
   <p class="lede" style="margin-bottom:14px">Xác suất tham chiếu theo định giá thị trường qua <a href="https://www.chase.com/personal/investments/learning-and-insights/article/kevin-warsh-prices-are-too-high-what-to-expect-july-2026-federal-reserve-meeting" target="_blank" rel="noopener noreferrer" style="color:var(--brass)">công cụ CME FedWatch</a> và <a href="https://www.schwab.com/learn/story/fomc-meeting" target="_blank" rel="noopener noreferrer" style="color:var(--brass)">Dot Plot tháng 6</a>, cho cuộc họp tháng 9/2026.</p>
-  <div class="who" style="max-width:88ch;margin-bottom:24px"><span class="who-lab">Đối tượng bị tác động ở cả ba kịch bản</span><b>Tổ chức:</b> Cục Dự trữ Liên bang Mỹ, Ngân hàng Nhà nước Việt Nam. <b>Quốc gia:</b> Mỹ, Việt Nam và các thị trường mới nổi có tỷ giá neo mềm vào USD. <b>Doanh nghiệp Việt Nam nhạy nhất:</b> ngân hàng (biên lãi ròng), bất động sản (chi phí vốn và đáo hạn trái phiếu), công ty chứng khoán (thanh khoản và dư nợ ký quỹ), doanh nghiệp vay ngoại tệ. <b>Cá nhân:</b> người gửi tiết kiệm hưởng lợi ở kịch bản diều hâu; người vay mua nhà hưởng lợi ở kịch bản bồ câu.</div>
+  <div class="who" style=";margin-bottom:24px"><span class="who-lab">Đối tượng bị tác động ở cả ba kịch bản</span><b>Tổ chức:</b> Cục Dự trữ Liên bang Mỹ, Ngân hàng Nhà nước Việt Nam. <b>Quốc gia:</b> Mỹ, Việt Nam và các thị trường mới nổi có tỷ giá neo mềm vào USD. <b>Doanh nghiệp Việt Nam nhạy nhất:</b> ngân hàng (biên lãi ròng), bất động sản (chi phí vốn và đáo hạn trái phiếu), công ty chứng khoán (thanh khoản và dư nợ ký quỹ), doanh nghiệp vay ngoại tệ. <b>Cá nhân:</b> người gửi tiết kiệm hưởng lợi ở kịch bản diều hâu; người vay mua nhà hưởng lợi ở kịch bản bồ câu.</div>
 
   <div class="scen">
     <div class="sc hawk">
@@ -1311,8 +1331,8 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
   <div class="deep">
     <h4>Điều quan trọng nhất rút ra từ ba cột trên</h4>
     <p>Nhìn theo hàng ngang thay vì cột dọc.</p>
-    <p style="font-size:14.5px;color:var(--ink2);max-width:80ch;margin-bottom:12px">Có đúng <b>một hàng</b> mà bạn không thua ở bất kỳ kịch bản nào: trái phiếu và tiền gửi mua ở mức lợi suất hôm nay. Ở kịch bản diều hâu, bạn vẫn nhận đủ 8–9% đã khóa. Ở kịch bản bồ câu, bạn nhận đủ 8–9% trong khi thị trường chỉ còn trả 5%, và giá trái phiếu bạn đang cầm còn tăng.</p>
-    <p style="font-size:14.5px;color:var(--ink2);max-width:80ch">Đó là định nghĩa của một vị thế bất đối xứng thuận lợi. Nó không hào nhoáng, nhưng nó là thứ hiếm nhất trên bảng này. Ngược lại, bất động sản dùng đòn bẩy thua ở hai trên ba kịch bản và chỉ hòa ở kịch bản thứ ba.</p>
+    <p style="font-size:14.5px;color:var(--ink2);margin-bottom:12px">Có đúng <b>một hàng</b> mà bạn không thua ở bất kỳ kịch bản nào: trái phiếu và tiền gửi mua ở mức lợi suất hôm nay. Ở kịch bản diều hâu, bạn vẫn nhận đủ 8–9% đã khóa. Ở kịch bản bồ câu, bạn nhận đủ 8–9% trong khi thị trường chỉ còn trả 5%, và giá trái phiếu bạn đang cầm còn tăng.</p>
+    <p style="font-size:14.5px;color:var(--ink2)">Đó là định nghĩa của một vị thế bất đối xứng thuận lợi. Nó không hào nhoáng, nhưng nó là thứ hiếm nhất trên bảng này. Ngược lại, bất động sản dùng đòn bẩy thua ở hai trên ba kịch bản và chỉ hòa ở kịch bản thứ ba.</p>
   </div>
   <div class="terms inline"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>FOMC</dt><dd>Ủy ban ra quyết định lãi suất của Fed, họp tám lần mỗi năm. Đây là cuộc họp thị trường tài chính toàn cầu theo dõi sát nhất.</dd></div><div><dt>Dot Plot <i>biểu đồ chấm</i></dt><dd>Bảng dự phóng lãi suất của từng quan chức Fed, chỉ công bố ở các cuộc họp tháng 3, 6, 9 và 12. Cho biết Fed nghĩ gì về tương lai chứ không chỉ hiện tại.</dd></div><div><dt>FedWatch</dt><dd>Công cụ của sàn CME quy đổi giá hợp đồng tương lai thành xác suất Fed tăng hay giảm lãi suất. Đây là kỳ vọng thị trường, không phải dự báo chính thức.</dd></div><div><dt>Vị thế bất đối xứng <i>asymmetric position</i></dt><dd>Vị thế mà phần được nhiều hơn hẳn phần mất, hoặc không mất ở bất kỳ kịch bản nào. Rất hiếm và đáng ưu tiên khi gặp.</dd></div></dl></div>
 
@@ -1380,7 +1400,7 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
       <li>Dòng tiền đó có vượt 9% — mức tiền gửi không rủi ro — không?</li>
       <li>Vị thế chu kỳ đang thuận hay nghịch?</li>
     </ol>
-    <p style="font-size:14px;color:#5A3F0F;margin-top:12px;max-width:78ch">Trượt câu 1 thì không thuộc danh mục thu nhập thụ động, bất kể nó hấp dẫn thế nào. Trượt câu 2 thì đang thua một lựa chọn an toàn hơn. Chỉ khi qua được cả hai, câu 3 mới quyết định vào bao nhiêu và khi nào.</p>
+    <p style="font-size:14px;color:#5A3F0F;margin-top:12px">Trượt câu 1 thì không thuộc danh mục thu nhập thụ động, bất kể nó hấp dẫn thế nào. Trượt câu 2 thì đang thua một lựa chọn an toàn hơn. Chỉ khi qua được cả hai, câu 3 mới quyết định vào bao nhiêu và khi nào.</p>
   </div>
   <div class="terms inline"><span class="terms-lab">Thuật ngữ dùng trong phần này</span><dl><div><dt>Dòng tiền <i>cash flow</i></dt><dd>Tiền tài sản thực sự trả cho bạn theo định kỳ — lãi tiền gửi, coupon trái phiếu, cổ tức, tiền thuê. Khác với lãi vốn vốn chỉ hiện thực hóa khi bán.</dd></div><div><dt>Thu nhập thụ động</dt><dd>Thu nhập không đòi hỏi lao động thường xuyên. Điều kiện tiên quyết là tài sản phải tự tạo dòng tiền, nếu không thì đó là đầu cơ chứ không phải thu nhập.</dd></div><div><dt>Lãi vốn <i>capital gain</i></dt><dd>Phần lời từ chênh lệch giá mua và giá bán. Chỉ có thật khi bạn bán, và phụ thuộc vào việc có người trả giá cao hơn.</dd></div><div><dt>Tỷ trọng rủi ro <i>risk contribution</i></dt><dd>Phần rủi ro danh mục đến từ một tài sản. Không bằng tỷ trọng vốn: Bitcoin chiếm 5% vốn nhưng chiếm 31% rủi ro vì biến động cao gấp 13 lần phần còn lại.</dd></div></dl></div>
 
@@ -1507,7 +1527,7 @@ td.n{font-family:var(--ff);font-variant-numeric:tabular-nums;white-space:nowrap}
       <thead><tr><th>Phần</th><th>Kỳ hạn</th><th>Số tiền</th><th>Đáo hạn</th><th>Vai trò</th></tr></thead>
       <tbody id="ladBody"></tbody>
     </table>
-    <p style="font-size:13px;color:var(--slate);line-height:1.7;max-width:82ch">Mỗi quý có một phần đáo hạn. Nếu lãi suất còn cao, bạn tái tục ở mức cao. Nếu lãi suất đã hạ, ba phần còn lại vẫn đang khóa ở mức cũ. Nếu thị trường cổ phiếu về vùng bạn muốn mua, bạn luôn có một phần vốn sắp về mà không phải rút trước hạn.</p>
+    <p style="font-size:13px;color:var(--slate);line-height:1.7">Mỗi quý có một phần đáo hạn. Nếu lãi suất còn cao, bạn tái tục ở mức cao. Nếu lãi suất đã hạ, ba phần còn lại vẫn đang khóa ở mức cũ. Nếu thị trường cổ phiếu về vùng bạn muốn mua, bạn luôn có một phần vốn sắp về mà không phải rút trước hạn.</p>
   </div>
 
   <div class="warn">
@@ -1799,14 +1819,16 @@ function drawChart(){
       var p=pts[best], vx=px(p[0]), vy=py(convVal(s,p[1]));
       guide.setAttribute('x1',vx); guide.setAttribute('x2',vx); guide.setAttribute('opacity','0.55');
       dot.setAttribute('cx',vx); dot.setAttribute('cy',vy); dot.setAttribute('opacity','1');
-      var when;
-      if(p[0]%1){
-        var ts = LIVE_TS[curAsset];
-        when = ts ? ('Trực tiếp · '+new Date(ts).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'}))
-                  : 'Số liệu chốt · 23/07/2026';
+      var when, isLast = (best === pts.length-1), ts = LIVE_TS[curAsset];
+      if(isLast && s.live && ts){
+        when = 'Trực tiếp · '+new Date(ts).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit',year:'numeric'});
+      } else if(p[0]%1){
+        var dd = fracToDate(p[0]);
+        when = (isLast ? 'Số liệu chốt · ' : 'Phiên ') + dmy(dd);
       } else {
         when = 'Đóng cửa 31/12/'+p[0];
       }
+      if(s.est) when += ' · ước tính';
       tip.innerHTML='<i>'+when+'</i><b>'+fmtN(convVal(s,p[1]),s.q)+'</b>'+U0;
       tip.style.opacity=1;
       var lx=vx/W*r.width, ly=vy/H*r.height;
@@ -2194,7 +2216,7 @@ function keyBar(){
   }
 }
 function setKey(){
-  var k=prompt('Dán khóa API  [v2026.07.23-b9]\n\nGoogle Gemini — miễn phí, lấy tại aistudio.google.com/apikey\nAnthropic — trả phí, khóa bắt đầu bằng sk-ant-\n\nKhóa lưu trong trình duyệt này, không gửi đi đâu khác. Đừng dùng trên máy công cộng hoặc máy dùng chung.');
+  var k=prompt('Dán khóa API  [v2026.07.23-b17]\n\nGoogle Gemini — miễn phí, lấy tại aistudio.google.com/apikey\nAnthropic — trả phí, khóa bắt đầu bằng sk-ant-\n\nKhóa lưu trong trình duyệt này, không gửi đi đâu khác. Đừng dùng trên máy công cộng hoặc máy dùng chung.');
   if(!k) return;
   k=k.trim();
   if(k.length < 20){ alert('Khóa quá ngắn, có vẻ bị thiếu. Hãy sao chép lại toàn bộ khóa.'); return; }
@@ -2294,6 +2316,14 @@ function parseDate(str){
   if(m) return new Date(+m[1], +m[2]-1, +m[3], +m[4], +m[5]).getTime();
   return 0;
 }
+function fracToDate(y){
+  var yr=Math.floor(y), f=y-yr;
+  if(!f) return null;
+  var d=new Date(yr,0,1);
+  d.setDate(d.getDate()+Math.round(f*365));
+  return d;
+}
+function dmy(d){ return d.toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric'}); }
 function fmtWhen(ts){
   if(!ts) return 'không rõ giờ';
   var d=new Date(ts), now=Date.now(), diff=(now-ts)/60000;
@@ -2401,6 +2431,53 @@ function loadNews(){
     st.textContent='Có lỗi khi tải. Thử lại sau.'; btn.disabled=false;
   });
 }
+
+/* ================= LÀM MỚI TOÀN BỘ ================= */
+var LAST_FULL=null;
+
+function upbarText(){
+  var el=document.getElementById('upTxt'); if(!el) return;
+  var keys=Object.keys(LIVE_TS||{});
+  if(!keys.length){
+    el.innerHTML='Chưa tải được dữ liệu trực tiếp — đang hiển thị <b>số liệu chốt 23/07/2026</b>.';
+    return;
+  }
+  var newest=0, oldest=Infinity;
+  keys.forEach(function(k){ var t=LIVE_TS[k]; if(t>newest)newest=t; if(t<oldest)oldest=t; });
+  var d=new Date(newest);
+  var stamp=d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit',second:'2-digit'})
+           +' · '+d.toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric'});
+  var live=0, err=0;
+  Object.keys(feedState||{}).forEach(function(k){ feedState[k]==='on'?live++:err++; });
+  var stale = (Date.now()-oldest)/60000;
+  var warn = stale>15 ? ' <span class="warn2">· có nguồn đã cũ hơn '+Math.round(stale)+' phút</span>' : '';
+  el.innerHTML='Toàn bộ dữ liệu cập nhật lúc <b>'+stamp+'</b> · '+live+' nguồn trực tiếp'
+    +(err?', '+err+' nguồn lỗi':'')
+    +' · lãi suất tiền gửi và Fed funds là số nhập tay'+warn;
+}
+
+function refreshAll(){
+  var b=document.getElementById('rfBtn');
+  if(b){ b.disabled=true; b.classList.add('spin'); }
+  var el=document.getElementById('upTxt');
+  if(el) el.innerHTML='Đang tải lại toàn bộ nguồn dữ liệu…';
+
+  try{ if(typeof refreshLive==='function') refreshLive(true); }catch(e){}
+  try{ if(typeof refreshProxy==='function') refreshProxy(); }catch(e){}
+  try{ if(typeof refreshViaProxy==='function') refreshViaProxy(); }catch(e){}
+
+  var au=document.getElementById('autoList');
+  if(au && au.innerHTML.trim() && typeof loadNews==='function'){ try{ loadNews(); }catch(e){} }
+
+  setTimeout(function(){
+    LAST_FULL=Date.now();
+    upbarText();
+    if(b){ b.disabled=false; b.classList.remove('spin'); }
+  }, 4000);
+}
+
+setInterval(upbarText, 20000);
+setTimeout(upbarText, 2500);
 
 </script>
 </body>
